@@ -1,4 +1,4 @@
-# VetNova
+﻿# VetNova
 
 Sistema de gestión veterinaria desarrollado como proyecto académico utilizando una arquitectura en capas (PL, BLL y DAL) con C#, Windows Forms y SQL Server.
 
@@ -17,17 +17,17 @@ Sistema de gestión veterinaria desarrollado como proyecto académico utilizando
 El proyecto está desarrollado siguiendo una arquitectura de tres capas:
 
 ```
-PetCare
+VETNOVA
 │
-├── PetCare.DAL
+├── VETNOVA.DAL
 │   ├── BD
 │   └── Entidades
 │
-├── PetCare.BLL
+├── VETNOVA.BLL
 │   ├── BD
 │   └── Entidades
 │
-├── PetCare.PL
+├── VETNOVA.PL
 │   ├── Generales
 │   ├── Propietarios
 │   ├── Veterinarios
