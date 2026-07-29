@@ -1,0 +1,9 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_USUARIOS
+AS BEGIN
+	SELECT USR.Id_Usuario, USR.Id_Rol, ROL.Rol, USR.Nombre_Usuario, USR.Email, USR.Contrasena, USR.Estado
+	FROM Usuarios USR
+	INNER JOIN Roles ROL ON ROL.Id_Rol=USR.Id_Rol
+END

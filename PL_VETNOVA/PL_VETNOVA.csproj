@@ -84,11 +84,14 @@
     <Folder Include="Pantallas\Auditoria\" />
     <Folder Include="Pantallas\Citas\" />
     <Folder Include="Pantallas\Consultas\" />
+    <Folder Include="Pantallas\Especialidades\" />
     <Folder Include="Pantallas\Especies\" />
     <Folder Include="Pantallas\Generales\" />
     <Folder Include="Pantallas\Mascotas\" />
     <Folder Include="Pantallas\Propietarios\" />
     <Folder Include="Pantallas\Razas\" />
+    <Folder Include="Pantallas\Tipos_Identificacion\" />
+    <Folder Include="Pantallas\Usuarios\" />
     <Folder Include="Pantallas\Veterinarios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

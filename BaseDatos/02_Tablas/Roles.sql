@@ -1,0 +1,10 @@
+USE VetNova
+go
+
+CREATE TABLE Roles(
+	Id_Rol		int				IDENTITY(1,1)		NOT NULL,
+	Rol			VARCHAR(50)		NOT NULL,
+	Estado		CHAR(1)			NOT NULL,
+
+	CONSTRAINT PK_Roles PRIMARY KEY(Id_Rol)
+)
