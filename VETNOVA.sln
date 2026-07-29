@@ -16,17 +16,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BaseDatos", "BaseDatos", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_BaseDeDatos", "01_BaseDeDatos", "{EE829E4B-B042-4BD0-A8F7-FF615519BEED}"
 	ProjectSection(SolutionItems) = preProject
+		BaseDatos\01_BaseDeDatos\01_CrearBaseDatos.sql = BaseDatos\01_BaseDeDatos\01_CrearBaseDatos.sql
 		BaseDatos\01_BaseDeDatos\README.md = BaseDatos\01_BaseDeDatos\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Tablas", "02_Tablas", "{D5E8339A-2499-4A93-A0FC-D79E2BB2B984}"
 	ProjectSection(SolutionItems) = preProject
+		BaseDatos\02_Tablas\Auditoria.sql = BaseDatos\02_Tablas\Auditoria.sql
+		BaseDatos\02_Tablas\Citas.sql = BaseDatos\02_Tablas\Citas.sql
+		BaseDatos\02_Tablas\Consultas.sql = BaseDatos\02_Tablas\Consultas.sql
+		BaseDatos\02_Tablas\Especialidades.sql = BaseDatos\02_Tablas\Especialidades.sql
+		BaseDatos\02_Tablas\Especies.sql = BaseDatos\02_Tablas\Especies.sql
+		BaseDatos\02_Tablas\Mascotas.sql = BaseDatos\02_Tablas\Mascotas.sql
+		BaseDatos\02_Tablas\Propietarios.sql = BaseDatos\02_Tablas\Propietarios.sql
+		BaseDatos\02_Tablas\Razas.sql = BaseDatos\02_Tablas\Razas.sql
 		BaseDatos\02_Tablas\README.md = BaseDatos\02_Tablas\README.md
+		BaseDatos\02_Tablas\Roles.sql = BaseDatos\02_Tablas\Roles.sql
+		BaseDatos\02_Tablas\Tipos_Identificacion.sql = BaseDatos\02_Tablas\Tipos_Identificacion.sql
+		BaseDatos\02_Tablas\Usuarios.sql = BaseDatos\02_Tablas\Usuarios.sql
+		BaseDatos\02_Tablas\Veterinarios.sql = BaseDatos\02_Tablas\Veterinarios.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Procedimientos", "03_Procedimientos", "{3AF50560-9F95-49B6-8FA3-DA7BD75532C5}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\README.md = BaseDatos\03_Procedimientos\README.md
+		BaseDatos\03_Procedimientos\SP_ACTUALIZA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_ACTUALIZA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SP_ELIMINA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_ELIMINA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SP_FILTRAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_FILTRAR_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SP_INFO_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_INFO_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql = BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql
+		BaseDatos\03_Procedimientos\SP_INSERTA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_INSERTA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SP_LISTAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_LISTAR_USUARIOS.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_DatosPrueba", "04_DatosPrueba", "{17EE2739-DDCF-402E-9275-4C1A65F2572D}"
