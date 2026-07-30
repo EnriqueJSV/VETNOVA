@@ -1,0 +1,12 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_ESPECIALIDADES
+AS BEGIN
+	SELECT
+	Id_Especialidad,
+	Especialidad,
+	Estado
+	FROM Especialidades
+END
+GO

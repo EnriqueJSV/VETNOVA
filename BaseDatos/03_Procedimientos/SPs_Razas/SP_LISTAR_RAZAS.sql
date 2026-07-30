@@ -1,0 +1,13 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_RAZAS
+AS BEGIN
+	SELECT
+	Id_Raza,
+	Id_Especie,
+	Raza,
+	Estado
+	FROM Razas
+END
+GO
