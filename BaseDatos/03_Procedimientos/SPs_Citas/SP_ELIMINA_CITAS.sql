@@ -3,42 +3,45 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_ELIMINA_CITAS
 (
-@Id_Cita INT,
-@IdUsuarioGlobal INT
+@Id_Cita int,
+@IdUsuarioGlobal int
 )
 AS BEGIN
 	BEGIN TRY
-	IF NOT (EXISTS (SELECT Id_Cita FROM Consultas WHERE Id_Cita=@Id_Cita))
-	BEGIN
-		DELETE FROM Citas
-		WHERE Id_Cita=@Id_Cita
+		IF NOT EXISTS (SELECT Id_Cita FROM Consultas WHERE Id_Cita=@Id_Cita)
+			BEGIN
+				DECLARE @NOMBRE VARCHAR(100) 
+				SET @NOMBRE = (SELECT Id_Cita FROM Citas WHERE Id_Cita=@Id_Cita)
 
-		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
-		DECLARE @DSC VARCHAR(MAX)
-		DECLARE @USRNOM VARCHAR(300)
-		DECLARE @ACC CHAR(1)
+				-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
+				DECLARE @DSC VARCHAR(MAX)
+				DECLARE @USRNOM VARCHAR(300)
+				DECLARE @ACC CHAR(1)
 
-		SELECT @USRNOM = Nombre_Usuario FROM Usuarios WHERE Id_Usuario=@IdUsuarioGlobal
-		SET @DSC = 'Se elimina el registro Id: ' + CONVERT(VARCHAR,@Id_Cita) + ' de Citas'
-		SET @ACC = 'E'
+				SELECT @USRNOM = Nombre_Usuario FROM Usuarios Where Id_Usuario=@IdUsuarioGlobal
+				SET @DSC = 'El Usuario: ' + CONVERT(VARCHAR,@USRNOM) + ' elimina la información de la cita con ID ' + @NOMBRE
+				SET @ACC = 'E'
 
-		INSERT INTO Auditoria
-		(
-		Id_Usuario, Accion, Descripcion, Fecha
-		)
-		SELECT
-		@IdUsuarioGlobal, @ACC, RTRIM(LTRIM(@DSC)), GETDATE()
-		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
+				INSERT INTO Auditoria
+				(
+				Id_Usuario, Accion, Descripcion, Fecha
+				)
+				SELECT
+				@IdUsuarioGlobal, @ACC, RTRIM(LTRIM(@DSC)) , GETDATE()
+				-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
 
-		SELECT @Id_Cita
-	END
-	ELSE
-	BEGIN
-		SELECT -1 /*NO SE PUEDE ELIMINAR: TIENE REGISTROS DEPENDIENTES*/
-	END
+				DELETE FROM Citas 
+				WHERE Id_Cita=@Id_Cita
+
+				SELECT @Id_Cita
+			END
+		ELSE
+			BEGIN
+				SELECT -1
+			END
 	END TRY
 	BEGIN CATCH
 		SELECT 0
 	END CATCH
 END
-GO
+
