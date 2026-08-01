@@ -1659,21 +1659,15 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_FILTRAR_CITAS
 (
-@Filtro VARCHAR(200)
+@Nombre varchar(100)
 )
 AS BEGIN
-	SELECT
-	Id_Cita,
-	Id_Mascota,
-	Id_Veterinario,
-	Fecha,
-	Hora,
-	Motivo,
-	Estado_Cita
-	FROM Citas
-	WHERE Motivo LIKE '%' + @Filtro + '%'
+	SELECT CIT.Id_Cita, MASC.Nombre AS Mascota, CIT.Fecha, CIT.Hora, CIT.Motivo, CIT.Estado_Cita
+	FROM Mascotas MASC
+	INNER JOIN Citas CIT ON CIT.Id_Mascota=MASC.Id_Mascota
+	WHERE MASC.Nombre LIKE '%' + @Nombre + '%' 
+	ORDER BY CIT.Fecha, CIT.Hora
 END
-GO
 GO
 
 USE VetNova
@@ -1848,7 +1842,7 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_FILTRAR_CONSULTAS
 (
-@Filtro VARCHAR(200)
+@Id_Cita INT
 )
 AS BEGIN
 	SELECT
@@ -1858,9 +1852,8 @@ AS BEGIN
 	Tratamiento,
 	Observaciones
 	FROM Consultas
-	WHERE Diagnostico LIKE '%' + @Filtro + '%'
+	WHERE Id_Cita = @Id_Cita
 END
-GO
 GO
 
 USE VetNova

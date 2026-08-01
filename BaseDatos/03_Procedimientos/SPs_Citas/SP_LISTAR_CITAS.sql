@@ -9,3 +9,4 @@ AS BEGIN
 	INNER JOIN Veterinarios VET ON VET.Id_Veterinario=CIT.Id_Veterinario
 	ORDER BY CIT.Fecha, CIT.Hora
 END
+GO

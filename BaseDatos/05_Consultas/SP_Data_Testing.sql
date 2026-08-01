@@ -249,8 +249,8 @@ DECLARE @Id_Test_Cita INT = SCOPE_IDENTITY()
 PRINT '-> Ejecutando SP_LISTAR_CITAS...'
 EXEC SP_LISTAR_CITAS
 
-PRINT '-> Ejecutando SP_FILTRAR_CITAS (buscando "TEST")...'
-EXEC SP_FILTRAR_CITAS @Filtro='TEST'
+PRINT '-> Ejecutando SP_FILTRAR_CITAS (busca todas las citas que tenga la mascota)...'
+EXEC SP_FILTRAR_CITAS @Nombre='Firulais'
 
 PRINT '-> Ejecutando SP_ACTUALIZA_CITAS...'
 EXEC SP_ACTUALIZA_CITAS @Id_Cita=@Id_Test_Cita, @Id_Mascota=1, @Id_Veterinario=1, @Fecha='2026-08-02', @Hora='10:30', @Motivo='TEST_Motivo_MOD', @Estado_Cita='Confirmada', @IdUsuarioGlobal=1
@@ -270,8 +270,8 @@ DECLARE @Id_Test_Consulta INT = SCOPE_IDENTITY()
 PRINT '-> Ejecutando SP_LISTAR_CONSULTAS...'
 EXEC SP_LISTAR_CONSULTAS
 
-PRINT '-> Ejecutando SP_FILTRAR_CONSULTAS (buscando "TEST")...'
-EXEC SP_FILTRAR_CONSULTAS @Filtro='TEST'
+PRINT '-> Ejecutando SP_FILTRAR_CONSULTAS (consulta la info de la cita)...'
+EXEC SP_FILTRAR_CONSULTAS @Id_Cita='43'
 
 PRINT '-> Ejecutando SP_ACTUALIZA_CONSULTAS...'
 EXEC SP_ACTUALIZA_CONSULTAS @Id_Consulta=@Id_Test_Consulta, @Id_Cita=@Id_Test_Cita, @Diagnostico='TEST_Diagnostico_MOD', @Tratamiento='TEST_Tratamiento_MOD', @Observaciones='TEST_Observaciones_MOD', @IdUsuarioGlobal=1

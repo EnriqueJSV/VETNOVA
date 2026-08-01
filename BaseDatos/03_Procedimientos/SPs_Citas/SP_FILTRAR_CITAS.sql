@@ -12,3 +12,4 @@ AS BEGIN
 	WHERE MASC.Nombre LIKE '%' + @Nombre + '%' 
 	ORDER BY CIT.Fecha, CIT.Hora
 END
+GO

@@ -1,9 +1,9 @@
 USE VetNova
 GO
-
+ 
 CREATE OR ALTER PROCEDURE SP_FILTRAR_CONSULTAS
 (
-@Filtro VARCHAR(200)
+@Id_Cita INT
 )
 AS BEGIN
 	SELECT
@@ -13,6 +13,6 @@ AS BEGIN
 	Tratamiento,
 	Observaciones
 	FROM Consultas
-	WHERE Diagnostico LIKE '%' + @Filtro + '%'
+	WHERE Id_Cita = @Id_Cita
 END
 GO
