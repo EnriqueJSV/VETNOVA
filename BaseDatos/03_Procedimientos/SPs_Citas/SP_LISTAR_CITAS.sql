@@ -3,14 +3,8 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_LISTAR_CITAS
 AS BEGIN
-	SELECT
-	Id_Cita,
-	Id_Mascota,
-	Id_Veterinario,
-	Fecha,
-	Hora,
-	Motivo,
-	Estado_Cita
-	FROM Citas
+	SELECT CIT.Id_Cita, MASC.Nombre AS Mascota, CIT.Fecha, CIT.Hora, CIT.Motivo, CIT.Estado_Cita
+	FROM Mascotas MASC
+	INNER JOIN Citas CIT ON CIT.Id_Mascota=MASC.Id_Mascota
+	ORDER BY CIT.Fecha, CIT.Hora
 END
-GO
