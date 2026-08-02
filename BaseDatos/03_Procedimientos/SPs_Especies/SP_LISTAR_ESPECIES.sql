@@ -1,0 +1,12 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_ESPECIES
+AS BEGIN
+	SELECT
+	Id_Especie,
+	Especie,
+	Estado
+	FROM Especies
+END
+GO

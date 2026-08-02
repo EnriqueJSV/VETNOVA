@@ -14,6 +14,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_USUARIOS
 AS BEGIN 
 
 BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario=@Id_Usuario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Usuario FROM Usuarios WHERE Nombre_Usuario=@Nombre_Usuario and Id_Usuario<>@Id_Usuario) 
 	BEGIN 
 		UPDATE Usuarios
@@ -49,3 +56,5 @@ BEGIN CATCH
 END CATCH
 
 END
+
+GO

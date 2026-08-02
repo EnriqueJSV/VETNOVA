@@ -8,6 +8,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_USUARIOS
 )
 AS BEGIN
 	BEGIN TRY
+		-- Validamos primero que el registro exista antes de intentar eliminarlo
+		IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario=@Id_Usuario)
+		BEGIN
+			SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+			RETURN
+		END
+
 		IF NOT EXISTS (SELECT Id_Usuario FROM Auditoria WHERE Id_Usuario=@Id_Usuario)
 			BEGIN
 				DECLARE @NOMBRE VARCHAR(100) 
@@ -44,3 +51,5 @@ AS BEGIN
 		SELECT 0
 	END CATCH
 END
+
+GO

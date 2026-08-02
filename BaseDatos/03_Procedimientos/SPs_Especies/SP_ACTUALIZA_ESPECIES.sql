@@ -1,0 +1,54 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_ACTUALIZA_ESPECIES
+(
+@Id_Especie INT,
+@Especie VARCHAR(100),
+@Estado CHAR(1),
+@IdUsuarioGlobal INT
+)
+AS BEGIN
+	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Especies WHERE Id_Especie=@Id_Especie)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
+	IF NOT EXISTS (SELECT Id_Especie FROM Especies WHERE Especie=@Especie AND Id_Especie<>@Id_Especie)
+	BEGIN
+		UPDATE Especies
+		SET Especie=@Especie, Estado=@Estado
+		WHERE Id_Especie=@Id_Especie
+
+		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
+		DECLARE @DSC VARCHAR(MAX)
+		DECLARE @USRNOM VARCHAR(300)
+		DECLARE @ACC CHAR(1)
+
+		SELECT @USRNOM = Nombre_Usuario FROM Usuarios WHERE Id_Usuario=@IdUsuarioGlobal
+		SET @DSC = 'Se actualiza el registro Id: ' + CONVERT(VARCHAR,@Id_Especie) + ' de Especies'
+		SET @ACC = 'A'
+
+		INSERT INTO Auditoria
+		(
+		Id_Usuario, Accion, Descripcion, Fecha
+		)
+		SELECT
+		@IdUsuarioGlobal, @ACC, RTRIM(LTRIM(@DSC)), GETDATE()
+		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
+
+		SELECT @Id_Especie
+	END
+	ELSE
+	BEGIN
+		SELECT -1
+	END
+	END TRY
+	BEGIN CATCH
+		SELECT 0
+	END CATCH
+END
+GO
