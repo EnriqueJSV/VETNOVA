@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pantallas\Generales\frmInicioSesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmInicioSesion.Designer.cs">
+      <DependentUpon>frmInicioSesion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,7 +92,6 @@
     <Folder Include="Pantallas\Consultas\" />
     <Folder Include="Pantallas\Especialidades\" />
     <Folder Include="Pantallas\Especies\" />
-    <Folder Include="Pantallas\Generales\" />
     <Folder Include="Pantallas\Mascotas\" />
     <Folder Include="Pantallas\Propietarios\" />
     <Folder Include="Pantallas\Razas\" />
