@@ -10,6 +10,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_TIPOS_IDENTIFICACION
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Tipos_Identificacion WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Tipo_Identificacion FROM Tipos_Identificacion WHERE Tipo_Identificacion=@Tipo_Identificacion AND Id_Tipo_Identificacion<>@Id_Tipo_Identificacion)
 	BEGIN
 		UPDATE Tipos_Identificacion

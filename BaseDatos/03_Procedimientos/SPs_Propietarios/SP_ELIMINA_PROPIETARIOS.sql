@@ -8,6 +8,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_PROPIETARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Propietarios WHERE Id_Propietario=@Id_Propietario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Propietario FROM Mascotas WHERE Id_Propietario=@Id_Propietario))
 	BEGIN
 		DELETE FROM Propietarios

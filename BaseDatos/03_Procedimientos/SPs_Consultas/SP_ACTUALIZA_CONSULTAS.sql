@@ -12,6 +12,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_CONSULTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Consultas WHERE Id_Consulta=@Id_Consulta)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Consulta FROM Consultas WHERE Id_Cita=@Id_Cita AND Id_Consulta<>@Id_Consulta)
 	BEGIN
 		UPDATE Consultas

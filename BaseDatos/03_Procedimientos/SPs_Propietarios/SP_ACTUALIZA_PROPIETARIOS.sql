@@ -16,6 +16,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_PROPIETARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Propietarios WHERE Id_Propietario=@Id_Propietario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Propietario FROM Propietarios WHERE Email=@Email AND Id_Propietario<>@Id_Propietario)
 	BEGIN
 		UPDATE Propietarios

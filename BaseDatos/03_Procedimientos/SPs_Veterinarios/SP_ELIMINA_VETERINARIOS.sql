@@ -8,6 +8,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_VETERINARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Veterinarios WHERE Id_Veterinario=@Id_Veterinario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Veterinario FROM Citas WHERE Id_Veterinario=@Id_Veterinario))
 	BEGIN
 		DELETE FROM Veterinarios

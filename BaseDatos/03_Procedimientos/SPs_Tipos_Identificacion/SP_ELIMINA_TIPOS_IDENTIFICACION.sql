@@ -8,6 +8,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_TIPOS_IDENTIFICACION
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Tipos_Identificacion WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Tipo_Identificacion FROM Propietarios WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion) OR EXISTS (SELECT Id_Tipo_Identificacion FROM Veterinarios WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion))
 	BEGIN
 		DELETE FROM Tipos_Identificacion

@@ -9,6 +9,21 @@
   Incluye los procedimientos de: Usuarios, Tipos_Identificacion,
   Especialidades, Especies, Razas, Propietarios, Veterinarios,
   Mascotas, Citas y Consultas.
+
+  ------------------------------------------------------------
+  NOTA DE VALIDACION (agregada):
+  Todos los SP_ACTUALIZA_X y SP_ELIMINA_X ahora validan PRIMERO
+  que el registro (@Id_X) exista antes de intentar el UPDATE/DELETE
+  y antes de escribir en Auditoria. Si no existe, se corta la
+  ejecucion con RETURN y se devuelve el codigo -2, sin tocar la
+  tabla de auditoria.
+
+  Codigos de retorno estandar:
+    > 0  -> Exito (Id del registro afectado)
+    -1   -> No se puede completar: nombre duplicado o registros dependientes
+    -2   -> No se puede completar: el registro no existe
+     0   -> Error de ejecucion (CATCH)
+  ------------------------------------------------------------
 */
 
 -- ===============================================================
@@ -185,6 +200,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_USUARIOS
 AS BEGIN 
 
 BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario=@Id_Usuario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Usuario FROM Usuarios WHERE Nombre_Usuario=@Nombre_Usuario and Id_Usuario<>@Id_Usuario) 
 	BEGIN 
 		UPDATE Usuarios
@@ -233,6 +255,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_USUARIOS
 )
 AS BEGIN
 	BEGIN TRY
+		-- Validamos primero que el registro exista antes de intentar eliminarlo
+		IF NOT EXISTS (SELECT 1 FROM Usuarios WHERE Id_Usuario=@Id_Usuario)
+		BEGIN
+			SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+			RETURN
+		END
+
 		IF NOT EXISTS (SELECT Id_Usuario FROM Auditoria WHERE Id_Usuario=@Id_Usuario)
 			BEGIN
 				DECLARE @NOMBRE VARCHAR(100) 
@@ -374,6 +403,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_TIPOS_IDENTIFICACION
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Tipos_Identificacion WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Tipo_Identificacion FROM Tipos_Identificacion WHERE Tipo_Identificacion=@Tipo_Identificacion AND Id_Tipo_Identificacion<>@Id_Tipo_Identificacion)
 	BEGIN
 		UPDATE Tipos_Identificacion
@@ -422,6 +458,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_TIPOS_IDENTIFICACION
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Tipos_Identificacion WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Tipo_Identificacion FROM Propietarios WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion) OR EXISTS (SELECT Id_Tipo_Identificacion FROM Veterinarios WHERE Id_Tipo_Identificacion=@Id_Tipo_Identificacion))
 	BEGIN
 		DELETE FROM Tipos_Identificacion
@@ -559,6 +602,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_ESPECIALIDADES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Especialidades WHERE Id_Especialidad=@Id_Especialidad)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Especialidad FROM Especialidades WHERE Especialidad=@Especialidad AND Id_Especialidad<>@Id_Especialidad)
 	BEGIN
 		UPDATE Especialidades
@@ -606,6 +656,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_ESPECIALIDADES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Especialidades WHERE Id_Especialidad=@Id_Especialidad)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Especialidad FROM Veterinarios WHERE Id_Especialidad=@Id_Especialidad))
 	BEGIN
 		DELETE FROM Especialidades
@@ -743,6 +800,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_ESPECIES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Especies WHERE Id_Especie=@Id_Especie)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Especie FROM Especies WHERE Especie=@Especie AND Id_Especie<>@Id_Especie)
 	BEGIN
 		UPDATE Especies
@@ -790,6 +854,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_ESPECIES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Especies WHERE Id_Especie=@Id_Especie)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Especie FROM Razas WHERE Id_Especie=@Id_Especie))
 	BEGIN
 		DELETE FROM Especies
@@ -931,6 +1002,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_RAZAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Razas WHERE Id_Raza=@Id_Raza)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Raza FROM Razas WHERE Raza=@Raza AND Id_Especie=@Id_Especie AND Id_Raza<>@Id_Raza)
 	BEGIN
 		UPDATE Razas
@@ -978,6 +1056,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_RAZAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Razas WHERE Id_Raza=@Id_Raza)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Raza FROM Mascotas WHERE Id_Raza=@Id_Raza))
 	BEGIN
 		DELETE FROM Razas
@@ -1139,6 +1224,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_PROPIETARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Propietarios WHERE Id_Propietario=@Id_Propietario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Propietario FROM Propietarios WHERE Email=@Email AND Id_Propietario<>@Id_Propietario)
 	BEGIN
 		UPDATE Propietarios
@@ -1186,6 +1278,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_PROPIETARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Propietarios WHERE Id_Propietario=@Id_Propietario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Propietario FROM Mascotas WHERE Id_Propietario=@Id_Propietario))
 	BEGIN
 		DELETE FROM Propietarios
@@ -1351,6 +1450,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_VETERINARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Veterinarios WHERE Id_Veterinario=@Id_Veterinario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Veterinario FROM Veterinarios WHERE Identificacion=@Identificacion AND Id_Veterinario<>@Id_Veterinario)
 	BEGIN
 		UPDATE Veterinarios
@@ -1398,6 +1504,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_VETERINARIOS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Veterinarios WHERE Id_Veterinario=@Id_Veterinario)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Veterinario FROM Citas WHERE Id_Veterinario=@Id_Veterinario))
 	BEGIN
 		DELETE FROM Veterinarios
@@ -1554,6 +1667,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_MASCOTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Mascotas WHERE Id_Mascota=@Id_Mascota)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	BEGIN
 		UPDATE Mascotas
 		SET Id_Propietario=@Id_Propietario, Id_Raza=@Id_Raza, Nombre=@Nombre, Sexo=@Sexo, Fecha_Nacimiento=@Fecha_Nacimiento, Peso=@Peso, Color=@Color, Estado=@Estado
@@ -1596,6 +1716,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_MASCOTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Mascotas WHERE Id_Mascota=@Id_Mascota)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Mascota FROM Citas WHERE Id_Mascota=@Id_Mascota))
 	BEGIN
 		DELETE FROM Mascotas
@@ -1739,6 +1866,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_CITAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Citas WHERE Id_Cita=@Id_Cita)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	BEGIN
 		UPDATE Citas
 		SET Id_Mascota=@Id_Mascota, Id_Veterinario=@Id_Veterinario, Fecha=@Fecha, Hora=@Hora, Motivo=@Motivo, Estado_Cita=@Estado_Cita
@@ -1781,6 +1915,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_CITAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Citas WHERE Id_Cita=@Id_Cita)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Cita FROM Consultas WHERE Id_Cita=@Id_Cita))
 	BEGIN
 		DELETE FROM Citas
@@ -1926,6 +2067,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_CONSULTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Consultas WHERE Id_Consulta=@Id_Consulta)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Consulta FROM Consultas WHERE Id_Cita=@Id_Cita AND Id_Consulta<>@Id_Consulta)
 	BEGIN
 		UPDATE Consultas
@@ -1973,6 +2121,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_CONSULTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Consultas WHERE Id_Consulta=@Id_Consulta)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	DELETE FROM Consultas
 	WHERE Id_Consulta=@Id_Consulta
 

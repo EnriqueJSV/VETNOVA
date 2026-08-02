@@ -10,6 +10,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_ESPECIES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Especies WHERE Id_Especie=@Id_Especie)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT EXISTS (SELECT Id_Especie FROM Especies WHERE Especie=@Especie AND Id_Especie<>@Id_Especie)
 	BEGIN
 		UPDATE Especies

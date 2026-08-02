@@ -16,6 +16,13 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_MASCOTAS
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Mascotas WHERE Id_Mascota=@Id_Mascota)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	BEGIN
 		UPDATE Mascotas
 		SET Id_Propietario=@Id_Propietario, Id_Raza=@Id_Raza, Nombre=@Nombre, Sexo=@Sexo, Fecha_Nacimiento=@Fecha_Nacimiento, Peso=@Peso, Color=@Color, Estado=@Estado

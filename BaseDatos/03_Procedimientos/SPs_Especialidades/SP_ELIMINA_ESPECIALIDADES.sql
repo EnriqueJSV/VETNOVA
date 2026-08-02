@@ -8,6 +8,13 @@ CREATE OR ALTER PROCEDURE SP_ELIMINA_ESPECIALIDADES
 )
 AS BEGIN
 	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar borrarlo
+	IF NOT EXISTS (SELECT 1 FROM Especialidades WHERE Id_Especialidad=@Id_Especialidad)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ELIMINAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
+
 	IF NOT (EXISTS (SELECT Id_Especialidad FROM Veterinarios WHERE Id_Especialidad=@Id_Especialidad))
 	BEGIN
 		DELETE FROM Especialidades

@@ -3,22 +3,25 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_ACTUALIZA_CITAS
 (
-@Id_Cita int,
-@Id_Mascota int,
-@Id_Veterinario int,
-@Fecha date,
-@Hora time,
-@Motivo varchar(500),
-@Estado_Cita varchar(50),
+@Id_Cita INT,
+@Id_Mascota INT,
+@Id_Veterinario INT,
+@Fecha DATE,
+@Hora TIME,
+@Motivo VARCHAR(500),
+@Estado_Cita VARCHAR(50),
 @IdUsuarioGlobal INT
 )
-AS BEGIN 
+AS BEGIN
+	BEGIN TRY
+	-- Validamos primero que el registro exista antes de intentar actualizarlo
+	IF NOT EXISTS (SELECT 1 FROM Citas WHERE Id_Cita=@Id_Cita)
+	BEGIN
+		SELECT -2 /*NO SE PUEDE ACTUALIZAR: EL REGISTRO NO EXISTE*/
+		RETURN
+	END
 
-BEGIN TRY
-	IF NOT EXISTS (SELECT @Id_Cita FROM Citas WHERE Id_Mascota=@Id_Mascota and Id_Veterinario=@Id_Veterinario AND Id_Cita<>@Id_Cita) 
-	AND 
-	NOT EXISTS (SELECT Id_Cita FROM Citas WHERE Fecha=@Fecha AND Hora=@Hora AND Id_Cita<>@Id_Cita) -- VALIDA SI EXISTE UNA CITA EN LA MISMA FECHA Y HORA
-	BEGIN 
+	BEGIN
 		UPDATE Citas
 		SET Id_Mascota=@Id_Mascota, Id_Veterinario=@Id_Veterinario, Fecha=@Fecha, Hora=@Hora, Motivo=@Motivo, Estado_Cita=@Estado_Cita
 		WHERE Id_Cita=@Id_Cita
@@ -28,8 +31,8 @@ BEGIN TRY
 		DECLARE @USRNOM VARCHAR(300)
 		DECLARE @ACC CHAR(1)
 
-		SELECT @USRNOM = Nombre_Usuario FROM Usuarios Where Id_Usuario=@IdUsuarioGlobal
-		SET @DSC = 'El Usuario: ' + CONVERT(VARCHAR,@USRNOM) + ' actualiza la información de la cita con ID ' + @Id_Cita
+		SELECT @USRNOM = Nombre_Usuario FROM Usuarios WHERE Id_Usuario=@IdUsuarioGlobal
+		SET @DSC = 'Se actualiza el registro Id: ' + CONVERT(VARCHAR,@Id_Cita) + ' de Citas'
 		SET @ACC = 'A'
 
 		INSERT INTO Auditoria
@@ -37,19 +40,14 @@ BEGIN TRY
 		Id_Usuario, Accion, Descripcion, Fecha
 		)
 		SELECT
-		@IdUsuarioGlobal, @ACC, RTRIM(LTRIM(@DSC)) , GETDATE()
+		@IdUsuarioGlobal, @ACC, RTRIM(LTRIM(@DSC)), GETDATE()
 		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
 
 		SELECT @Id_Cita
 	END
-	ELSE
-	BEGIN 
-		SELECT  -1
-	END
-END TRY
-BEGIN CATCH
-	SELECT 0
-END CATCH
-
+	END TRY
+	BEGIN CATCH
+		SELECT 0
+	END CATCH
 END
 GO
