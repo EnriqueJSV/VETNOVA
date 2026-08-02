@@ -17,6 +17,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_BaseDeDatos", "01_BaseDeDatos", "{EE829E4B-B042-4BD0-A8F7-FF615519BEED}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\01_BaseDeDatos\01_CrearBaseDatos.sql = BaseDatos\01_BaseDeDatos\01_CrearBaseDatos.sql
+		BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql = BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql
 		BaseDatos\01_BaseDeDatos\README.md = BaseDatos\01_BaseDeDatos\README.md
 	EndProjectSection
 EndProject
@@ -40,28 +41,117 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Procedimientos", "03_Procedimientos", "{3AF50560-9F95-49B6-8FA3-DA7BD75532C5}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\README.md = BaseDatos\03_Procedimientos\README.md
-		BaseDatos\03_Procedimientos\SP_ACTUALIZA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_ACTUALIZA_USUARIOS.sql
-		BaseDatos\03_Procedimientos\SP_ELIMINA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_ELIMINA_USUARIOS.sql
-		BaseDatos\03_Procedimientos\SP_FILTRAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_FILTRAR_USUARIOS.sql
-		BaseDatos\03_Procedimientos\SP_INFO_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_INFO_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_CreacionScript.sql = BaseDatos\03_Procedimientos\SPs_CreacionScript.sql
 		BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql = BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql
-		BaseDatos\03_Procedimientos\SP_INSERTA_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_INSERTA_USUARIOS.sql
-		BaseDatos\03_Procedimientos\SP_LISTAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SP_LISTAR_USUARIOS.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_DatosPrueba", "04_DatosPrueba", "{17EE2739-DDCF-402E-9275-4C1A65F2572D}"
 	ProjectSection(SolutionItems) = preProject
+		BaseDatos\04_DatosPrueba\BorrarLoteDatos.sql = BaseDatos\04_DatosPrueba\BorrarLoteDatos.sql
+		BaseDatos\04_DatosPrueba\LoteDatos.sql = BaseDatos\04_DatosPrueba\LoteDatos.sql
 		BaseDatos\04_DatosPrueba\README.md = BaseDatos\04_DatosPrueba\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05_Consultas", "05_Consultas", "{3769D9A0-8B81-4942-8676-35D26BA4E160}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\05_Consultas\README.md = BaseDatos\05_Consultas\README.md
+		BaseDatos\05_Consultas\SP_Data_Testing.sql = BaseDatos\05_Consultas\SP_Data_Testing.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D107F4C8-89CC-BEA8-D3D7-CA6B7733353D}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Citas", "SPs_Citas", "{C34320FE-9D1B-40E4-A0B3-189808B5FD10}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql
+		BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql
+		BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql
+		BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql
+		BaseDatos\03_Procedimientos\SPs_Citas\SP_LISTAR_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_LISTAR_CITAS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Consultas", "SPs_Consultas", "{34857C25-5791-4B5C-BB24-2E5418264037}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Consultas\SP_ACTUALIZA_CONSULTAS.sql = BaseDatos\03_Procedimientos\SPs_Consultas\SP_ACTUALIZA_CONSULTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Consultas\SP_ELIMINA_CONSULTAS.sql = BaseDatos\03_Procedimientos\SPs_Consultas\SP_ELIMINA_CONSULTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Consultas\SP_FILTRAR_CONSULTAS.sql = BaseDatos\03_Procedimientos\SPs_Consultas\SP_FILTRAR_CONSULTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Consultas\SP_INSERTA_CONSULTAS.sql = BaseDatos\03_Procedimientos\SPs_Consultas\SP_INSERTA_CONSULTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Consultas\SP_LISTAR_CONSULTAS.sql = BaseDatos\03_Procedimientos\SPs_Consultas\SP_LISTAR_CONSULTAS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Especialidades", "SPs_Especialidades", "{35F315F7-CB63-4ED0-87C0-12294D0655E8}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Especialidades\SP_ACTUALIZA_ESPECIALIDADES.sql = BaseDatos\03_Procedimientos\SPs_Especialidades\SP_ACTUALIZA_ESPECIALIDADES.sql
+		BaseDatos\03_Procedimientos\SPs_Especialidades\SP_ELIMINA_ESPECIALIDADES.sql = BaseDatos\03_Procedimientos\SPs_Especialidades\SP_ELIMINA_ESPECIALIDADES.sql
+		BaseDatos\03_Procedimientos\SPs_Especialidades\SP_FILTRAR_ESPECIALIDADES.sql = BaseDatos\03_Procedimientos\SPs_Especialidades\SP_FILTRAR_ESPECIALIDADES.sql
+		BaseDatos\03_Procedimientos\SPs_Especialidades\SP_INSERTA_ESPECIALIDADES.sql = BaseDatos\03_Procedimientos\SPs_Especialidades\SP_INSERTA_ESPECIALIDADES.sql
+		BaseDatos\03_Procedimientos\SPs_Especialidades\SP_LISTAR_ESPECIALIDADES.sql = BaseDatos\03_Procedimientos\SPs_Especialidades\SP_LISTAR_ESPECIALIDADES.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Especies", "SPs_Especies", "{A998996F-4319-459C-BD03-AE19AC81821C}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Especies\SP_ACTUALIZA_ESPECIES.sql = BaseDatos\03_Procedimientos\SPs_Especies\SP_ACTUALIZA_ESPECIES.sql
+		BaseDatos\03_Procedimientos\SPs_Especies\SP_ELIMINA_ESPECIES.sql = BaseDatos\03_Procedimientos\SPs_Especies\SP_ELIMINA_ESPECIES.sql
+		BaseDatos\03_Procedimientos\SPs_Especies\SP_FILTRAR_ESPECIES.sql = BaseDatos\03_Procedimientos\SPs_Especies\SP_FILTRAR_ESPECIES.sql
+		BaseDatos\03_Procedimientos\SPs_Especies\SP_INSERTA_ESPECIES.sql = BaseDatos\03_Procedimientos\SPs_Especies\SP_INSERTA_ESPECIES.sql
+		BaseDatos\03_Procedimientos\SPs_Especies\SP_LISTAR_ESPECIES.sql = BaseDatos\03_Procedimientos\SPs_Especies\SP_LISTAR_ESPECIES.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Mascotas", "SPs_Mascotas", "{D5DAF484-CD4D-40D8-B781-3FB9C6193FE2}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ACTUALIZA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ACTUALIZA_MASCOTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ELIMINA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ELIMINA_MASCOTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_FILTRAR_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_FILTRAR_MASCOTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_INSERTA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_INSERTA_MASCOTAS.sql
+		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_LISTAR_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_LISTAR_MASCOTAS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Propietarios", "SPs_Propietarios", "{B8FF1E0E-77FA-412C-9D37-5111AFFC23BD}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ACTUALIZA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ACTUALIZA_PROPIETARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ELIMINA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ELIMINA_PROPIETARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_FILTRAR_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_FILTRAR_PROPIETARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_INSERTA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_INSERTA_PROPIETARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_LISTAR_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_LISTAR_PROPIETARIOS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Razas", "SPs_Razas", "{C9634260-8979-46A2-8075-C8692060325D}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Razas\SP_ACTUALIZA_RAZAS.sql = BaseDatos\03_Procedimientos\SPs_Razas\SP_ACTUALIZA_RAZAS.sql
+		BaseDatos\03_Procedimientos\SPs_Razas\SP_ELIMINA_RAZAS.sql = BaseDatos\03_Procedimientos\SPs_Razas\SP_ELIMINA_RAZAS.sql
+		BaseDatos\03_Procedimientos\SPs_Razas\SP_FILTRAR_RAZAS.sql = BaseDatos\03_Procedimientos\SPs_Razas\SP_FILTRAR_RAZAS.sql
+		BaseDatos\03_Procedimientos\SPs_Razas\SP_INSERTA_RAZAS.sql = BaseDatos\03_Procedimientos\SPs_Razas\SP_INSERTA_RAZAS.sql
+		BaseDatos\03_Procedimientos\SPs_Razas\SP_LISTAR_RAZAS.sql = BaseDatos\03_Procedimientos\SPs_Razas\SP_LISTAR_RAZAS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Tipos_Identificacion", "SPs_Tipos_Identificacion", "{2E66B264-FB74-4727-B4E5-F1EB8C8C8E5D}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_ACTUALIZA_TIPOS_IDENTIFICACION.sql = BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_ACTUALIZA_TIPOS_IDENTIFICACION.sql
+		BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_ELIMINA_TIPOS_IDENTIFICACION.sql = BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_ELIMINA_TIPOS_IDENTIFICACION.sql
+		BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_FILTRAR_TIPOS_IDENTIFICACION.sql = BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_FILTRAR_TIPOS_IDENTIFICACION.sql
+		BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_INSERTA_TIPOS_IDENTIFICACION.sql = BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_INSERTA_TIPOS_IDENTIFICACION.sql
+		BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_LISTAR_TIPOS_IDENTIFICACION.sql = BaseDatos\03_Procedimientos\SPs_Tipos_Identificacion\SP_LISTAR_TIPOS_IDENTIFICACION.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Usuarios", "SPs_Usuarios", "{DBCEF87C-7599-44B0-869C-BCFA41BF28A7}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_ACTUALIZA_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_ACTUALIZA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_ELIMINA_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_ELIMINA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_FILTRAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_FILTRAR_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_INFO_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_INFO_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_INSERTA_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_INSERTA_USUARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Usuarios\SP_LISTAR_USUARIOS.sql = BaseDatos\03_Procedimientos\SPs_Usuarios\SP_LISTAR_USUARIOS.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Veterinarios", "SPs_Veterinarios", "{34FA1FDE-6F8F-4767-BE4F-6242650E9B51}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ACTUALIZA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ACTUALIZA_VETERINARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ELIMINA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ELIMINA_VETERINARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_FILTRAR_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_FILTRAR_VETERINARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_INSERTA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_INSERTA_VETERINARIOS.sql
+		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_LISTAR_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_LISTAR_VETERINARIOS.sql
 	EndProjectSection
 EndProject
 Global
@@ -92,6 +182,16 @@ Global
 		{3AF50560-9F95-49B6-8FA3-DA7BD75532C5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{17EE2739-DDCF-402E-9275-4C1A65F2572D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{3769D9A0-8B81-4942-8676-35D26BA4E160} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C34320FE-9D1B-40E4-A0B3-189808B5FD10} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{34857C25-5791-4B5C-BB24-2E5418264037} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{35F315F7-CB63-4ED0-87C0-12294D0655E8} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{A998996F-4319-459C-BD03-AE19AC81821C} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{D5DAF484-CD4D-40D8-B781-3FB9C6193FE2} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{B8FF1E0E-77FA-412C-9D37-5111AFFC23BD} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{C9634260-8979-46A2-8075-C8692060325D} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{2E66B264-FB74-4727-B4E5-F1EB8C8C8E5D} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{DBCEF87C-7599-44B0-869C-BCFA41BF28A7} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
+		{34FA1FDE-6F8F-4767-BE4F-6242650E9B51} = {3AF50560-9F95-49B6-8FA3-DA7BD75532C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4FEDC7C0-6C6E-4DB2-B0F8-B90BFB17337B}
