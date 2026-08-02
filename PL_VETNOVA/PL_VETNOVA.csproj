@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pantallas\Auditoria\frmConsultasAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Auditoria\frmConsultasAuditoria.Designer.cs">
+      <DependentUpon>frmConsultasAuditoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Citas\frmConsultasCitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Citas\frmConsultasCitas.Designer.cs">
+      <DependentUpon>frmConsultasCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\frmConsultasConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Consultas\frmConsultasConsultas.Designer.cs">
+      <DependentUpon>frmConsultasConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Especialidades\frmConsultasEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Especialidades\frmConsultasEspecialidades.Designer.cs">
+      <DependentUpon>frmConsultasEspecialidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Especies\frmConsultasEspecies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Especies\frmConsultasEspecies.Designer.cs">
+      <DependentUpon>frmConsultasEspecies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Generales\frmInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +87,42 @@
     </Compile>
     <Compile Include="Pantallas\Generales\frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.Designer.cs">
+      <DependentUpon>frmConsultasMascotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Propietarios\frmConsultasPropietarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Propietarios\frmConsultasPropietarios.Designer.cs">
+      <DependentUpon>frmConsultasPropietarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Razas\frmConsultasRazas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Razas\frmConsultasRazas.Designer.cs">
+      <DependentUpon>frmConsultasRazas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.Designer.cs">
+      <DependentUpon>frmConsultasTipos_Identificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.Designer.cs">
+      <DependentUpon>frmConsultasUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Veterinarios\frmConsultasVeterinarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Veterinarios\frmConsultasVeterinarios.Designer.cs">
+      <DependentUpon>frmConsultasVeterinarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,18 +158,6 @@
       <Name>DAL_VETNOVA</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pantallas\Auditoria\" />
-    <Folder Include="Pantallas\Citas\" />
-    <Folder Include="Pantallas\Consultas\" />
-    <Folder Include="Pantallas\Especialidades\" />
-    <Folder Include="Pantallas\Especies\" />
-    <Folder Include="Pantallas\Mascotas\" />
-    <Folder Include="Pantallas\Propietarios\" />
-    <Folder Include="Pantallas\Razas\" />
-    <Folder Include="Pantallas\Tipos_Identificacion\" />
-    <Folder Include="Pantallas\Usuarios\" />
-    <Folder Include="Pantallas\Veterinarios\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
