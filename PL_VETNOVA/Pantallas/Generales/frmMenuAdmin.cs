@@ -17,7 +17,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         #region Variables Globales o de Entidades
         public cls_Usuarios_DAL obj_Usuario_Global_DAL;
-        cls_Usuarios_BLL obj_Usuario_Global_BLL = new cls_Usuarios_BLL();
+        public cls_Usuarios_BLL obj_Usuario_Global_BLL = new cls_Usuarios_BLL();
         #endregion
 
         public frmMenuAdmin()

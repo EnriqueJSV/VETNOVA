@@ -91,6 +91,5 @@ namespace PL_VETNOVA.Pantallas.Generales
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
