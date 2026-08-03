@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.37301.10
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_VETNOVA", "PL_VETNOVA\PL_VETNOVA.csproj", "{259BFA8B-A20A-4790-96D7-1E88DDDB6BD6}"
 EndProject
@@ -66,10 +66,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Citas", "SPs_Citas", "{C34320FE-9D1B-40E4-A0B3-189808B5FD10}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql
+		SP_CONTAR_CITAS.sql = SP_CONTAR_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_LISTAR_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_LISTAR_CITAS.sql
+		SP_LISTAR_CITAS_HOY.sql = SP_LISTAR_CITAS_HOY.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Consultas", "SPs_Consultas", "{34857C25-5791-4B5C-BB24-2E5418264037}"

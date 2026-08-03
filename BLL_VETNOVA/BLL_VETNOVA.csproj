@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BD\cls_BDVETNOVA_BLL.cs" />
+    <Compile Include="Entidades\cls_Citas_BLL.cs" />
     <Compile Include="Entidades\cls_Usuarios_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
