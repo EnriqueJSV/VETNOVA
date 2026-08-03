@@ -17,7 +17,7 @@ AS BEGIN
 			WHERE Nombre_Usuario=@Nombre_Usuario AND Contrasena=@Contrasena)
 
 
-			SELECT Id_Usuario
+			SELECT Id_Usuario, Id_Rol
 			FROM Usuarios 
 			WHERE Nombre_Usuario=@Nombre_Usuario AND Contrasena=@Contrasena
 

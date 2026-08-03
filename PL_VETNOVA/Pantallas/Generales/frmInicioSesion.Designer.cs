@@ -17,6 +17,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioSesion));
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblTagline = new System.Windows.Forms.Label();
@@ -25,10 +26,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.cboRolSimulado = new System.Windows.Forms.ComboBox();
-            this.lblSimularComo = new System.Windows.Forms.Label();
             this.pnlSeparador = new System.Windows.Forms.Panel();
-            this.chkRecordarme = new System.Windows.Forms.CheckBox();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.lblContrasena = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -37,10 +35,11 @@ namespace PL_VETNOVA.Pantallas.Generales
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlBody.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // pnlHeader
-            //
+            // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(52)))), ((int)(((byte)(44)))));
+            this.pnlHeader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlHeader.Controls.Add(this.picLogo);
             this.pnlHeader.Controls.Add(this.lblTagline);
             this.pnlHeader.Controls.Add(this.lblTitulo);
@@ -49,19 +48,21 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(380, 118);
             this.pnlHeader.TabIndex = 0;
-            //
+            // 
             // picLogo
-            //
+            // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
+            this.picLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picLogo.BackgroundImage")));
+            this.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picLogo.Location = new System.Drawing.Point(174, 12);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(32, 32);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 2;
             this.picLogo.TabStop = false;
-            //
+            // 
             // lblTagline
-            //
+            // 
             this.lblTagline.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.lblTagline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.lblTagline.Location = new System.Drawing.Point(0, 78);
@@ -70,9 +71,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblTagline.TabIndex = 1;
             this.lblTagline.Text = "Gestion clinica veterinaria, simple y trazable";
             this.lblTagline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lblTitulo
-            //
+            // 
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(0, 46);
@@ -81,17 +82,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "VetNova";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // pnlBody
-            //
+            // 
             this.pnlBody.BackColor = System.Drawing.Color.White;
             this.pnlBody.Controls.Add(this.lblVersion);
             this.pnlBody.Controls.Add(this.lblMensaje);
             this.pnlBody.Controls.Add(this.btnIngresar);
-            this.pnlBody.Controls.Add(this.cboRolSimulado);
-            this.pnlBody.Controls.Add(this.lblSimularComo);
             this.pnlBody.Controls.Add(this.pnlSeparador);
-            this.pnlBody.Controls.Add(this.chkRecordarme);
             this.pnlBody.Controls.Add(this.txtContrasena);
             this.pnlBody.Controls.Add(this.lblContrasena);
             this.pnlBody.Controls.Add(this.txtUsuario);
@@ -101,9 +99,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(380, 492);
             this.pnlBody.TabIndex = 1;
-            //
+            // 
             // lblVersion
-            //
+            // 
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.lblVersion.ForeColor = System.Drawing.Color.Gray;
             this.lblVersion.Location = new System.Drawing.Point(30, 452);
@@ -112,18 +110,18 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblVersion.TabIndex = 9;
             this.lblVersion.Text = "VetNova v1.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lblMensaje
-            //
+            // 
             this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
             this.lblMensaje.Location = new System.Drawing.Point(30, 275);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(300, 32);
             this.lblMensaje.TabIndex = 8;
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // btnIngresar
-            //
+            // 
             this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.FlatAppearance.BorderSize = 0;
@@ -137,92 +135,57 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.btnIngresar.Text = "Iniciar sesion";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
-            //
-            // cboRolSimulado
-            //
-            this.cboRolSimulado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRolSimulado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboRolSimulado.FormattingEnabled = true;
-            this.cboRolSimulado.Items.AddRange(new object[] {
-            "Administrador",
-            "Recepcionista",
-            "Veterinario"});
-            this.cboRolSimulado.Location = new System.Drawing.Point(30, 199);
-            this.cboRolSimulado.Name = "cboRolSimulado";
-            this.cboRolSimulado.Size = new System.Drawing.Size(300, 23);
-            this.cboRolSimulado.TabIndex = 6;
-            //
-            // lblSimularComo
-            //
-            this.lblSimularComo.AutoSize = true;
-            this.lblSimularComo.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.lblSimularComo.ForeColor = System.Drawing.Color.Gray;
-            this.lblSimularComo.Location = new System.Drawing.Point(30, 181);
-            this.lblSimularComo.Name = "lblSimularComo";
-            this.lblSimularComo.Size = new System.Drawing.Size(215, 13);
-            this.lblSimularComo.TabIndex = 5;
-            this.lblSimularComo.Text = "Simular como (solo para esta maqueta)";
-            //
+            // 
             // pnlSeparador
-            //
+            // 
             this.pnlSeparador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
             this.pnlSeparador.Location = new System.Drawing.Point(30, 172);
             this.pnlSeparador.Name = "pnlSeparador";
             this.pnlSeparador.Size = new System.Drawing.Size(300, 1);
             this.pnlSeparador.TabIndex = 4;
-            //
-            // chkRecordarme
-            //
-            this.chkRecordarme.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chkRecordarme.Location = new System.Drawing.Point(30, 140);
-            this.chkRecordarme.Name = "chkRecordarme";
-            this.chkRecordarme.Size = new System.Drawing.Size(150, 24);
-            this.chkRecordarme.TabIndex = 3;
-            this.chkRecordarme.Text = "Recordarme";
-            this.chkRecordarme.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtContrasena
-            //
+            // 
             this.txtContrasena.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtContrasena.Location = new System.Drawing.Point(30, 103);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '●';
-            this.txtContrasena.Size = new System.Drawing.Size(300, 25);
+            this.txtContrasena.Size = new System.Drawing.Size(300, 34);
             this.txtContrasena.TabIndex = 2;
-            //
+            // 
             // lblContrasena
-            //
+            // 
             this.lblContrasena.AutoSize = true;
             this.lblContrasena.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblContrasena.Location = new System.Drawing.Point(30, 85);
             this.lblContrasena.Name = "lblContrasena";
-            this.lblContrasena.Size = new System.Drawing.Size(72, 15);
+            this.lblContrasena.Size = new System.Drawing.Size(101, 25);
             this.lblContrasena.TabIndex = 1;
             this.lblContrasena.Text = "Contrasena";
-            //
+            // 
             // txtUsuario
-            //
+            // 
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUsuario.Location = new System.Drawing.Point(30, 48);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(300, 25);
+            this.txtUsuario.Size = new System.Drawing.Size(300, 34);
             this.txtUsuario.TabIndex = 0;
-            //
+            // 
             // lblUsuario
-            //
+            // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblUsuario.Location = new System.Drawing.Point(30, 30);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(105, 15);
+            this.lblUsuario.Size = new System.Drawing.Size(166, 25);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Nombre de usuario";
-            //
+            // 
             // frmInicioSesion
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(380, 610);
@@ -253,10 +216,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.ComboBox cboRolSimulado;
-        private System.Windows.Forms.Label lblSimularComo;
         private System.Windows.Forms.Panel pnlSeparador;
-        private System.Windows.Forms.CheckBox chkRecordarme;
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.Label lblContrasena;
         private System.Windows.Forms.TextBox txtUsuario;

@@ -82,11 +82,23 @@
     <Compile Include="Pantallas\Generales\frmInicioSesion.Designer.cs">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuPrincipal.cs">
+    <Compile Include="Pantallas\Generales\frmMenuAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuPrincipal.Designer.cs">
-      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    <Compile Include="Pantallas\Generales\frmMenuAdmin.Designer.cs">
+      <DependentUpon>frmMenuAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmMenuRecepcionista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmMenuRecepcionista.Designer.cs">
+      <DependentUpon>frmMenuRecepcionista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmMenuVeterinario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmMenuVeterinario.Designer.cs">
+      <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.cs">
       <SubType>Form</SubType>

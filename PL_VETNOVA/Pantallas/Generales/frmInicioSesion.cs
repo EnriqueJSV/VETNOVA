@@ -1,3 +1,5 @@
+using BLL_VETNOVA.Entidades;
+using DAL_VETNOVA.Entidades;
 using System;
 using System.Drawing;
 using System.IO;
@@ -7,98 +9,117 @@ namespace PL_VETNOVA.Pantallas.Generales
 {
     public partial class frmInicioSesion : Form
     {
-        // Id del usuario que inicio sesion correctamente. Se usa como
-        // @IdUsuarioGlobal en el resto de la aplicacion para la auditoria.
-        public int IdUsuarioAutenticado { get; private set; } = 0;
+
+
+        #region Variables Globales o de Entidades
+        cls_Usuarios_DAL obj_Usuarios_DAL = new cls_Usuarios_DAL();
+        cls_Usuarios_BLL obj_Usuarios_BLL = new cls_Usuarios_BLL();
+        #endregion
 
         public frmInicioSesion()
         {
             InitializeComponent();
 
-            this.AcceptButton = btnIngresar;
-            txtContrasena.KeyDown += TxtContrasena_KeyDown;
+            //this.AcceptButton = btnIngresar;
+            //txtContrasena.KeyDown += TxtContrasena_KeyDown;
 
-            CargarLogo();
+            //CargarLogo();
         }
 
-        private void CargarLogo()
-        {
-            try
-            {
-                string ruta = Path.Combine(Application.StartupPath, "Recursos", "paw_icon.png");
-                if (File.Exists(ruta))
-                {
-                    picLogo.Image = Image.FromFile(ruta);
-                }
-            }
-            catch
-            {
-                // Si no encuentra el icono, el formulario sigue funcionando sin el
-            }
-        }
+        //private void CargarLogo()
+        //{
+        //    try
+        //    {
+        //        string ruta = Path.Combine(Application.StartupPath, "Recursos", "paw_icon.png");
+        //        if (File.Exists(ruta))
+        //        {
+        //            picLogo.Image = Image.FromFile(ruta);
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        // Si no encuentra el icono, el formulario sigue funcionando sin el
+        //    }
+        //}
 
-        private void TxtContrasena_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-                btnIngresar_Click(sender, e);
-            }
-        }
+        //private void TxtContrasena_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        e.SuppressKeyPress = true;
+        //        btnIngresar_Click(sender, e);
+        //    }
+        //}
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            lblMensaje.Text = string.Empty;
-
-            string usuario = txtUsuario.Text.Trim();
-            string contrasena = txtContrasena.Text;
-
-            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
-            {
-                lblMensaje.Text = "Ingresa tu usuario y contrasena.";
-                return;
-            }
-
-            btnIngresar.Enabled = false;
-
             try
             {
-                // TODO: reemplazar este bloque por la llamada real a la capa BLL.
-                // Ejemplo, una vez tengan la clase de negocio de Usuarios:
-                //
-                //     int idUsuario = new UsuariosBLL().IniciarSesion(usuario, contrasena);
-                //
-                // SP_INICIAR_SESION devuelve el Id_Usuario si las credenciales son
-                // correctas, o -1 si no lo son (revisar el procedimiento almacenado
-                // para el detalle exacto del contrato).
-                //
-                // IMPORTANTE: el combo "cboRolSimulado" es SOLO para poder navegar
-                // las pantallas mientras la BLL no esta lista. En el sistema real
-                // el rol NO se elige aqui: viene de Usuarios.Id_Rol una vez que
-                // el login es exitoso. Hay que quitar cboRolSimulado (y su label)
-                // antes de la entrega final.
-                int idUsuario = 0; // placeholder mientras se conecta la BLL
+                obj_Usuarios_DAL.sMsjError = string.Empty;
+                obj_Usuarios_DAL.sNombre_Usuario = txtUsuario.Text;
+                obj_Usuarios_DAL.sContrasena = txtContrasena.Text;
 
-                if (idUsuario > 0)
+                obj_Usuarios_BLL.IniciarSesion(ref obj_Usuarios_DAL);
+
+                if (obj_Usuarios_DAL.sMsjError == string.Empty)
                 {
-                    IdUsuarioAutenticado = idUsuario;
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (obj_Usuarios_DAL.sValorScalar != "0" && obj_Usuarios_DAL.sValorScalar != "-1")
+                    {
+                        obj_Usuarios_DAL.iId_Usuario = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
+                        //obj_Usuarios_DAL.iId_UsuarioGlobal = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
+
+                        MessageBox.Show("Bienvenido al sistema", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        validaRolUsuario(ref obj_Usuarios_DAL);
+
+                    }
+                    else if (obj_Usuarios_DAL.sValorScalar == "-1")
+                    {
+                        MessageBox.Show("Las credenciales de acceso al sistema son incorrectas", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al intentar iniciar sesión en el sistema.", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    lblMensaje.Text = "Usuario o contrasena incorrectos.";
-                    txtContrasena.Clear();
-                    txtContrasena.Focus();
+                    MessageBox.Show("Ocurrió un error al intentar iniciar sesión en el sistema.", "Inicio de Sesión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lblMensaje.Text = "No se pudo conectar con el sistema. Intenta de nuevo.";
+                MessageBox.Show("Ocurrió un error al intentar iniciar sesión en el sistema. Código Error: " +
+                    ex.ToString(), "Inicio de Sesión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
+        }
+
+        private void validaRolUsuario(ref obj_Usuarios_DAL)
+        {
+            if (obj_Usuarios_DAL.iId_Rol == 1)
             {
-                btnIngresar.Enabled = true;
+                Pantallas.Generales.frmMenuAdmin obj_Formuario = new Pantallas.Generales.frmMenuAdmin();
+                this.Hide();
+                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                obj_Formuario.Show();
+            }
+            else if (obj_Usuarios_DAL.iId_Rol == 2)
+            {
+                Pantallas.Generales.frmMenuVeterinario obj_Formuario = new Pantallas.Generales.frmMenuVeterinario();
+                this.Hide();
+                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                obj_Formuario.Show();
+            }
+            else if (obj_Usuarios_DAL.iId_Rol == 3)
+            {
+                Pantallas.Generales.frmMenuRecepcionista obj_Formuario = new Pantallas.Generales.frmMenuRecepcionista();
+                this.Hide();
+                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                obj_Formuario.Show();
             }
         }
     }
