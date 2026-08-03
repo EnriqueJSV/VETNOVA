@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PL_VETNOVA.Pantallas.Generales
 {
-    public partial class frmMenuPrincipal : Form
+    public partial class frmMenuRecepcionista : Form
     {
-        public frmMenuPrincipal()
+        public frmMenuRecepcionista()
         {
             InitializeComponent();
         }
