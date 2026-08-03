@@ -49,7 +49,7 @@ namespace PL_VETNOVA.Pantallas.Generales
                             Pantallas.Generales.frmMenuAdmin obj_Formuario = new Pantallas.Generales.frmMenuAdmin();
                             this.Hide();
                             obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show();
+                            obj_Formuario.Show(this);
                         }
                         else if (obj_Usuarios_DAL.iId_Rol == 2)
                         {
@@ -90,6 +90,14 @@ namespace PL_VETNOVA.Pantallas.Generales
                     ex.ToString(), "Inicio de Sesión",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void LimpiarCampos()
+        {
+            txtUsuario.Clear();
+            txtContrasena.Clear();
+            lblMensaje.Text = string.Empty;
+            txtUsuario.Focus();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

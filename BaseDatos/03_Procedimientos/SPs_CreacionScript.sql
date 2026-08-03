@@ -1319,6 +1319,22 @@ AS BEGIN
 	END CATCH
 END
 GO
+
+--Cuenta propietarios activos
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_CONTAR_PROPIETARIOS
+AS BEGIN
+	BEGIN TRY
+		SELECT COUNT(*) AS Cantidad
+		FROM Propietarios
+		WHERE Estado = 'A'
+	END TRY
+	BEGIN CATCH
+		SELECT -1
+	END CATCH
+END
 GO
 
 -- ===============================================================
@@ -1545,6 +1561,22 @@ AS BEGIN
 	END CATCH
 END
 GO
+
+--Cuenta Veterinarios Activos
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_CONTAR_VETERINARIOS
+AS BEGIN
+	BEGIN TRY
+		SELECT COUNT(*) AS Cantidad
+		FROM Veterinarios
+		WHERE Estado = 'A'
+	END TRY
+	BEGIN CATCH
+		SELECT -1
+	END CATCH
+END
 GO
 
 -- ===============================================================
@@ -1704,6 +1736,22 @@ AS BEGIN
 	END CATCH
 END
 GO
+
+--Cuenta las mascotas activas
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_CONTAR_MASCOTAS
+AS BEGIN
+	BEGIN TRY
+		SELECT COUNT(*) AS Cantidad
+		FROM Mascotas
+		WHERE Estado = 'A'
+	END TRY
+	BEGIN CATCH
+		SELECT -1
+	END CATCH
+END
 GO
 
 USE VetNova

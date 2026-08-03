@@ -21,6 +21,12 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         public cls_Citas_DAL obj_Citas_Global_DAL = new cls_Citas_DAL();
         public cls_Citas_BLL obj_Citas_Global_BLL = new cls_Citas_BLL();
+        public cls_Mascotas_DAL obj_Mascotas_Global_DAL = new cls_Mascotas_DAL();
+        public cls_Mascotas_BLL obj_Mascotas_Global_BLL = new cls_Mascotas_BLL();
+        public cls_Propietarios_DAL obj_Propietarios_Global_DAL = new cls_Propietarios_DAL();
+        public cls_Propietarios_BLL obj_Propietarios_Global_BLL = new cls_Propietarios_BLL();
+        public cls_Veterinarios_DAL obj_Veterinarios_Global_DAL = new cls_Veterinarios_DAL();
+        public cls_Veterinarios_BLL obj_Veterinarios_Global_BLL = new cls_Veterinarios_BLL();
         #endregion
 
         public frmMenuAdmin()
@@ -33,8 +39,12 @@ namespace PL_VETNOVA.Pantallas.Generales
             cargaDatosUsuarioGlobal();
             cargaConteoCitas();
             cargaCitasHoy();
+            cargaConteoMascotas();
+            cargaConteoPropietarios();
+            cargaConteoVeterinarios();
         }
 
+        #region Cargadores De Datos
         private void cargaDatosUsuarioGlobal()
         {
             try
@@ -140,6 +150,126 @@ namespace PL_VETNOVA.Pantallas.Generales
                 MessageBox.Show("Ocurrió un error al intentar cargar las citas de hoy. Error: " + ex.ToString(), "Panel principal",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cargaConteoMascotas()
+        {
+            try
+            {
+                obj_Mascotas_Global_BLL.ContarMascotas(ref obj_Mascotas_Global_DAL);
+
+                if (obj_Mascotas_Global_DAL.sMsjError == string.Empty)
+                {
+                    if (obj_Mascotas_Global_DAL.sValorScalar != "-1")
+                    {
+                        lblCardMascotasValor.Text = obj_Mascotas_Global_DAL.sValorScalar;
+                    }
+                    else
+                    {
+                        lblCardMascotasValor.Text = "0";
+                    }
+                }
+                else
+                {
+                    lblCardMascotasValor.Text = "-";
+                    MessageBox.Show("Ocurrió un error al intentar contar las mascotas: " + obj_Mascotas_Global_DAL.sMsjError, "Panel principal",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblCardMascotasValor.Text = "-";
+                MessageBox.Show("Ocurrió un error al intentar contar las mascotas. Error: " + ex.ToString(), "Panel principal",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cargaConteoPropietarios()
+        {
+            try
+            {
+                obj_Propietarios_Global_BLL.ContarPropietarios(ref obj_Propietarios_Global_DAL);
+
+                if (obj_Propietarios_Global_DAL.sMsjError == string.Empty)
+                {
+                    if (obj_Propietarios_Global_DAL.sValorScalar != "-1")
+                    {
+                        lblCardPropietariosValor.Text = obj_Propietarios_Global_DAL.sValorScalar;
+                    }
+                    else
+                    {
+                        lblCardPropietariosValor.Text = "0";
+                    }
+                }
+                else
+                {
+                    lblCardPropietariosValor.Text = "-";
+                    MessageBox.Show("Ocurrió un error al intentar contar los propietarios: " + obj_Propietarios_Global_DAL.sMsjError, "Panel principal",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblCardPropietariosValor.Text = "-";
+                MessageBox.Show("Ocurrió un error al intentar contar los propietarios. Error: " + ex.ToString(), "Panel principal",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cargaConteoVeterinarios()
+        {
+            try
+            {
+                obj_Veterinarios_Global_BLL.ContarVeterinarios(ref obj_Veterinarios_Global_DAL);
+
+                if (obj_Veterinarios_Global_DAL.sMsjError == string.Empty)
+                {
+                    if (obj_Veterinarios_Global_DAL.sValorScalar != "-1")
+                    {
+                        lblCardVeterinariosValor.Text = obj_Veterinarios_Global_DAL.sValorScalar;
+                    }
+                    else
+                    {
+                        lblCardVeterinariosValor.Text = "0";
+                    }
+                }
+                else
+                {
+                    lblCardVeterinariosValor.Text = "-";
+                    MessageBox.Show("Ocurrió un error al intentar contar los veterinarios: " + obj_Veterinarios_Global_DAL.sMsjError, "Panel principal",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                lblCardVeterinariosValor.Text = "-";
+                MessageBox.Show("Ocurrió un error al intentar contar los veterinarios. Error: " + ex.ToString(), "Panel principal",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        private void lblNavCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmacion = MessageBox.Show("¿Deseas cerrar la sesión actual?", "Cerrar sesión",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                var loginOriginal = (Pantallas.Generales.frmInicioSesion)this.Owner;
+                loginOriginal.LimpiarCampos();
+                loginOriginal.Show();
+                this.Close();
+            }
+        }
+
+        private void lblNavCitas_Click(object sender, EventArgs e)
+        {
+            Pantallas.Citas.frmCitas obj_Formulario = new Pantallas.Citas.frmCitas();
+            obj_Formulario.IdUsuarioGlobal = obj_Usuario_Global_DAL.iId_Usuario; // ajusta el nombre exacto de tu propiedad si es distinto
+            obj_Formulario.InfoUsuario = lblInfoUsuario.Text;
+            obj_Formulario.ShowDialog();
         }
     }
 }

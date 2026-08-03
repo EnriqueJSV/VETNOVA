@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.6.11822.322 stable
+VisualStudioVersion = 18.6.11822.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_VETNOVA", "PL_VETNOVA\PL_VETNOVA.csproj", "{259BFA8B-A20A-4790-96D7-1E88DDDB6BD6}"
 EndProject
@@ -104,6 +104,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Mascotas", "SPs_Mascotas", "{D5DAF484-CD4D-40D8-B781-3FB9C6193FE2}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ACTUALIZA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ACTUALIZA_MASCOTAS.sql
+		SP_CONTAR_MASCOTAS.sql = SP_CONTAR_MASCOTAS.sql
 		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ELIMINA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_ELIMINA_MASCOTAS.sql
 		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_FILTRAR_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_FILTRAR_MASCOTAS.sql
 		BaseDatos\03_Procedimientos\SPs_Mascotas\SP_INSERTA_MASCOTAS.sql = BaseDatos\03_Procedimientos\SPs_Mascotas\SP_INSERTA_MASCOTAS.sql
@@ -113,6 +114,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Propietarios", "SPs_Propietarios", "{B8FF1E0E-77FA-412C-9D37-5111AFFC23BD}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ACTUALIZA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ACTUALIZA_PROPIETARIOS.sql
+		SP_CONTAR_PROPIETARIOS.sql = SP_CONTAR_PROPIETARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ELIMINA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_ELIMINA_PROPIETARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_FILTRAR_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_FILTRAR_PROPIETARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Propietarios\SP_INSERTA_PROPIETARIOS.sql = BaseDatos\03_Procedimientos\SPs_Propietarios\SP_INSERTA_PROPIETARIOS.sql
@@ -150,6 +152,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Veterinarios", "SPs_Veterinarios", "{34FA1FDE-6F8F-4767-BE4F-6242650E9B51}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ACTUALIZA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ACTUALIZA_VETERINARIOS.sql
+		SP_CONTAR_VETERINARIOS.sql = SP_CONTAR_VETERINARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ELIMINA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_ELIMINA_VETERINARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_FILTRAR_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_FILTRAR_VETERINARIOS.sql
 		BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_INSERTA_VETERINARIOS.sql = BaseDatos\03_Procedimientos\SPs_Veterinarios\SP_INSERTA_VETERINARIOS.sql

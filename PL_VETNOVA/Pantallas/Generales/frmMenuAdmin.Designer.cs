@@ -18,7 +18,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuAdmin));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -109,6 +109,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCerrarSesion.TabIndex = 0;
             this.lblNavCerrarSesion.Text = "Cerrar sesion";
             this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCerrarSesion.Click += new System.EventHandler(this.lblNavCerrarSesion_Click);
             // 
             // pnlNav
             // 
@@ -231,6 +232,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCitas.TabIndex = 1;
             this.lblNavCitas.Text = "Citas";
             this.lblNavCitas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCitas.Click += new System.EventHandler(this.lblNavCitas_Click);
             // 
             // lblNavDashboard
             // 
@@ -321,14 +323,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -477,9 +479,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblCardMascotasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardMascotasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardMascotasTitulo.Name = "lblCardMascotasTitulo";
-            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(169, 23);
+            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(137, 23);
             this.lblCardMascotasTitulo.TabIndex = 0;
-            this.lblCardMascotasTitulo.Text = "Mascotas registradas";
+            this.lblCardMascotasTitulo.Text = "Mascotas activas";
             // 
             // pnlCardCitas
             // 
