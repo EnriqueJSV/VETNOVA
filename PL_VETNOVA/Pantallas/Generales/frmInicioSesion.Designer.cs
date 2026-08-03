@@ -150,7 +150,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.txtContrasena.Location = new System.Drawing.Point(30, 103);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '●';
-            this.txtContrasena.Size = new System.Drawing.Size(300, 34);
+            this.txtContrasena.Size = new System.Drawing.Size(300, 25);
             this.txtContrasena.TabIndex = 2;
             // 
             // lblContrasena
@@ -160,7 +160,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblContrasena.Location = new System.Drawing.Point(30, 85);
             this.lblContrasena.Name = "lblContrasena";
-            this.lblContrasena.Size = new System.Drawing.Size(101, 25);
+            this.lblContrasena.Size = new System.Drawing.Size(67, 15);
             this.lblContrasena.TabIndex = 1;
             this.lblContrasena.Text = "Contrasena";
             // 
@@ -169,7 +169,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUsuario.Location = new System.Drawing.Point(30, 48);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(300, 34);
+            this.txtUsuario.Size = new System.Drawing.Size(300, 25);
             this.txtUsuario.TabIndex = 0;
             // 
             // lblUsuario
@@ -179,13 +179,13 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblUsuario.Location = new System.Drawing.Point(30, 30);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(166, 25);
+            this.lblUsuario.Size = new System.Drawing.Size(109, 15);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Nombre de usuario";
             // 
             // frmInicioSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(380, 610);
