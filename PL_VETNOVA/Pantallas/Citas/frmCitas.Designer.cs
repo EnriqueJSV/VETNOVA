@@ -18,12 +18,16 @@ namespace PL_VETNOVA.Pantallas.Citas
         private void InitializeComponent()
         {
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.lblInfoUsuario = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlHeaderBorde = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnNuevaCita = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.dgvCitas = new System.Windows.Forms.DataGridView();
+            this.colIdCita = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMascota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPropietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVeterinario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +61,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             // pnlHeader
             //
             this.pnlHeader.BackColor = System.Drawing.Color.White;
+            this.pnlHeader.Controls.Add(this.btnCerrar);
             this.pnlHeader.Controls.Add(this.lblInfoUsuario);
             this.pnlHeader.Controls.Add(this.lblTitulo);
             this.pnlHeader.Controls.Add(this.pnlHeaderBorde);
@@ -66,14 +71,27 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.pnlHeader.Size = new System.Drawing.Size(830, 50);
             this.pnlHeader.TabIndex = 0;
             //
+            // btnCerrar
+            //
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCerrar.Location = new System.Drawing.Point(720, 10);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(90, 30);
+            this.btnCerrar.TabIndex = 2;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            //
             // lblInfoUsuario
             //
             this.lblInfoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInfoUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblInfoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblInfoUsuario.Location = new System.Drawing.Point(510, 16);
+            this.lblInfoUsuario.Location = new System.Drawing.Point(400, 16);
             this.lblInfoUsuario.Name = "lblInfoUsuario";
-            this.lblInfoUsuario.Size = new System.Drawing.Size(300, 20);
+            this.lblInfoUsuario.Size = new System.Drawing.Size(310, 20);
             this.lblInfoUsuario.TabIndex = 1;
             this.lblInfoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             //
@@ -101,8 +119,9 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscar.Location = new System.Drawing.Point(20, 70);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(320, 25);
+            this.txtBuscar.Size = new System.Drawing.Size(300, 25);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             //
             // btnNuevaCita
             //
@@ -112,13 +131,41 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.btnNuevaCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevaCita.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnNuevaCita.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaCita.Location = new System.Drawing.Point(640, 68);
+            this.btnNuevaCita.Location = new System.Drawing.Point(440, 68);
             this.btnNuevaCita.Name = "btnNuevaCita";
-            this.btnNuevaCita.Size = new System.Drawing.Size(150, 30);
+            this.btnNuevaCita.Size = new System.Drawing.Size(110, 30);
             this.btnNuevaCita.TabIndex = 2;
-            this.btnNuevaCita.Text = "+ Nueva cita";
+            this.btnNuevaCita.Text = "+ Nueva";
             this.btnNuevaCita.UseVisualStyleBackColor = false;
             this.btnNuevaCita.Click += new System.EventHandler(this.btnNuevaCita_Click);
+            //
+            // btnModificar
+            //
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.Location = new System.Drawing.Point(560, 68);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(120, 30);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            //
+            // btnEliminar
+            //
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(46)))), ((int)(((byte)(46)))));
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(690, 68);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(100, 30);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             //
             // dgvCitas
             //
@@ -130,6 +177,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.dgvCitas.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colIdCita,
             this.colMascota,
             this.colPropietario,
             this.colVeterinario,
@@ -139,13 +187,22 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.colEstado});
             this.dgvCitas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(222)))));
             this.dgvCitas.Location = new System.Drawing.Point(20, 110);
+            this.dgvCitas.MultiSelect = false;
             this.dgvCitas.Name = "dgvCitas";
             this.dgvCitas.ReadOnly = true;
             this.dgvCitas.RowHeadersVisible = false;
             this.dgvCitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCitas.Size = new System.Drawing.Size(770, 230);
-            this.dgvCitas.TabIndex = 3;
-            this.dgvCitas.SelectionChanged += new System.EventHandler(this.dgvCitas_SelectionChanged);
+            this.dgvCitas.TabIndex = 5;
+            //
+            // colIdCita
+            //
+            // Unica columna oculta: identifica cual fila es cual cita, para saber
+            // que actualizar o eliminar. El usuario nunca la ve.
+            this.colIdCita.HeaderText = "Id_Cita";
+            this.colIdCita.Name = "colIdCita";
+            this.colIdCita.ReadOnly = true;
+            this.colIdCita.Visible = false;
             //
             // colMascota
             //
@@ -217,19 +274,19 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.pnlFormCita.Controls.Add(this.cboPropietario);
             this.pnlFormCita.Controls.Add(this.lblPropietario);
             this.pnlFormCita.Controls.Add(this.lblFormTitulo);
-            this.pnlFormCita.Location = new System.Drawing.Point(20, 350);
+            this.pnlFormCita.Location = new System.Drawing.Point(20, 360);
             this.pnlFormCita.Name = "pnlFormCita";
-            this.pnlFormCita.Size = new System.Drawing.Size(770, 300);
-            this.pnlFormCita.TabIndex = 4;
+            this.pnlFormCita.Size = new System.Drawing.Size(770, 340);
+            this.pnlFormCita.TabIndex = 6;
             this.pnlFormCita.Visible = false;
             //
             // btnCancelarCita
             //
             this.btnCancelarCita.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelarCita.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnCancelarCita.Location = new System.Drawing.Point(140, 254);
+            this.btnCancelarCita.Location = new System.Drawing.Point(160, 284);
             this.btnCancelarCita.Name = "btnCancelarCita";
-            this.btnCancelarCita.Size = new System.Drawing.Size(110, 32);
+            this.btnCancelarCita.Size = new System.Drawing.Size(130, 34);
             this.btnCancelarCita.TabIndex = 16;
             this.btnCancelarCita.Text = "Cancelar";
             this.btnCancelarCita.UseVisualStyleBackColor = true;
@@ -243,9 +300,9 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.btnGuardarCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarCita.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnGuardarCita.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarCita.Location = new System.Drawing.Point(14, 254);
+            this.btnGuardarCita.Location = new System.Drawing.Point(14, 284);
             this.btnGuardarCita.Name = "btnGuardarCita";
-            this.btnGuardarCita.Size = new System.Drawing.Size(110, 32);
+            this.btnGuardarCita.Size = new System.Drawing.Size(130, 34);
             this.btnGuardarCita.TabIndex = 15;
             this.btnGuardarCita.Text = "Guardar";
             this.btnGuardarCita.UseVisualStyleBackColor = false;
@@ -254,10 +311,10 @@ namespace PL_VETNOVA.Pantallas.Citas
             // txtMotivo
             //
             this.txtMotivo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtMotivo.Location = new System.Drawing.Point(14, 210);
+            this.txtMotivo.Location = new System.Drawing.Point(14, 228);
             this.txtMotivo.Multiline = true;
             this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(736, 36);
+            this.txtMotivo.Size = new System.Drawing.Size(736, 44);
             this.txtMotivo.TabIndex = 14;
             //
             // lblMotivo
@@ -265,7 +322,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblMotivo.AutoSize = true;
             this.lblMotivo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblMotivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblMotivo.Location = new System.Drawing.Point(14, 194);
+            this.lblMotivo.Location = new System.Drawing.Point(14, 212);
             this.lblMotivo.Name = "lblMotivo";
             this.lblMotivo.Size = new System.Drawing.Size(44, 14);
             this.lblMotivo.TabIndex = 13;
@@ -275,7 +332,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.dtpHora.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(200, 160);
+            this.dtpHora.Location = new System.Drawing.Point(200, 172);
             this.dtpHora.Name = "dtpHora";
             this.dtpHora.ShowUpDown = true;
             this.dtpHora.Size = new System.Drawing.Size(170, 25);
@@ -286,7 +343,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblHora.Location = new System.Drawing.Point(200, 144);
+            this.lblHora.Location = new System.Drawing.Point(200, 156);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(30, 14);
             this.lblHora.TabIndex = 11;
@@ -296,7 +353,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(14, 160);
+            this.dtpFecha.Location = new System.Drawing.Point(14, 172);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(170, 25);
             this.dtpFecha.TabIndex = 10;
@@ -306,7 +363,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblFecha.Location = new System.Drawing.Point(14, 144);
+            this.lblFecha.Location = new System.Drawing.Point(14, 156);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(37, 14);
             this.lblFecha.TabIndex = 9;
@@ -317,7 +374,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Location = new System.Drawing.Point(390, 110);
+            this.cboEstado.Location = new System.Drawing.Point(390, 116);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(360, 25);
             this.cboEstado.TabIndex = 8;
@@ -327,7 +384,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblEstado.Location = new System.Drawing.Point(390, 94);
+            this.lblEstado.Location = new System.Drawing.Point(390, 100);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(41, 14);
             this.lblEstado.TabIndex = 7;
@@ -338,7 +395,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboVeterinario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVeterinario.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cboVeterinario.FormattingEnabled = true;
-            this.cboVeterinario.Location = new System.Drawing.Point(14, 110);
+            this.cboVeterinario.Location = new System.Drawing.Point(14, 116);
             this.cboVeterinario.Name = "cboVeterinario";
             this.cboVeterinario.Size = new System.Drawing.Size(360, 25);
             this.cboVeterinario.TabIndex = 6;
@@ -348,7 +405,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblVeterinario.AutoSize = true;
             this.lblVeterinario.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblVeterinario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblVeterinario.Location = new System.Drawing.Point(14, 94);
+            this.lblVeterinario.Location = new System.Drawing.Point(14, 100);
             this.lblVeterinario.Name = "lblVeterinario";
             this.lblVeterinario.Size = new System.Drawing.Size(64, 14);
             this.lblVeterinario.TabIndex = 5;
@@ -412,18 +469,21 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(830, 680);
+            this.ClientSize = new System.Drawing.Size(830, 720);
             this.Controls.Add(this.pnlFormCita);
             this.Controls.Add(this.dgvCitas);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnNuevaCita);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MinimumSize = new System.Drawing.Size(700, 500);
+            this.MinimumSize = new System.Drawing.Size(700, 550);
             this.Name = "frmCitas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VetNova - Citas";
             this.Load += new System.EventHandler(this.frmCitas_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCitas_FormClosing);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).EndInit();
@@ -437,12 +497,16 @@ namespace PL_VETNOVA.Pantallas.Citas
         #endregion
 
         private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblInfoUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlHeaderBorde;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnNuevaCita;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridView dgvCitas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdCita;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMascota;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPropietario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVeterinario;
