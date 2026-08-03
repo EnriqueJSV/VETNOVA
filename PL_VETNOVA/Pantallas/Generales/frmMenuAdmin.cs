@@ -268,8 +268,9 @@ namespace PL_VETNOVA.Pantallas.Generales
         {
             Pantallas.Citas.frmCitas obj_Formulario = new Pantallas.Citas.frmCitas();
             obj_Formulario.IdUsuarioGlobal = obj_Usuario_Global_DAL.iId_Usuario; // ajusta el nombre exacto de tu propiedad si es distinto
-            obj_Formulario.InfoUsuario = lblInfoUsuario.Text;
-            obj_Formulario.ShowDialog();
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
         }
     }
 }

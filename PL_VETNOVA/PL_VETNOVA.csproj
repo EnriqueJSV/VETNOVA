@@ -147,6 +147,12 @@
     <EmbeddedResource Include="Pantallas\Generales\frmMenuAdmin.resx">
       <DependentUpon>frmMenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Generales\frmMenuRecepcionista.resx">
+      <DependentUpon>frmMenuRecepcionista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Generales\frmMenuVeterinario.resx">
+      <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -185,5 +191,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

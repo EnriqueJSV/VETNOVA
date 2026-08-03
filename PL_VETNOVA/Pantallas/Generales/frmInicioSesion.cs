@@ -55,15 +55,15 @@ namespace PL_VETNOVA.Pantallas.Generales
                         {
                             Pantallas.Generales.frmMenuVeterinario obj_Formuario = new Pantallas.Generales.frmMenuVeterinario();
                             this.Hide();
-                            //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show();
+                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                            obj_Formuario.Show(this);
                         }
                         else if (obj_Usuarios_DAL.iId_Rol == 3)
                         {
                             Pantallas.Generales.frmMenuRecepcionista obj_Formuario = new Pantallas.Generales.frmMenuRecepcionista();
                             this.Hide();
-                            //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show();
+                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                            obj_Formuario.Show(this);
                         }
 
                     }
