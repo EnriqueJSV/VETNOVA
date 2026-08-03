@@ -1,16 +1,20 @@
 using BLL_VETNOVA.Entidades;
 using DAL_VETNOVA.Entidades;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace PL_VETNOVA.Pantallas.Generales
 {
     public partial class frmInicioSesion : Form
     {
-
-
         #region Variables Globales o de Entidades
         cls_Usuarios_DAL obj_Usuarios_DAL = new cls_Usuarios_DAL();
         cls_Usuarios_BLL obj_Usuarios_BLL = new cls_Usuarios_BLL();
@@ -19,37 +23,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         public frmInicioSesion()
         {
             InitializeComponent();
-
-            //this.AcceptButton = btnIngresar;
-            //txtContrasena.KeyDown += TxtContrasena_KeyDown;
-
-            //CargarLogo();
         }
-
-        //private void CargarLogo()
-        //{
-        //    try
-        //    {
-        //        string ruta = Path.Combine(Application.StartupPath, "Recursos", "paw_icon.png");
-        //        if (File.Exists(ruta))
-        //        {
-        //            picLogo.Image = Image.FromFile(ruta);
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        // Si no encuentra el icono, el formulario sigue funcionando sin el
-        //    }
-        //}
-
-        //private void TxtContrasena_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        e.SuppressKeyPress = true;
-        //        btnIngresar_Click(sender, e);
-        //    }
-        //}
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -66,11 +40,31 @@ namespace PL_VETNOVA.Pantallas.Generales
                     if (obj_Usuarios_DAL.sValorScalar != "0" && obj_Usuarios_DAL.sValorScalar != "-1")
                     {
                         obj_Usuarios_DAL.iId_Usuario = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
-                        //obj_Usuarios_DAL.iId_UsuarioGlobal = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
+                        obj_Usuarios_DAL.iId_UsuarioGlobal = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
 
                         MessageBox.Show("Bienvenido al sistema", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        validaRolUsuario(ref obj_Usuarios_DAL);
+                        if (obj_Usuarios_DAL.iId_Rol == 1)
+                        {
+                            Pantallas.Generales.frmMenuAdmin obj_Formuario = new Pantallas.Generales.frmMenuAdmin();
+                            this.Hide();
+                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                            obj_Formuario.Show();
+                        }
+                        else if (obj_Usuarios_DAL.iId_Rol == 2)
+                        {
+                            Pantallas.Generales.frmMenuVeterinario obj_Formuario = new Pantallas.Generales.frmMenuVeterinario();
+                            this.Hide();
+                            //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                            obj_Formuario.Show();
+                        }
+                        else if (obj_Usuarios_DAL.iId_Rol == 3)
+                        {
+                            Pantallas.Generales.frmMenuRecepcionista obj_Formuario = new Pantallas.Generales.frmMenuRecepcionista();
+                            this.Hide();
+                            //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                            obj_Formuario.Show();
+                        }
 
                     }
                     else if (obj_Usuarios_DAL.sValorScalar == "-1")
@@ -98,29 +92,5 @@ namespace PL_VETNOVA.Pantallas.Generales
             }
         }
 
-        private void validaRolUsuario(ref obj_Usuarios_DAL)
-        {
-            if (obj_Usuarios_DAL.iId_Rol == 1)
-            {
-                Pantallas.Generales.frmMenuAdmin obj_Formuario = new Pantallas.Generales.frmMenuAdmin();
-                this.Hide();
-                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                obj_Formuario.Show();
-            }
-            else if (obj_Usuarios_DAL.iId_Rol == 2)
-            {
-                Pantallas.Generales.frmMenuVeterinario obj_Formuario = new Pantallas.Generales.frmMenuVeterinario();
-                this.Hide();
-                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                obj_Formuario.Show();
-            }
-            else if (obj_Usuarios_DAL.iId_Rol == 3)
-            {
-                Pantallas.Generales.frmMenuRecepcionista obj_Formuario = new Pantallas.Generales.frmMenuRecepcionista();
-                this.Hide();
-                //obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                obj_Formuario.Show();
-            }
-        }
     }
 }
