@@ -31,6 +31,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblContrasena = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.pnlBody.SuspendLayout();
@@ -86,6 +87,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             // pnlBody
             // 
             this.pnlBody.BackColor = System.Drawing.Color.White;
+            this.pnlBody.Controls.Add(this.btnSalir);
             this.pnlBody.Controls.Add(this.lblVersion);
             this.pnlBody.Controls.Add(this.lblMensaje);
             this.pnlBody.Controls.Add(this.btnIngresar);
@@ -150,7 +152,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.txtContrasena.Location = new System.Drawing.Point(30, 103);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '●';
-            this.txtContrasena.Size = new System.Drawing.Size(300, 25);
+            this.txtContrasena.Size = new System.Drawing.Size(300, 34);
             this.txtContrasena.TabIndex = 2;
             // 
             // lblContrasena
@@ -160,7 +162,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblContrasena.Location = new System.Drawing.Point(30, 85);
             this.lblContrasena.Name = "lblContrasena";
-            this.lblContrasena.Size = new System.Drawing.Size(67, 15);
+            this.lblContrasena.Size = new System.Drawing.Size(101, 25);
             this.lblContrasena.TabIndex = 1;
             this.lblContrasena.Text = "Contrasena";
             // 
@@ -169,7 +171,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtUsuario.Location = new System.Drawing.Point(30, 48);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(300, 25);
+            this.txtUsuario.Size = new System.Drawing.Size(300, 34);
             this.txtUsuario.TabIndex = 0;
             // 
             // lblUsuario
@@ -179,13 +181,29 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblUsuario.Location = new System.Drawing.Point(30, 30);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(109, 15);
+            this.lblUsuario.Size = new System.Drawing.Size(166, 25);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Nombre de usuario";
             // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(30, 286);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(300, 38);
+            this.btnSalir.TabIndex = 10;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // frmInicioSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(380, 610);
@@ -221,5 +239,6 @@ namespace PL_VETNOVA.Pantallas.Generales
         private System.Windows.Forms.Label lblContrasena;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

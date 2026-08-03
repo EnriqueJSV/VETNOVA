@@ -177,6 +177,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Recursos\paw_icon.ico" />
     <Content Include="Recursos\paw_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -91,5 +91,10 @@ namespace PL_VETNOVA.Pantallas.Generales
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

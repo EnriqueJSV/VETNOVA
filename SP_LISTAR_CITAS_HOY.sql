@@ -1,0 +1,23 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_LISTAR_CITAS_HOY
+AS BEGIN
+	BEGIN TRY
+		SELECT 
+			CONVERT(VARCHAR(5), CIT.Hora, 108) AS Hora,
+			MASC.Nombre AS Mascota,
+			VET.Nombre + ' ' + VET.Apellido1 AS Veterinario,
+			CIT.Estado_Cita AS Estado
+		FROM Citas CIT
+		INNER JOIN Mascotas MASC ON MASC.Id_Mascota = CIT.Id_Mascota
+		INNER JOIN Veterinarios VET ON VET.Id_Veterinario = CIT.Id_Veterinario
+		WHERE CIT.Fecha = CAST(GETDATE() AS DATE)
+		ORDER BY CIT.Hora
+	END TRY
+	BEGIN CATCH
+		SELECT CAST(NULL AS VARCHAR(5)) AS Hora, CAST(NULL AS VARCHAR(100)) AS Mascota, CAST(NULL AS VARCHAR(100)) AS Veterinario, CAST(NULL AS VARCHAR(50)) AS Estado
+		WHERE 1=0
+	END CATCH
+END
+GO
