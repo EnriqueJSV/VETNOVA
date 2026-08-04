@@ -273,5 +273,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.Hide();
             obj_Formulario.ShowDialog(this);
         }
+
+        private void lblNavUsuarios_Click(object sender, EventArgs e)
+        {
+            Pantallas.Usuarios.frmUsuarios obj_Formulario = new Pantallas.Usuarios.frmUsuarios();
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; // ajusta el nombre exacto de tu propiedad si es distinto
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+        }
     }
 }
