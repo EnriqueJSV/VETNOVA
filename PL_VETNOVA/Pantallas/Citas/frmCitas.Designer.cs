@@ -201,6 +201,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             // que actualizar o eliminar. El usuario nunca la ve.
             this.colIdCita.HeaderText = "Id_Cita";
             this.colIdCita.Name = "colIdCita";
+            this.colIdCita.DataPropertyName = "Id_Cita";
             this.colIdCita.ReadOnly = true;
             this.colIdCita.Visible = false;
             //
@@ -208,6 +209,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.colMascota.HeaderText = "Mascota";
             this.colMascota.Name = "colMascota";
+            this.colMascota.DataPropertyName = "Mascota";
             this.colMascota.ReadOnly = true;
             this.colMascota.Width = 100;
             //
@@ -215,6 +217,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.colPropietario.HeaderText = "Propietario";
             this.colPropietario.Name = "colPropietario";
+            this.colPropietario.DataPropertyName = "Propietario";
             this.colPropietario.ReadOnly = true;
             this.colPropietario.Width = 130;
             //
@@ -222,6 +225,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.colVeterinario.HeaderText = "Veterinario";
             this.colVeterinario.Name = "colVeterinario";
+            this.colVeterinario.DataPropertyName = "Veterinario";
             this.colVeterinario.ReadOnly = true;
             this.colVeterinario.Width = 130;
             //
@@ -229,6 +233,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.colFecha.HeaderText = "Fecha";
             this.colFecha.Name = "colFecha";
+            this.colFecha.DataPropertyName = "Fecha";
             this.colFecha.ReadOnly = true;
             this.colFecha.Width = 90;
             //
@@ -236,6 +241,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             //
             this.colHora.HeaderText = "Hora";
             this.colHora.Name = "colHora";
+            this.colHora.DataPropertyName = "Hora";
             this.colHora.ReadOnly = true;
             this.colHora.Width = 70;
             //
@@ -244,12 +250,14 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.colMotivo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colMotivo.HeaderText = "Motivo";
             this.colMotivo.Name = "colMotivo";
+            this.colMotivo.DataPropertyName = "Motivo";
             this.colMotivo.ReadOnly = true;
             //
             // colEstado
             //
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
+            this.colEstado.DataPropertyName = "Estado";
             this.colEstado.ReadOnly = true;
             this.colEstado.Width = 100;
             //
