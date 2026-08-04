@@ -1,5 +1,6 @@
 using BLL_VETNOVA.Entidades;
 using DAL_VETNOVA.Entidades;
+using PL_VETNOVA.Pantallas.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +17,6 @@ namespace PL_VETNOVA.Pantallas.Citas
     {
 
         #region Variables Globales o de Entidades
-
-        private DataTable dtCitasCompleto;
-
-        // Se le pasa desde el menu que abre esta ventana (Admin, Veterinario o
-        // Recepcionista), para que frmCitas sepa quien esta guardando (auditoria)
-        // y pueda consultar por su cuenta el nombre/rol reales a mostrar.
-        public int IdUsuarioGlobal { get; set; }
 
         public cls_Usuarios_DAL obj_Usuario_Global_DAL;
         public cls_Usuarios_BLL obj_Usuario_Global_BLL = new cls_Usuarios_BLL();
@@ -114,7 +108,7 @@ namespace PL_VETNOVA.Pantallas.Citas
                 obj_Citas_Global_DAL.dtHora = dtpHora.Value;
                 obj_Citas_Global_DAL.sMotivo = txtMotivo.Text.Trim();
                 obj_Citas_Global_DAL.sEstado_Cita = cboEstado.SelectedItem.ToString();
-                obj_Citas_Global_DAL.iId_UsuarioGlobal = this.IdUsuarioGlobal;
+                obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
 
                 if (idCitaEnEdicion.HasValue)
                 {
@@ -300,7 +294,7 @@ namespace PL_VETNOVA.Pantallas.Citas
 
             // TODO: cls_Citas_BLL.EliminaCita(ref obj_Citas_Global_DAL), usando
             // obj_Citas_Global_DAL.iId_Cita = idCita;
-            // obj_Citas_Global_DAL.iId_UsuarioGlobal = this.IdUsuarioGlobal;
+            // obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
             // contra un futuro SP_ELIMINA_CITAS(@Id_Cita, @IdUsuarioGlobal), mismo
             // patron que los demas SP_ELIMINA_X (-2 si no existe, -1 si tiene
             // dependientes como una Consulta ya registrada, Id > 0 si se elimino).
@@ -311,47 +305,9 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         #endregion
 
-        private void FiltrarCitas()
-        {
-            if (dtCitasCompleto == null)
-            {
-                return;
-            }
-
-            string filtro = txtBuscar.Text.Trim().ToLower();
-
-            dgvCitas.Rows.Clear();
-
-            foreach (DataRow fila in dtCitasCompleto.Rows)
-            {
-                bool coincide = filtro == string.Empty
-                    || fila["Mascota"].ToString().ToLower().Contains(filtro)
-                    || fila["Propietario"].ToString().ToLower().Contains(filtro)
-                    || fila["Veterinario"].ToString().ToLower().Contains(filtro)
-                    || fila["Motivo"].ToString().ToLower().Contains(filtro)
-                    || fila["Estado"].ToString().ToLower().Contains(filtro);
-
-                if (coincide)
-                {
-                    // El orden calza EXACTO con el orden de columnas del grid:
-                    // Id_Cita (oculta) + las 7 visibles.
-                    dgvCitas.Rows.Add(
-                        fila["Id_Cita"].ToString(),
-                        fila["Mascota"].ToString(),
-                        fila["Propietario"].ToString(),
-                        fila["Veterinario"].ToString(),
-                        fila["Fecha"].ToString(),
-                        fila["Hora"].ToString(),
-                        fila["Motivo"].ToString(),
-                        fila["Estado"].ToString()
-                    );
-                }
-            }
-        }
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            FiltrarCitas();
+            cargaCitas();
         }
 
 
@@ -360,9 +316,6 @@ namespace PL_VETNOVA.Pantallas.Citas
         {
             try
             {
-                obj_Usuario_Global_DAL = new cls_Usuarios_DAL();
-                obj_Usuario_Global_DAL.iId_UsuarioGlobal = this.IdUsuarioGlobal;
-
                 obj_Usuario_Global_BLL.CargaDatosUsuario(ref obj_Usuario_Global_DAL);
 
                 if (obj_Usuario_Global_DAL.sMsjError == string.Empty)
@@ -448,16 +401,24 @@ namespace PL_VETNOVA.Pantallas.Citas
         {
             try
             {
-                obj_Citas_Global_BLL.ListarCitas(ref obj_Citas_Global_DAL);
+                obj_Citas_Global_BLL.ListarFiltrarCitas(txtBuscar.Text.Trim(), ref obj_Citas_Global_DAL);
 
                 if (obj_Citas_Global_DAL.sMsjError == string.Empty)
                 {
-                    dtCitasCompleto = obj_Citas_Global_DAL.dtDatos;
-                    FiltrarCitas(); // pinta la tabla completa la primera vez (sin filtro)
+                    dgvCitas.DataSource = null;
+                    dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos;
+
+                    // Por si el grid auto-genera una columna extra de Id_Cita
+                    // (aparte de la nuestra, que ya está oculta), la ocultamos también.
+                    if (dgvCitas.Columns.Contains("Id_Cita"))
+                    {
+                        dgvCitas.Columns["Id_Cita"].Visible = false;
+                    }
+
                 }
                 else
                 {
-                    dgvCitas.Rows.Clear();
+                    dgvCitas.DataSource = null;
                     MessageBox.Show("Ocurrió un error al intentar cargar las citas: " + obj_Citas_Global_DAL.sMsjError, "Citas",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
