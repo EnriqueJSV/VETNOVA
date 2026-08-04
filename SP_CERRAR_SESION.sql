@@ -1,0 +1,29 @@
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_CERRAR_SESION
+(
+@Id_Usuario INT
+)
+AS BEGIN
+	BEGIN TRY
+		DECLARE @DSC VARCHAR(MAX)
+		DECLARE @USRNOM VARCHAR(300)
+		DECLARE @ACC CHAR(1)
+
+		SELECT @USRNOM = Email FROM Usuarios WHERE Id_Usuario=@Id_Usuario
+		SET @DSC = 'Cierre de Sesión del Usuario: ' + CONVERT(VARCHAR,@USRNOM)
+		SET @ACC = 'S'
+
+		INSERT INTO Auditoria
+		(
+		Id_Usuario, Accion, Descripcion, Fecha
+		)
+		SELECT
+		@Id_Usuario, @ACC, RTRIM(LTRIM(@DSC)), GETDATE()
+	END TRY
+	BEGIN CATCH
+		SELECT 0
+	END CATCH
+END
+GO

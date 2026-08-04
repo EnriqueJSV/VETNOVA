@@ -257,6 +257,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
             if (confirmacion == DialogResult.Yes)
             {
+                obj_Usuario_Global_BLL.CerrarSesion(ref obj_Usuario_Global_DAL);
                 var loginOriginal = (Pantallas.Generales.frmInicioSesion)this.Owner;
                 loginOriginal.LimpiarCampos();
                 loginOriginal.Show();
