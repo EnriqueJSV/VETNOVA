@@ -82,6 +82,31 @@ namespace BLL_VETNOVA.Entidades
             }
         }
 
+        public void CerrarSesion(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        {
+            try
+            {
+                obj_Usuarios_DAL.sMsjError = string.Empty;
+
+                cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+                cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
+
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_CERRAR_Sesion"].ToString();
+
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+
+                obj_BD_DAL.DT_Param.Rows.Add("@Id_Usuario", "1", obj_Usuarios_DAL.iId_UsuarioGlobal);
+
+                obj_BD_BLL.ExecuteNonQuery(ref obj_BD_DAL);
+
+                obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+            }
+            catch (Exception ex)
+            {
+                obj_Usuarios_DAL.sMsjError = ex.ToString();
+            }
+        }
+
         public void CargaDatosUsuario(ref cls_Usuarios_DAL obj_Usuarios_DAL)
         {
             try

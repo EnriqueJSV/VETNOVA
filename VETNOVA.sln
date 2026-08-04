@@ -42,6 +42,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Procedimientos", "03_Pro
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\README.md = BaseDatos\03_Procedimientos\README.md
 		BaseDatos\03_Procedimientos\SPs_CreacionScript.sql = BaseDatos\03_Procedimientos\SPs_CreacionScript.sql
+		SP_CERRAR_SESION.sql = SP_CERRAR_SESION.sql
 		BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql = BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql
 	EndProjectSection
 EndProject
