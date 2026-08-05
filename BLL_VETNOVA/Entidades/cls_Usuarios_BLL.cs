@@ -158,6 +158,101 @@ namespace BLL_VETNOVA.Entidades
                 obj_Usuarios_DAL.sMsjError = ex.ToString();
             }
         }
+
+        public void ListarUsuarios(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        {
+            try
+            {
+                obj_Usuarios_DAL.sMsjError = string.Empty;
+
+                cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+                cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
+
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_LISTAR_Usuarios"].ToString();
+
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+
+                obj_BD_DAL.sNomTabla = "Usuarios";
+                obj_BD_BLL.ExecuteDataAdapter(ref obj_BD_DAL);
+
+                if (obj_BD_DAL.sMsjError == string.Empty)
+                {
+                    obj_Usuarios_DAL.dtDatos = obj_BD_DAL.DS.Tables[0];
+                }
+                else
+                {
+                    obj_Usuarios_DAL.dtDatos = null;
+                }
+
+                obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+            }
+            catch (Exception ex)
+            {
+                obj_Usuarios_DAL.sMsjError = ex.ToString();
+            }
+        }
+
+        //public void ListarFiltrarUsuarios(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        //{
+        //    try
+        //    {
+        //        // Mensaje control de errores
+        //        obj_Usuarios_DAL.sMsjError = string.Empty;
+
+        //        //Definicion de objetos que comunican con la base de datos
+        //        cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+        //        cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
+
+        //        /* DETERMINAR SI SE VA A FILTRAR O LISTAR LA INFORMACION */
+        //        if (
+        //            ((obj_Usuarios_DAL.sNombre == string.Empty) || (obj_Usuarios_DAL.sNombre == null))
+        //            ) // Listar informacion
+        //        {
+        //            // Nombre del procedimiento almacenado, se obtiene desde el archivo de configuracion
+        //            obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_LISTAR_Personas"].ToString();
+        //        }
+        //        else
+        //        {
+        //            obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_FILTRAR_Personas"].ToString();
+
+        //            // Definir la estructura del datatable de parametros
+        //            obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+
+        //            // Se agrega al datatable la lista de parametros que requiere el procedimiento almacenado
+        //            /* Orden: (0) Nombre del parametro(nombre del parametro del procedimiento almacenado)
+        //                (1) Codigo del tipo de dato del parametro a enviar(varchar, nvarchar, char: 6 | int: 1 | float, decimal,numeric: 2 |
+        //                    datetime: 8 | boolean: 9)
+        //                (2) Valor del parametro a enviar
+        //                */
+        //            obj_BD_DAL.DT_Param.Rows.Add("@Nombre", "6", obj_Usuarios_DAL.sNombre);
+        //        }
+
+
+        //        // Ejecutar la instruccion en la base de datos
+        //        obj_BD_DAL.sNomTabla = "Personas";
+        //        obj_BD_BLL.ExecuteDataAdapter(ref obj_BD_DAL);
+
+        //        if (obj_BD_DAL.sMsjError == string.Empty)
+        //        {
+        //            obj_Usuarios_DAL.dtDatos = obj_BD_DAL.DS.Tables[0];
+        //        }
+        //        else
+        //        {
+        //            obj_Usuarios_DAL.dtDatos = null;
+        //        }
+
+        //        obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        obj_Usuarios_DAL.sMsjError = ex.ToString();
+        //    }
+        //}
+
+
     }
 
 
