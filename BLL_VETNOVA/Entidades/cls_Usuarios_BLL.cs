@@ -192,66 +192,152 @@ namespace BLL_VETNOVA.Entidades
             }
         }
 
-        //public void ListarFiltrarUsuarios(ref cls_Usuarios_DAL obj_Usuarios_DAL)
-        //{
-        //    try
-        //    {
-        //        // Mensaje control de errores
-        //        obj_Usuarios_DAL.sMsjError = string.Empty;
+        public void NuevoUsuario(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        {
+            try
+            {
+                // Mensaje control de errores
+                obj_Usuarios_DAL.sMsjError = string.Empty;
 
-        //        //Definicion de objetos que comunican con la base de datos
-        //        cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
-        //        cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
+                //Definicion de objetos que comunican con la base de datos
+                cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+                cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
 
-        //        /* DETERMINAR SI SE VA A FILTRAR O LISTAR LA INFORMACION */
-        //        if (
-        //            ((obj_Usuarios_DAL.sNombre == string.Empty) || (obj_Usuarios_DAL.sNombre == null))
-        //            ) // Listar informacion
-        //        {
-        //            // Nombre del procedimiento almacenado, se obtiene desde el archivo de configuracion
-        //            obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_LISTAR_Personas"].ToString();
-        //        }
-        //        else
-        //        {
-        //            obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_FILTRAR_Personas"].ToString();
+                // Nombre del procedimiento almacenado, se obtiene desde el archivo de configuracion
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_INSERTA_Usuarios"].ToString();
 
-        //            // Definir la estructura del datatable de parametros
-        //            obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+                // Definir la estructura del datatable de parametros
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
 
-        //            // Se agrega al datatable la lista de parametros que requiere el procedimiento almacenado
-        //            /* Orden: (0) Nombre del parametro(nombre del parametro del procedimiento almacenado)
-        //                (1) Codigo del tipo de dato del parametro a enviar(varchar, nvarchar, char: 6 | int: 1 | float, decimal,numeric: 2 |
-        //                    datetime: 8 | boolean: 9)
-        //                (2) Valor del parametro a enviar
-        //                */
-        //            obj_BD_DAL.DT_Param.Rows.Add("@Nombre", "6", obj_Usuarios_DAL.sNombre);
-        //        }
+                // Se agrega al datatable la lista de parametros que requiere el procedimiento almacenado
+                /* Orden: (0) Nombre del parametro(nombre del parametro del procedimiento almacenado)
+                    (1) Codigo del tipo de dato del parametro a enviar(varchar, nvarchar, char: 6 | int: 1 | float, decimal,numeric: 2 |
+                        datetime: 8 | boolean: 9)
+                    (2) Valor del parametro a enviar
+                    */
+                obj_BD_DAL.DT_Param.Rows.Add("@Id_Rol", "1", obj_Usuarios_DAL.iId_Rol);
+                obj_BD_DAL.DT_Param.Rows.Add("@Nombre_Usuario", "6", obj_Usuarios_DAL.sNombre_Usuario);
+                obj_BD_DAL.DT_Param.Rows.Add("@Email", "6", obj_Usuarios_DAL.sEmail);
+                obj_BD_DAL.DT_Param.Rows.Add("@Contrasena", "6", obj_Usuarios_DAL.sContrasena);
+                obj_BD_DAL.DT_Param.Rows.Add("@Estado", "6", obj_Usuarios_DAL.sEstado);
+                obj_BD_DAL.DT_Param.Rows.Add("@IdUsuarioGlobal", "1", obj_Usuarios_DAL.iId_UsuarioGlobal);
 
+                // Ejecutar la instruccion en la base de datos
+                obj_BD_BLL.ExecuteScalar(ref obj_BD_DAL);
 
-        //        // Ejecutar la instruccion en la base de datos
-        //        obj_BD_DAL.sNomTabla = "Personas";
-        //        obj_BD_BLL.ExecuteDataAdapter(ref obj_BD_DAL);
+                // Recuperamos la info importante del resultado 
+                obj_Usuarios_DAL.sValorScalar = obj_BD_DAL.sValorScalar.ToString();
+                obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
 
-        //        if (obj_BD_DAL.sMsjError == string.Empty)
-        //        {
-        //            obj_Usuarios_DAL.dtDatos = obj_BD_DAL.DS.Tables[0];
-        //        }
-        //        else
-        //        {
-        //            obj_Usuarios_DAL.dtDatos = null;
-        //        }
+                /* Si el resultado de valorScalar es 0 o -1 significa que da error en base de datos */
+                if (obj_Usuarios_DAL.sValorScalar == "0" || obj_Usuarios_DAL.sValorScalar == "-1")
+                {
+                    obj_Usuarios_DAL.iId_Usuario = 0;
+                    obj_Usuarios_DAL.sAxn = "I";
+                    return;
+                }
 
-        //        obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+                if (obj_Usuarios_DAL.sMsjError == string.Empty)
+                {
+                    obj_Usuarios_DAL.sAxn = "U";
+                    obj_Usuarios_DAL.iId_Usuario = Convert.ToInt32(obj_BD_DAL.sValorScalar);
+                }
+                else
+                {
+                    obj_Usuarios_DAL.sAxn = "I";
+                }
 
+            }
+            catch (Exception ex)
+            {
+                obj_Usuarios_DAL.sMsjError = ex.ToString();
+            }
+        }
 
+        public void ModificarUsuario(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        {
+            try
+            {
+                // Mensaje control de errores
+                obj_Usuarios_DAL.sMsjError = string.Empty;
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        obj_Usuarios_DAL.sMsjError = ex.ToString();
-        //    }
-        //}
+                //Definicion de objetos que comunican con la base de datos
+                cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+                cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
 
+                // Nombre del procedimiento almacenado, se obtiene desde el archivo de configuracion
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_ACTUALIZA_Usuarios"].ToString();
+
+                // Definir la estructura del datatable de parametros
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+
+                // Se agrega al datatable la lista de parametros que requiere el procedimiento almacenado
+                /* Orden: (0) Nombre del parametro(nombre del parametro del procedimiento almacenado)
+                    (1) Codigo del tipo de dato del parametro a enviar(varchar, nvarchar, char: 6 | int: 1 | float, decimal,numeric: 2 |
+                        datetime: 8 | boolean: 9)
+                    (2) Valor del parametro a enviar
+                    */
+                obj_BD_DAL.DT_Param.Rows.Add("@Id_Usuario", "1", obj_Usuarios_DAL.iId_Usuario);
+                obj_BD_DAL.DT_Param.Rows.Add("@Id_Rol", "1", obj_Usuarios_DAL.iId_Rol);
+                obj_BD_DAL.DT_Param.Rows.Add("@Nombre_Usuario", "6", obj_Usuarios_DAL.sNombre_Usuario);
+                obj_BD_DAL.DT_Param.Rows.Add("@Email", "6", obj_Usuarios_DAL.sEmail);
+                obj_BD_DAL.DT_Param.Rows.Add("@Contrasena", "6", obj_Usuarios_DAL.sContrasena);
+                obj_BD_DAL.DT_Param.Rows.Add("@Estado", "6", obj_Usuarios_DAL.sEstado);
+                obj_BD_DAL.DT_Param.Rows.Add("@IdUsuarioGlobal", "1", obj_Usuarios_DAL.iId_UsuarioGlobal);
+
+                // Ejecutar la instruccion en la base de datos
+                obj_BD_BLL.ExecuteScalar(ref obj_BD_DAL);
+
+                // Recuperamos la info importante del resultado 
+                obj_Usuarios_DAL.sValorScalar = obj_BD_DAL.sValorScalar.ToString();
+                obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                obj_Usuarios_DAL.sMsjError = ex.ToString();
+            }
+        }
+
+        public void EliminarUsuarios(ref cls_Usuarios_DAL obj_Usuarios_DAL)
+        {
+            try
+            {
+                // Mensaje control de errores
+                obj_Usuarios_DAL.sMsjError = string.Empty;
+
+                //Definicion de objetos que comunican con la base de datos
+                cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
+                cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
+
+                // Nombre del procedimiento almacenado, se obtiene desde el archivo de configuracion
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_ELIMINA_Usuarios"].ToString();
+
+                // Definir la estructura del datatable de parametros
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
+
+                // Se agrega al datatable la lista de parametros que requiere el procedimiento almacenado
+                /* Orden: (0) Nombre del parametro(nombre del parametro del procedimiento almacenado)
+                    (1) Codigo del tipo de dato del parametro a enviar(varchar, nvarchar, char: 6 | int: 1 | float, decimal,numeric: 2 |
+                        datetime: 8 | boolean: 9)
+                    (2) Valor del parametro a enviar
+                    */
+                obj_BD_DAL.DT_Param.Rows.Add("@Id_Usuario", "1", obj_Usuarios_DAL.iId_Usuario);
+                obj_BD_DAL.DT_Param.Rows.Add("@IdUsuarioGlobal", "1", obj_Usuarios_DAL.iId_UsuarioGlobal);
+
+                // Ejecutar la instruccion en la base de datos
+                obj_BD_BLL.ExecuteScalar(ref obj_BD_DAL);
+
+                // Recuperamos la info importante del resultado 
+                obj_Usuarios_DAL.sValorScalar = obj_BD_DAL.sValorScalar.ToString();
+                obj_Usuarios_DAL.sMsjError = obj_BD_DAL.sMsjError.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                obj_Usuarios_DAL.sMsjError = ex.ToString();
+            }
+        }
 
     }
 
