@@ -29,32 +29,24 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvCitas = new System.Windows.Forms.DataGridView();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnNuevaCita = new System.Windows.Forms.Button();
+            this.btnNuevoUsuario = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblInfoUsuario = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlHeaderBorde = new System.Windows.Forms.Panel();
-            this.pnlFormCita = new System.Windows.Forms.Panel();
-            this.btnCancelarCita = new System.Windows.Forms.Button();
+            this.pnlFormUsuario = new System.Windows.Forms.Panel();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardarCita = new System.Windows.Forms.Button();
-            this.txtMotivo = new System.Windows.Forms.TextBox();
-            this.lblMotivo = new System.Windows.Forms.Label();
-            this.dtpHora = new System.Windows.Forms.DateTimePicker();
-            this.lblHora = new System.Windows.Forms.Label();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.lblFecha = new System.Windows.Forms.Label();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
-            this.cboVeterinario = new System.Windows.Forms.ComboBox();
             this.lblVeterinario = new System.Windows.Forms.Label();
-            this.cboMascota = new System.Windows.Forms.ComboBox();
             this.lblMascota = new System.Windows.Forms.Label();
-            this.cboPropietario = new System.Windows.Forms.ComboBox();
+            this.cboRoles = new System.Windows.Forms.ComboBox();
             this.lblPropietario = new System.Windows.Forms.Label();
             this.lblFormTitulo = new System.Windows.Forms.Label();
             this.colIdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,17 +56,21 @@
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colContrasena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNomUsuario = new System.Windows.Forms.TextBox();
+            this.txtContrasena = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.pnlHeader.SuspendLayout();
-            this.pnlFormCita.SuspendLayout();
+            this.pnlFormUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvCitas
+            // dgvUsuarios
             // 
-            this.dgvCitas.AllowUserToAddRows = false;
-            this.dgvCitas.AllowUserToDeleteRows = false;
-            this.dgvCitas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCitas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.White;
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -82,9 +78,9 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdUsuario,
             this.colIdRol,
             this.colRol,
@@ -92,15 +88,15 @@
             this.colEmail,
             this.colContrasena,
             this.colEstado});
-            this.dgvCitas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(222)))));
-            this.dgvCitas.Location = new System.Drawing.Point(20, 110);
-            this.dgvCitas.MultiSelect = false;
-            this.dgvCitas.Name = "dgvCitas";
-            this.dgvCitas.ReadOnly = true;
-            this.dgvCitas.RowHeadersVisible = false;
-            this.dgvCitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCitas.Size = new System.Drawing.Size(770, 230);
-            this.dgvCitas.TabIndex = 12;
+            this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(222)))));
+            this.dgvUsuarios.Location = new System.Drawing.Point(20, 110);
+            this.dgvUsuarios.MultiSelect = false;
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
+            this.dgvUsuarios.RowHeadersVisible = false;
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsuarios.Size = new System.Drawing.Size(770, 230);
+            this.dgvUsuarios.TabIndex = 12;
             // 
             // btnEliminar
             // 
@@ -128,20 +124,21 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             // 
-            // btnNuevaCita
+            // btnNuevoUsuario
             // 
-            this.btnNuevaCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
-            this.btnNuevaCita.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNuevaCita.FlatAppearance.BorderSize = 0;
-            this.btnNuevaCita.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevaCita.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
-            this.btnNuevaCita.ForeColor = System.Drawing.Color.White;
-            this.btnNuevaCita.Location = new System.Drawing.Point(440, 68);
-            this.btnNuevaCita.Name = "btnNuevaCita";
-            this.btnNuevaCita.Size = new System.Drawing.Size(110, 30);
-            this.btnNuevaCita.TabIndex = 9;
-            this.btnNuevaCita.Text = "+ Nuevo";
-            this.btnNuevaCita.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
+            this.btnNuevoUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevoUsuario.FlatAppearance.BorderSize = 0;
+            this.btnNuevoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoUsuario.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnNuevoUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(440, 68);
+            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
+            this.btnNuevoUsuario.Size = new System.Drawing.Size(110, 30);
+            this.btnNuevoUsuario.TabIndex = 9;
+            this.btnNuevoUsuario.Text = "+ Nuevo";
+            this.btnNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
             // txtBuscar
             // 
@@ -150,6 +147,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(300, 24);
             this.txtBuscar.TabIndex = 8;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // pnlHeader
             // 
@@ -175,6 +173,7 @@
             this.btnCerrar.TabIndex = 2;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // lblInfoUsuario
             // 
@@ -206,43 +205,40 @@
             this.pnlHeaderBorde.Size = new System.Drawing.Size(830, 1);
             this.pnlHeaderBorde.TabIndex = 2;
             // 
-            // pnlFormCita
+            // pnlFormUsuario
             // 
-            this.pnlFormCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            this.pnlFormCita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFormCita.Controls.Add(this.btnCancelarCita);
-            this.pnlFormCita.Controls.Add(this.btnGuardarCita);
-            this.pnlFormCita.Controls.Add(this.txtMotivo);
-            this.pnlFormCita.Controls.Add(this.lblMotivo);
-            this.pnlFormCita.Controls.Add(this.dtpHora);
-            this.pnlFormCita.Controls.Add(this.lblHora);
-            this.pnlFormCita.Controls.Add(this.dtpFecha);
-            this.pnlFormCita.Controls.Add(this.lblFecha);
-            this.pnlFormCita.Controls.Add(this.cboEstado);
-            this.pnlFormCita.Controls.Add(this.lblEstado);
-            this.pnlFormCita.Controls.Add(this.cboVeterinario);
-            this.pnlFormCita.Controls.Add(this.lblVeterinario);
-            this.pnlFormCita.Controls.Add(this.cboMascota);
-            this.pnlFormCita.Controls.Add(this.lblMascota);
-            this.pnlFormCita.Controls.Add(this.cboPropietario);
-            this.pnlFormCita.Controls.Add(this.lblPropietario);
-            this.pnlFormCita.Controls.Add(this.lblFormTitulo);
-            this.pnlFormCita.Location = new System.Drawing.Point(20, 360);
-            this.pnlFormCita.Name = "pnlFormCita";
-            this.pnlFormCita.Size = new System.Drawing.Size(770, 340);
-            this.pnlFormCita.TabIndex = 13;
-            this.pnlFormCita.Visible = false;
+            this.pnlFormUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFormUsuario.Controls.Add(this.txtEmail);
+            this.pnlFormUsuario.Controls.Add(this.txtContrasena);
+            this.pnlFormUsuario.Controls.Add(this.txtNomUsuario);
+            this.pnlFormUsuario.Controls.Add(this.label1);
+            this.pnlFormUsuario.Controls.Add(this.btnCancelar);
+            this.pnlFormUsuario.Controls.Add(this.btnGuardarCita);
+            this.pnlFormUsuario.Controls.Add(this.cboEstado);
+            this.pnlFormUsuario.Controls.Add(this.lblEstado);
+            this.pnlFormUsuario.Controls.Add(this.lblVeterinario);
+            this.pnlFormUsuario.Controls.Add(this.lblMascota);
+            this.pnlFormUsuario.Controls.Add(this.cboRoles);
+            this.pnlFormUsuario.Controls.Add(this.lblPropietario);
+            this.pnlFormUsuario.Controls.Add(this.lblFormTitulo);
+            this.pnlFormUsuario.Location = new System.Drawing.Point(20, 360);
+            this.pnlFormUsuario.Name = "pnlFormUsuario";
+            this.pnlFormUsuario.Size = new System.Drawing.Size(770, 340);
+            this.pnlFormUsuario.TabIndex = 13;
+            this.pnlFormUsuario.Visible = false;
             // 
-            // btnCancelarCita
+            // btnCancelar
             // 
-            this.btnCancelarCita.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelarCita.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.btnCancelarCita.Location = new System.Drawing.Point(160, 284);
-            this.btnCancelarCita.Name = "btnCancelarCita";
-            this.btnCancelarCita.Size = new System.Drawing.Size(130, 34);
-            this.btnCancelarCita.TabIndex = 16;
-            this.btnCancelarCita.Text = "Cancelar";
-            this.btnCancelarCita.UseVisualStyleBackColor = true;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.btnCancelar.Location = new System.Drawing.Point(160, 284);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(130, 34);
+            this.btnCancelar.TabIndex = 16;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardarCita
             // 
@@ -259,73 +255,12 @@
             this.btnGuardarCita.Text = "Guardar";
             this.btnGuardarCita.UseVisualStyleBackColor = false;
             // 
-            // txtMotivo
-            // 
-            this.txtMotivo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtMotivo.Location = new System.Drawing.Point(14, 228);
-            this.txtMotivo.Multiline = true;
-            this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(736, 44);
-            this.txtMotivo.TabIndex = 14;
-            // 
-            // lblMotivo
-            // 
-            this.lblMotivo.AutoSize = true;
-            this.lblMotivo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblMotivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblMotivo.Location = new System.Drawing.Point(14, 212);
-            this.lblMotivo.Name = "lblMotivo";
-            this.lblMotivo.Size = new System.Drawing.Size(45, 15);
-            this.lblMotivo.TabIndex = 13;
-            this.lblMotivo.Text = "Motivo";
-            // 
-            // dtpHora
-            // 
-            this.dtpHora.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(200, 172);
-            this.dtpHora.Name = "dtpHora";
-            this.dtpHora.ShowUpDown = true;
-            this.dtpHora.Size = new System.Drawing.Size(170, 24);
-            this.dtpHora.TabIndex = 12;
-            // 
-            // lblHora
-            // 
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblHora.Location = new System.Drawing.Point(200, 156);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(33, 15);
-            this.lblHora.TabIndex = 11;
-            this.lblHora.Text = "Hora";
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(14, 172);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(170, 24);
-            this.dtpFecha.TabIndex = 10;
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblFecha.Location = new System.Drawing.Point(14, 156);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(38, 15);
-            this.lblFecha.TabIndex = 9;
-            this.lblFecha.Text = "Fecha";
-            // 
             // cboEstado
             // 
             this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cboEstado.FormattingEnabled = true;
-            this.cboEstado.Location = new System.Drawing.Point(390, 116);
+            this.cboEstado.Location = new System.Drawing.Point(14, 175);
             this.cboEstado.Name = "cboEstado";
             this.cboEstado.Size = new System.Drawing.Size(360, 25);
             this.cboEstado.TabIndex = 8;
@@ -335,21 +270,11 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblEstado.Location = new System.Drawing.Point(390, 100);
+            this.lblEstado.Location = new System.Drawing.Point(11, 157);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(42, 15);
             this.lblEstado.TabIndex = 7;
             this.lblEstado.Text = "Estado";
-            // 
-            // cboVeterinario
-            // 
-            this.cboVeterinario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVeterinario.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cboVeterinario.FormattingEnabled = true;
-            this.cboVeterinario.Location = new System.Drawing.Point(14, 116);
-            this.cboVeterinario.Name = "cboVeterinario";
-            this.cboVeterinario.Size = new System.Drawing.Size(360, 25);
-            this.cboVeterinario.TabIndex = 6;
             // 
             // lblVeterinario
             // 
@@ -358,40 +283,30 @@
             this.lblVeterinario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblVeterinario.Location = new System.Drawing.Point(14, 100);
             this.lblVeterinario.Name = "lblVeterinario";
-            this.lblVeterinario.Size = new System.Drawing.Size(63, 15);
+            this.lblVeterinario.Size = new System.Drawing.Size(36, 15);
             this.lblVeterinario.TabIndex = 5;
-            this.lblVeterinario.Text = "Veterinario";
-            // 
-            // cboMascota
-            // 
-            this.cboMascota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cboMascota.FormattingEnabled = true;
-            this.cboMascota.Location = new System.Drawing.Point(390, 60);
-            this.cboMascota.Name = "cboMascota";
-            this.cboMascota.Size = new System.Drawing.Size(360, 25);
-            this.cboMascota.TabIndex = 4;
+            this.lblVeterinario.Text = "Email";
             // 
             // lblMascota
             // 
             this.lblMascota.AutoSize = true;
             this.lblMascota.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblMascota.Location = new System.Drawing.Point(390, 44);
+            this.lblMascota.Location = new System.Drawing.Point(390, 42);
             this.lblMascota.Name = "lblMascota";
-            this.lblMascota.Size = new System.Drawing.Size(52, 15);
+            this.lblMascota.Size = new System.Drawing.Size(110, 15);
             this.lblMascota.TabIndex = 3;
-            this.lblMascota.Text = "Mascota";
+            this.lblMascota.Text = "Nombre de Usuario";
             // 
-            // cboPropietario
+            // cboRoles
             // 
-            this.cboPropietario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPropietario.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.cboPropietario.FormattingEnabled = true;
-            this.cboPropietario.Location = new System.Drawing.Point(14, 60);
-            this.cboPropietario.Name = "cboPropietario";
-            this.cboPropietario.Size = new System.Drawing.Size(360, 25);
-            this.cboPropietario.TabIndex = 2;
+            this.cboRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoles.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.cboRoles.FormattingEnabled = true;
+            this.cboRoles.Location = new System.Drawing.Point(14, 60);
+            this.cboRoles.Name = "cboRoles";
+            this.cboRoles.Size = new System.Drawing.Size(360, 25);
+            this.cboRoles.TabIndex = 2;
             // 
             // lblPropietario
             // 
@@ -400,9 +315,9 @@
             this.lblPropietario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblPropietario.Location = new System.Drawing.Point(14, 44);
             this.lblPropietario.Name = "lblPropietario";
-            this.lblPropietario.Size = new System.Drawing.Size(65, 15);
+            this.lblPropietario.Size = new System.Drawing.Size(24, 15);
             this.lblPropietario.TabIndex = 1;
-            this.lblPropietario.Text = "Propietario";
+            this.lblPropietario.Text = "Rol";
             // 
             // lblFormTitulo
             // 
@@ -416,6 +331,7 @@
             // 
             // colIdUsuario
             // 
+            this.colIdUsuario.DataPropertyName = "Id_Usuario";
             this.colIdUsuario.HeaderText = "Id_Usuario";
             this.colIdUsuario.Name = "colIdUsuario";
             this.colIdUsuario.ReadOnly = true;
@@ -423,6 +339,7 @@
             // 
             // colIdRol
             // 
+            this.colIdRol.DataPropertyName = "Id_Rol";
             this.colIdRol.HeaderText = "Id_Rol";
             this.colIdRol.Name = "colIdRol";
             this.colIdRol.ReadOnly = true;
@@ -430,6 +347,7 @@
             // 
             // colRol
             // 
+            this.colRol.DataPropertyName = "Rol";
             this.colRol.HeaderText = "Rol";
             this.colRol.Name = "colRol";
             this.colRol.ReadOnly = true;
@@ -437,6 +355,7 @@
             // 
             // colNombreUsuario
             // 
+            this.colNombreUsuario.DataPropertyName = "Nombre_Usuario";
             this.colNombreUsuario.HeaderText = "Nombre de Usuario";
             this.colNombreUsuario.Name = "colNombreUsuario";
             this.colNombreUsuario.ReadOnly = true;
@@ -444,6 +363,7 @@
             // 
             // colEmail
             // 
+            this.colEmail.DataPropertyName = "Email";
             this.colEmail.HeaderText = "Email";
             this.colEmail.Name = "colEmail";
             this.colEmail.ReadOnly = true;
@@ -451,6 +371,7 @@
             // 
             // colContrasena
             // 
+            this.colContrasena.DataPropertyName = "Contrasena";
             this.colContrasena.HeaderText = "Contraseña";
             this.colContrasena.Name = "colContrasena";
             this.colContrasena.ReadOnly = true;
@@ -459,10 +380,49 @@
             // 
             // colEstado
             // 
+            this.colEstado.DataPropertyName = "Estado";
             this.colEstado.HeaderText = "Estado";
             this.colEstado.Name = "colEstado";
             this.colEstado.ReadOnly = true;
             this.colEstado.Width = 139;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.5F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
+            this.label1.Location = new System.Drawing.Point(390, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 15);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Contraseña";
+            // 
+            // txtNomUsuario
+            // 
+            this.txtNomUsuario.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtNomUsuario.Location = new System.Drawing.Point(390, 60);
+            this.txtNomUsuario.Multiline = true;
+            this.txtNomUsuario.Name = "txtNomUsuario";
+            this.txtNomUsuario.Size = new System.Drawing.Size(360, 25);
+            this.txtNomUsuario.TabIndex = 19;
+            // 
+            // txtContrasena
+            // 
+            this.txtContrasena.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtContrasena.Location = new System.Drawing.Point(390, 116);
+            this.txtContrasena.Multiline = true;
+            this.txtContrasena.Name = "txtContrasena";
+            this.txtContrasena.Size = new System.Drawing.Size(360, 25);
+            this.txtContrasena.TabIndex = 20;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtEmail.Location = new System.Drawing.Point(14, 116);
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(360, 25);
+            this.txtEmail.TabIndex = 21;
             // 
             // frmUsuarios
             // 
@@ -470,21 +430,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(830, 720);
-            this.Controls.Add(this.dgvCitas);
+            this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnNuevaCita);
+            this.Controls.Add(this.btnNuevoUsuario);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.pnlFormCita);
+            this.Controls.Add(this.pnlFormUsuario);
             this.Name = "frmUsuarios";
             this.Text = "VetNova - Usuarios";
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCitas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            this.pnlFormCita.ResumeLayout(false);
-            this.pnlFormCita.PerformLayout();
+            this.pnlFormUsuario.ResumeLayout(false);
+            this.pnlFormUsuario.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -492,32 +452,24 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvCitas;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnNuevaCita;
+        private System.Windows.Forms.Button btnNuevoUsuario;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblInfoUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel pnlHeaderBorde;
-        private System.Windows.Forms.Panel pnlFormCita;
-        private System.Windows.Forms.Button btnCancelarCita;
+        private System.Windows.Forms.Panel pnlFormUsuario;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardarCita;
-        private System.Windows.Forms.TextBox txtMotivo;
-        private System.Windows.Forms.Label lblMotivo;
-        private System.Windows.Forms.DateTimePicker dtpHora;
-        private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.ComboBox cboEstado;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ComboBox cboVeterinario;
         private System.Windows.Forms.Label lblVeterinario;
-        private System.Windows.Forms.ComboBox cboMascota;
         private System.Windows.Forms.Label lblMascota;
-        private System.Windows.Forms.ComboBox cboPropietario;
+        private System.Windows.Forms.ComboBox cboRoles;
         private System.Windows.Forms.Label lblPropietario;
         private System.Windows.Forms.Label lblFormTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdUsuario;
@@ -527,5 +479,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContrasena;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtContrasena;
+        private System.Windows.Forms.TextBox txtNomUsuario;
     }
 }

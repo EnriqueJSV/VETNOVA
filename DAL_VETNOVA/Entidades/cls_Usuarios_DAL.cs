@@ -14,6 +14,7 @@ namespace DAL_VETNOVA.Entidades
         // Atributos de la tablas
         private int _iId_Usuario, _iId_Rol;
         private string _sNombre_Usuario, _sEmail, _sContrasena, _sEstado, _sNombreRol;
+        private string _sFiltro;
 
         // Atributos generales en todas las clases
         private string _sValorScalar, _sAxn, _sMsjError;
@@ -34,5 +35,6 @@ namespace DAL_VETNOVA.Entidades
         public string sContrasena { get => _sContrasena; set => _sContrasena = value; }
         public string sEstado { get => _sEstado; set => _sEstado = value; }
         public string sNombreRol { get => _sNombreRol; set => _sNombreRol = value; }
+        public string sFiltro { get => _sFiltro; set => _sFiltro = value; }
     }
 }
