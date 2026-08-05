@@ -17,6 +17,8 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuRecepcionista));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -65,9 +67,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlCardCitas.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // pnlSidebar
-            //
+            // 
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
             this.pnlSidebar.Controls.Add(this.pnlCerrarSesion);
             this.pnlSidebar.Controls.Add(this.pnlNav);
@@ -77,9 +79,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlSidebar.Name = "pnlSidebar";
             this.pnlSidebar.Size = new System.Drawing.Size(220, 650);
             this.pnlSidebar.TabIndex = 0;
-            //
+            // 
             // pnlCerrarSesion
-            //
+            // 
             this.pnlCerrarSesion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCerrarSesion.Controls.Add(this.lblNavCerrarSesion);
             this.pnlCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -87,9 +89,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlCerrarSesion.Name = "pnlCerrarSesion";
             this.pnlCerrarSesion.Size = new System.Drawing.Size(220, 44);
             this.pnlCerrarSesion.TabIndex = 2;
-            //
+            // 
             // lblNavCerrarSesion
-            //
+            // 
             this.lblNavCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavCerrarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -100,9 +102,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCerrarSesion.Text = "Cerrar sesion";
             this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavCerrarSesion.Click += new System.EventHandler(this.lblNavCerrarSesion_Click);
-            //
+            // 
             // pnlNav
-            //
+            // 
             this.pnlNav.Controls.Add(this.pnlNavActiveMarker);
             this.pnlNav.Controls.Add(this.lblNavMascotas);
             this.pnlNav.Controls.Add(this.lblNavPropietarios);
@@ -112,19 +114,19 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNav.Location = new System.Drawing.Point(0, 70);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(220, 536);
+            this.pnlNav.Size = new System.Drawing.Size(220, 580);
             this.pnlNav.TabIndex = 1;
-            //
+            // 
             // pnlNavActiveMarker
-            //
+            // 
             this.pnlNavActiveMarker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(110)))), ((int)(((byte)(86)))));
             this.pnlNavActiveMarker.Location = new System.Drawing.Point(0, 8);
             this.pnlNavActiveMarker.Name = "pnlNavActiveMarker";
             this.pnlNavActiveMarker.Size = new System.Drawing.Size(3, 32);
             this.pnlNavActiveMarker.TabIndex = 5;
-            //
+            // 
             // lblNavMascotas
-            //
+            // 
             this.lblNavMascotas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavMascotas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavMascotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -134,9 +136,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavMascotas.TabIndex = 4;
             this.lblNavMascotas.Text = "Mascotas";
             this.lblNavMascotas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // lblNavPropietarios
-            //
+            // 
             this.lblNavPropietarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavPropietarios.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavPropietarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -146,9 +148,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavPropietarios.TabIndex = 3;
             this.lblNavPropietarios.Text = "Propietarios";
             this.lblNavPropietarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // lblNavConsultas
-            //
+            // 
             this.lblNavConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavConsultas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavConsultas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -158,9 +160,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavConsultas.TabIndex = 2;
             this.lblNavConsultas.Text = "Consultas";
             this.lblNavConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // lblNavCitas
-            //
+            // 
             this.lblNavCitas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavCitas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavCitas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -171,9 +173,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCitas.Text = "Citas";
             this.lblNavCitas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavCitas.Click += new System.EventHandler(this.lblNavCitas_Click);
-            //
+            // 
             // lblNavDashboard
-            //
+            // 
             this.lblNavDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavDashboard.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblNavDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(28)))));
@@ -183,9 +185,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavDashboard.TabIndex = 0;
             this.lblNavDashboard.Text = "Panel principal";
             this.lblNavDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // pnlSidebarHeader
-            //
+            // 
             this.pnlSidebarHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(52)))), ((int)(((byte)(44)))));
             this.pnlSidebarHeader.Controls.Add(this.lblSidebarTagline);
             this.pnlSidebarHeader.Controls.Add(this.lblSidebarTitulo);
@@ -195,9 +197,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlSidebarHeader.Name = "pnlSidebarHeader";
             this.pnlSidebarHeader.Size = new System.Drawing.Size(220, 70);
             this.pnlSidebarHeader.TabIndex = 0;
-            //
+            // 
             // lblSidebarTagline
-            //
+            // 
             this.lblSidebarTagline.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.lblSidebarTagline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.lblSidebarTagline.Location = new System.Drawing.Point(46, 34);
@@ -205,9 +207,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblSidebarTagline.Size = new System.Drawing.Size(160, 16);
             this.lblSidebarTagline.TabIndex = 2;
             this.lblSidebarTagline.Text = "simple y trazable";
-            //
+            // 
             // lblSidebarTitulo
-            //
+            // 
             this.lblSidebarTitulo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblSidebarTitulo.ForeColor = System.Drawing.Color.White;
             this.lblSidebarTitulo.Location = new System.Drawing.Point(44, 12);
@@ -215,19 +217,21 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblSidebarTitulo.Size = new System.Drawing.Size(160, 22);
             this.lblSidebarTitulo.TabIndex = 1;
             this.lblSidebarTitulo.Text = "VetNova";
-            //
+            // 
             // picLogoSidebar
-            //
+            // 
             this.picLogoSidebar.BackColor = System.Drawing.Color.Transparent;
+            this.picLogoSidebar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picLogoSidebar.BackgroundImage")));
+            this.picLogoSidebar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picLogoSidebar.Location = new System.Drawing.Point(14, 14);
             this.picLogoSidebar.Name = "picLogoSidebar";
             this.picLogoSidebar.Size = new System.Drawing.Size(24, 24);
             this.picLogoSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogoSidebar.TabIndex = 0;
             this.picLogoSidebar.TabStop = false;
-            //
+            // 
             // pnlContentWrapper
-            //
+            // 
             this.pnlContentWrapper.Controls.Add(this.pnlContent);
             this.pnlContentWrapper.Controls.Add(this.pnlTopBar);
             this.pnlContentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,9 +239,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlContentWrapper.Name = "pnlContentWrapper";
             this.pnlContentWrapper.Size = new System.Drawing.Size(830, 650);
             this.pnlContentWrapper.TabIndex = 1;
-            //
+            // 
             // pnlContent
-            //
+            // 
             this.pnlContent.AutoScroll = true;
             this.pnlContent.BackColor = System.Drawing.Color.White;
             this.pnlContent.Controls.Add(this.dgvCitasHoy);
@@ -251,15 +255,22 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlContent.Padding = new System.Windows.Forms.Padding(20);
             this.pnlContent.Size = new System.Drawing.Size(830, 600);
             this.pnlContent.TabIndex = 1;
-            //
+            // 
             // dgvCitasHoy
-            //
+            // 
             this.dgvCitasHoy.AllowUserToAddRows = false;
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHora,
@@ -271,50 +282,55 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.dgvCitasHoy.Name = "dgvCitasHoy";
             this.dgvCitasHoy.ReadOnly = true;
             this.dgvCitasHoy.RowHeadersVisible = false;
+            this.dgvCitasHoy.RowHeadersWidth = 62;
             this.dgvCitasHoy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCitasHoy.Size = new System.Drawing.Size(770, 260);
             this.dgvCitasHoy.TabIndex = 4;
-            //
+            // 
             // colHora
-            //
+            // 
             this.colHora.HeaderText = "Hora";
+            this.colHora.MinimumWidth = 8;
             this.colHora.Name = "colHora";
             this.colHora.ReadOnly = true;
             this.colHora.Width = 80;
-            //
+            // 
             // colMascota
-            //
+            // 
             this.colMascota.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colMascota.HeaderText = "Mascota";
+            this.colMascota.MinimumWidth = 8;
             this.colMascota.Name = "colMascota";
             this.colMascota.ReadOnly = true;
-            //
+            // 
             // colVeterinario
-            //
+            // 
             this.colVeterinario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colVeterinario.HeaderText = "Veterinario";
+            this.colVeterinario.MinimumWidth = 8;
             this.colVeterinario.Name = "colVeterinario";
             this.colVeterinario.ReadOnly = true;
-            //
+            // 
             // colEstado
-            //
+            // 
             this.colEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colEstado.HeaderText = "Estado";
+            this.colEstado.MinimumWidth = 8;
             this.colEstado.Name = "colEstado";
             this.colEstado.ReadOnly = true;
-            //
+            // 
             // lblProximasCitas
-            //
+            // 
             this.lblProximasCitas.AutoSize = true;
             this.lblProximasCitas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblProximasCitas.Location = new System.Drawing.Point(20, 170);
             this.lblProximasCitas.Name = "lblProximasCitas";
-            this.lblProximasCitas.Size = new System.Drawing.Size(144, 19);
+            this.lblProximasCitas.Size = new System.Drawing.Size(128, 28);
             this.lblProximasCitas.TabIndex = 3;
             this.lblProximasCitas.Text = "Citas de hoy";
-            //
+            // 
             // pnlCardPropietarios
-            //
+            // 
             this.pnlCardPropietarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
             this.pnlCardPropietarios.Controls.Add(this.lblCardPropietariosValor);
             this.pnlCardPropietarios.Controls.Add(this.lblCardPropietariosTitulo);
@@ -322,30 +338,30 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlCardPropietarios.Name = "pnlCardPropietarios";
             this.pnlCardPropietarios.Size = new System.Drawing.Size(190, 80);
             this.pnlCardPropietarios.TabIndex = 2;
-            //
+            // 
             // lblCardPropietariosValor
-            //
+            // 
             this.lblCardPropietariosValor.AutoSize = true;
             this.lblCardPropietariosValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardPropietariosValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardPropietariosValor.Name = "lblCardPropietariosValor";
-            this.lblCardPropietariosValor.Size = new System.Drawing.Size(21, 30);
+            this.lblCardPropietariosValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardPropietariosValor.TabIndex = 1;
             this.lblCardPropietariosValor.Text = "0";
-            //
+            // 
             // lblCardPropietariosTitulo
-            //
+            // 
             this.lblCardPropietariosTitulo.AutoSize = true;
             this.lblCardPropietariosTitulo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblCardPropietariosTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardPropietariosTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardPropietariosTitulo.Name = "lblCardPropietariosTitulo";
-            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(96, 15);
+            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(158, 23);
             this.lblCardPropietariosTitulo.TabIndex = 0;
             this.lblCardPropietariosTitulo.Text = "Propietarios activos";
-            //
+            // 
             // pnlCardMascotas
-            //
+            // 
             this.pnlCardMascotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
             this.pnlCardMascotas.Controls.Add(this.lblCardMascotasValor);
             this.pnlCardMascotas.Controls.Add(this.lblCardMascotasTitulo);
@@ -353,30 +369,30 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlCardMascotas.Name = "pnlCardMascotas";
             this.pnlCardMascotas.Size = new System.Drawing.Size(190, 80);
             this.pnlCardMascotas.TabIndex = 1;
-            //
+            // 
             // lblCardMascotasValor
-            //
+            // 
             this.lblCardMascotasValor.AutoSize = true;
             this.lblCardMascotasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardMascotasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardMascotasValor.Name = "lblCardMascotasValor";
-            this.lblCardMascotasValor.Size = new System.Drawing.Size(21, 30);
+            this.lblCardMascotasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardMascotasValor.TabIndex = 1;
             this.lblCardMascotasValor.Text = "0";
-            //
+            // 
             // lblCardMascotasTitulo
-            //
+            // 
             this.lblCardMascotasTitulo.AutoSize = true;
             this.lblCardMascotasTitulo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblCardMascotasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardMascotasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardMascotasTitulo.Name = "lblCardMascotasTitulo";
-            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(122, 15);
+            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(169, 23);
             this.lblCardMascotasTitulo.TabIndex = 0;
             this.lblCardMascotasTitulo.Text = "Mascotas registradas";
-            //
+            // 
             // pnlCardCitas
-            //
+            // 
             this.pnlCardCitas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
             this.pnlCardCitas.Controls.Add(this.lblCardCitasValor);
             this.pnlCardCitas.Controls.Add(this.lblCardCitasTitulo);
@@ -384,30 +400,30 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlCardCitas.Name = "pnlCardCitas";
             this.pnlCardCitas.Size = new System.Drawing.Size(180, 80);
             this.pnlCardCitas.TabIndex = 0;
-            //
+            // 
             // lblCardCitasValor
-            //
+            // 
             this.lblCardCitasValor.AutoSize = true;
             this.lblCardCitasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardCitasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardCitasValor.Name = "lblCardCitasValor";
-            this.lblCardCitasValor.Size = new System.Drawing.Size(21, 30);
+            this.lblCardCitasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardCitasValor.TabIndex = 1;
             this.lblCardCitasValor.Text = "0";
-            //
+            // 
             // lblCardCitasTitulo
-            //
+            // 
             this.lblCardCitasTitulo.AutoSize = true;
             this.lblCardCitasTitulo.Font = new System.Drawing.Font("Segoe UI", 8.5F);
             this.lblCardCitasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardCitasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardCitasTitulo.Name = "lblCardCitasTitulo";
-            this.lblCardCitasTitulo.Size = new System.Drawing.Size(58, 15);
+            this.lblCardCitasTitulo.Size = new System.Drawing.Size(80, 23);
             this.lblCardCitasTitulo.TabIndex = 0;
             this.lblCardCitasTitulo.Text = "Citas hoy";
-            //
+            // 
             // pnlTopBar
-            //
+            // 
             this.pnlTopBar.BackColor = System.Drawing.Color.White;
             this.pnlTopBar.Controls.Add(this.lblInfoUsuario);
             this.pnlTopBar.Controls.Add(this.lblTituloPantalla);
@@ -417,9 +433,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(830, 50);
             this.pnlTopBar.TabIndex = 0;
-            //
+            // 
             // lblInfoUsuario
-            //
+            // 
             this.lblInfoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInfoUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblInfoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
@@ -428,29 +444,29 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblInfoUsuario.Size = new System.Drawing.Size(300, 20);
             this.lblInfoUsuario.TabIndex = 1;
             this.lblInfoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //
+            // 
             // lblTituloPantalla
-            //
+            // 
             this.lblTituloPantalla.AutoSize = true;
             this.lblTituloPantalla.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTituloPantalla.Location = new System.Drawing.Point(20, 14);
             this.lblTituloPantalla.Name = "lblTituloPantalla";
-            this.lblTituloPantalla.Size = new System.Drawing.Size(107, 20);
+            this.lblTituloPantalla.Size = new System.Drawing.Size(166, 30);
             this.lblTituloPantalla.TabIndex = 0;
             this.lblTituloPantalla.Text = "Panel principal";
-            //
+            // 
             // pnlTopBarBorde
-            //
+            // 
             this.pnlTopBarBorde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(222)))));
             this.pnlTopBarBorde.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlTopBarBorde.Location = new System.Drawing.Point(0, 49);
             this.pnlTopBarBorde.Name = "pnlTopBarBorde";
             this.pnlTopBarBorde.Size = new System.Drawing.Size(830, 1);
             this.pnlTopBarBorde.TabIndex = 2;
-            //
+            // 
             // frmMenuRecepcionista
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1050, 650);
@@ -461,13 +477,11 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.Name = "frmMenuRecepcionista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VetNova - Panel principal";
-            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             this.Load += new System.EventHandler(this.frmMenuRecepcionista_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlCerrarSesion.ResumeLayout(false);
             this.pnlNav.ResumeLayout(false);
             this.pnlSidebarHeader.ResumeLayout(false);
-            this.pnlSidebarHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogoSidebar)).EndInit();
             this.pnlContentWrapper.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);

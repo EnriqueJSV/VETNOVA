@@ -29,6 +29,15 @@
 -- ===============================================================
 -- MODULO: USUARIOS
 -- ===============================================================
+USE VetNova
+GO
+ 
+CREATE OR ALTER PROCEDURE SP_LISTAR_ROLES
+AS BEGIN
+	SELECT Id_Rol, Rol FROM Roles
+END
+GO
+
 
 USE VetNova
 GO
