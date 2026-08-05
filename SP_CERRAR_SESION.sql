@@ -13,7 +13,7 @@ AS BEGIN
 
 		SELECT @USRNOM = Email FROM Usuarios WHERE Id_Usuario=@Id_Usuario
 		SET @DSC = 'Cierre de Sesión del Usuario: ' + CONVERT(VARCHAR,@USRNOM)
-		SET @ACC = 'S'
+		SET @ACC = 'X'
 
 		INSERT INTO Auditoria
 		(

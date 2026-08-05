@@ -44,6 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_Procedimientos", "03_Pro
 		BaseDatos\03_Procedimientos\SPs_CreacionScript.sql = BaseDatos\03_Procedimientos\SPs_CreacionScript.sql
 		SP_CERRAR_SESION.sql = SP_CERRAR_SESION.sql
 		BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql = BaseDatos\03_Procedimientos\SP_INICIAR_SESION.sql
+		SP_LISTAR_AUDITORIA.sql = SP_LISTAR_AUDITORIA.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_DatosPrueba", "04_DatosPrueba", "{17EE2739-DDCF-402E-9275-4C1A65F2572D}"
