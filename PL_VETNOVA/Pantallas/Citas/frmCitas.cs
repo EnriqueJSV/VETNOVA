@@ -1,6 +1,5 @@
 using BLL_VETNOVA.Entidades;
 using DAL_VETNOVA.Entidades;
-using PL_VETNOVA.Pantallas.Generales;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +41,12 @@ namespace PL_VETNOVA.Pantallas.Citas
         public frmCitas()
         {
             InitializeComponent();
+
+            // Se fuerza acá en código porque el grid se bindea directo al DataTable
+            // (dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos en cargaCitas()).
+            // Sin esto, cada vez que se recarga el grid, WinForms vuelve a
+            // autogenerar columnas de más ademas de las 8 que ya definimos a mano.
+            dgvCitas.AutoGenerateColumns = false;
         }
 
         private void frmCitas_Load(object sender, EventArgs e)
@@ -112,14 +117,29 @@ namespace PL_VETNOVA.Pantallas.Citas
 
                 if (idCitaEnEdicion.HasValue)
                 {
-                    // TODO: cls_Citas_BLL.ActualizaCita(ref obj_Citas_Global_DAL), usando
-                    // obj_Citas_Global_DAL.iId_Cita = idCitaEnEdicion.Value; y un futuro
-                    // SP_ACTUALIZA_CITAS (mismo espiritu que SP_ACTUALIZA_X del resto del
-                    // sistema: valida que la cita exista antes de actualizar, devuelve -2
-                    // si no existe, y solo entonces escribe en Auditoria).
-                    MessageBox.Show("Aqui se va a actualizar la cita Id_Cita = " + idCitaEnEdicion.Value +
-                        " una vez conectemos la logica con la base de datos.", "Editar cita",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Igual que Guardar (INSERT): un solo mensaje de éxito, un solo
+                    // mensaje de error. El único caso especial es -2 (alguien mas
+                    // ya elimino esta cita mientras la estabamos editando).
+                    obj_Citas_Global_DAL.iId_Cita = idCitaEnEdicion.Value;
+
+                    obj_Citas_Global_BLL.ActualizaCita(ref obj_Citas_Global_DAL);
+
+                    if (obj_Citas_Global_DAL.sValorScalar == "-2")
+                    {
+                        MessageBox.Show("La cita ya no existe (puede que la hayan eliminado). Se va a refrescar la lista.", "Editar cita",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (obj_Citas_Global_DAL.sMsjError == string.Empty && obj_Citas_Global_DAL.sValorScalar != "0")
+                    {
+                        MessageBox.Show("La cita se actualizó correctamente.", "Editar cita",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al intentar actualizar la cita: " + obj_Citas_Global_DAL.sMsjError, "Editar cita",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 else
                 {
@@ -197,13 +217,19 @@ namespace PL_VETNOVA.Pantallas.Citas
                 return;
             }
 
-            DataGridViewRow fila = dgvCitas.SelectedRows[0];
+            DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
+            if (filaSeleccionada == null)
+            {
+                MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Modificar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            idCitaEnEdicion = Convert.ToInt32(fila.Cells["colIdCita"].Value);
+            idCitaEnEdicion = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
 
-            string nombrePropietario = fila.Cells["colPropietario"].Value.ToString();
-            string nombreMascota = fila.Cells["colMascota"].Value.ToString();
-            string nombreVeterinario = fila.Cells["colVeterinario"].Value.ToString();
+            string nombrePropietario = filaSeleccionada["Propietario"].ToString();
+            string nombreMascota = filaSeleccionada["Mascota"].ToString();
+            string nombreVeterinario = filaSeleccionada["Veterinario"].ToString();
 
             // No usamos IDs ocultos: buscamos el propietario y el veterinario por
             // el mismo texto (Nombre + Apellido1) que ya se ve en la tabla. Esto
@@ -214,10 +240,10 @@ namespace PL_VETNOVA.Pantallas.Citas
             SeleccionarMascotaPorNombre(nombreMascota);
             SeleccionarEnComboPorTexto(cboVeterinario, "NombreCompleto", nombreVeterinario);
 
-            cboEstado.SelectedItem = fila.Cells["colEstado"].Value.ToString();
-            dtpFecha.Value = DateTime.ParseExact(fila.Cells["colFecha"].Value.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            dtpHora.Value = DateTime.ParseExact(fila.Cells["colHora"].Value.ToString(), "HH:mm", CultureInfo.InvariantCulture);
-            txtMotivo.Text = fila.Cells["colMotivo"].Value.ToString();
+            cboEstado.SelectedItem = filaSeleccionada["Estado"].ToString();
+            dtpFecha.Value = DateTime.ParseExact(filaSeleccionada["Fecha"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            dtpHora.Value = DateTime.ParseExact(filaSeleccionada["Hora"].ToString(), "HH:mm", CultureInfo.InvariantCulture);
+            txtMotivo.Text = filaSeleccionada["Motivo"].ToString();
 
             lblFormTitulo.Text = "Editar cita";
             btnGuardarCita.Text = "Guardar cambios";
@@ -276,12 +302,19 @@ namespace PL_VETNOVA.Pantallas.Citas
                 return;
             }
 
-            DataGridViewRow fila = dgvCitas.SelectedRows[0];
-            int idCita = Convert.ToInt32(fila.Cells["colIdCita"].Value);
+            DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
+            if (filaSeleccionada == null)
+            {
+                MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Eliminar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            string resumen = fila.Cells["colMascota"].Value + " con " + fila.Cells["colVeterinario"].Value +
-                "\n" + fila.Cells["colFecha"].Value + " a las " + fila.Cells["colHora"].Value +
-                "\nMotivo: " + fila.Cells["colMotivo"].Value;
+            int idCita = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
+
+            string resumen = filaSeleccionada["Mascota"] + " con " + filaSeleccionada["Veterinario"] +
+                "\n" + filaSeleccionada["Fecha"] + " a las " + filaSeleccionada["Hora"] +
+                "\nMotivo: " + filaSeleccionada["Motivo"];
 
             DialogResult confirmacion = MessageBox.Show(
                 "¿Seguro que deseas eliminar esta cita?\n\n" + resumen,
@@ -292,15 +325,36 @@ namespace PL_VETNOVA.Pantallas.Citas
                 return;
             }
 
-            // TODO: cls_Citas_BLL.EliminaCita(ref obj_Citas_Global_DAL), usando
-            // obj_Citas_Global_DAL.iId_Cita = idCita;
-            // obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
-            // contra un futuro SP_ELIMINA_CITAS(@Id_Cita, @IdUsuarioGlobal), mismo
-            // patron que los demas SP_ELIMINA_X (-2 si no existe, -1 si tiene
-            // dependientes como una Consulta ya registrada, Id > 0 si se elimino).
-            // Cuando este conectado, terminar con cargaCitas(); para refrescar.
-            MessageBox.Show("Eliminar cita Id_Cita = " + idCita + " (pendiente de conectar)",
-                "Eliminar cita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            obj_Citas_Global_DAL.iId_Cita = idCita;
+            obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
+
+            obj_Citas_Global_BLL.EliminaCita(ref obj_Citas_Global_DAL);
+
+            // Mismo espiritu que Guardar/Actualizar: un mensaje de éxito, un
+            // mensaje de error, y dos casos especiales propios de Eliminar
+            // (-1 tiene dependientes, -2 ya no existe).
+            if (obj_Citas_Global_DAL.sValorScalar == "-1")
+            {
+                MessageBox.Show("Esta cita tiene una consulta registrada asociada, no se puede eliminar.", "Eliminar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (obj_Citas_Global_DAL.sValorScalar == "-2")
+            {
+                MessageBox.Show("La cita ya no existe (puede que ya la hayan eliminado). Se va a refrescar la lista.", "Eliminar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cargaCitas();
+            }
+            else if (obj_Citas_Global_DAL.sMsjError == string.Empty && obj_Citas_Global_DAL.sValorScalar != "0")
+            {
+                MessageBox.Show("La cita se eliminó correctamente.", "Eliminar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cargaCitas();
+            }
+            else
+            {
+                MessageBox.Show("Ocurrió un error al intentar eliminar la cita: " + obj_Citas_Global_DAL.sMsjError, "Eliminar cita",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
@@ -405,16 +459,7 @@ namespace PL_VETNOVA.Pantallas.Citas
 
                 if (obj_Citas_Global_DAL.sMsjError == string.Empty)
                 {
-                    dgvCitas.DataSource = null;
                     dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos;
-
-                    // Por si el grid auto-genera una columna extra de Id_Cita
-                    // (aparte de la nuestra, que ya está oculta), la ocultamos también.
-                    if (dgvCitas.Columns.Contains("Id_Cita"))
-                    {
-                        dgvCitas.Columns["Id_Cita"].Visible = false;
-                    }
-
                 }
                 else
                 {
