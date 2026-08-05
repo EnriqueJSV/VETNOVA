@@ -221,6 +221,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
             if (confirmacion == DialogResult.Yes)
             {
+                obj_Usuario_Global_BLL.CerrarSesion(ref obj_Usuario_Global_DAL);
                 var loginOriginal = (Pantallas.Generales.frmInicioSesion)this.Owner;
                 loginOriginal.LimpiarCampos();
                 loginOriginal.Show();
@@ -235,6 +236,12 @@ namespace PL_VETNOVA.Pantallas.Generales
 
             this.Hide();
             obj_Formulario.ShowDialog(this);
+            // Al volver de Citas, refrescamos el panel principal por si se
+            // agregó/modificó/eliminó algo mientras estuvimos en esa pantalla.
+            cargaConteoCitas();
+            cargaCitasHoy();
+            cargaConteoMascotas();
+            cargaConteoPropietarios();
         }
     }
 }
