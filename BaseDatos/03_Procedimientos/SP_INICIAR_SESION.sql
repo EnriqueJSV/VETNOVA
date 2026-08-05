@@ -28,7 +28,7 @@ AS BEGIN
 
 			SELECT @USRNOM = Email FROM Usuarios Where Id_Usuario=@IdUsuario
 			SET @DSC = 'Inicio de Sesión del Usuario: ' + CONVERT(VARCHAR,@USRNOM)
-			SET @ACC = 'I'
+			SET @ACC = 'L'
 
 			INSERT INTO Auditoria
 			(
