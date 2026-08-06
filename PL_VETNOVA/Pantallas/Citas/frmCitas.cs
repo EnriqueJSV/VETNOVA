@@ -14,6 +14,16 @@ namespace PL_VETNOVA.Pantallas.Citas
 {
     public partial class frmCitas : Form
     {
+        public frmCitas()
+        {
+            InitializeComponent();
+
+            // Se fuerza acá en código porque el grid se bindea directo al DataTable
+            // (dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos en cargaCitas()).
+            // Sin esto, cada vez que se recarga el grid, WinForms vuelve a
+            // autogenerar columnas de más ademas de las 8 que ya definimos a mano.
+            dgvCitas.AutoGenerateColumns = false;
+        }
 
         #region Variables Globales o de Entidades
 
@@ -38,16 +48,15 @@ namespace PL_VETNOVA.Pantallas.Citas
         private int? idCitaEnEdicion = null;
         #endregion
 
-        public frmCitas()
+        #region Eventos Forms
+        private void frmCitas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            InitializeComponent();
-
-            // Se fuerza acá en código porque el grid se bindea directo al DataTable
-            // (dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos en cargaCitas()).
-            // Sin esto, cada vez que se recarga el grid, WinForms vuelve a
-            // autogenerar columnas de más ademas de las 8 que ya definimos a mano.
-            dgvCitas.AutoGenerateColumns = false;
+            if (this.Owner != null)
+            {
+                this.Owner.Show();
+            }
         }
+
 
         private void frmCitas_Load(object sender, EventArgs e)
         {
@@ -60,20 +69,13 @@ namespace PL_VETNOVA.Pantallas.Citas
             cargaCombos();
         }
 
+        #endregion
+
+        #region Eventos Botones
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        private void frmCitas_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (this.Owner != null)
-            {
-                this.Owner.Show();
-            }
-        }
-
-        #region Nueva cita / formulario
-
         private void btnNuevaCita_Click(object sender, EventArgs e)
         {
             idCitaEnEdicion = null;
@@ -172,42 +174,6 @@ namespace PL_VETNOVA.Pantallas.Citas
             }
         }
 
-        private void cboPropietario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cboMascota.DataSource = null;
-            cboMascota.Items.Clear();
-
-            if (cboPropietario.SelectedValue == null || dtMascotasCompleto == null)
-            {
-                return;
-            }
-
-            int idPropietarioSeleccionado = Convert.ToInt32(cboPropietario.SelectedValue);
-
-            DataView vista = new DataView(dtMascotasCompleto);
-            vista.RowFilter = "Id_Propietario = " + idPropietarioSeleccionado;
-
-            cboMascota.DataSource = vista;
-            cboMascota.DisplayMember = "Nombre";
-            cboMascota.ValueMember = "Id_Mascota";
-            cboMascota.SelectedIndex = -1;
-        }
-
-        private void LimpiarFormulario()
-        {
-            cboPropietario.SelectedIndex = -1;
-            cboMascota.SelectedIndex = -1;
-            cboVeterinario.SelectedIndex = -1;
-            cboEstado.SelectedIndex = -1;
-            dtpFecha.Value = DateTime.Now;
-            dtpHora.Value = DateTime.Now;
-            txtMotivo.Clear();
-        }
-
-        #endregion
-
-        #region Modificar / Eliminar (workflow: primero seleccionar una fila)
-
         private void btnModificar_Click(object sender, EventArgs e)
         {
             if (dgvCitas.SelectedRows.Count == 0)
@@ -248,49 +214,6 @@ namespace PL_VETNOVA.Pantallas.Citas
             lblFormTitulo.Text = "Editar cita";
             btnGuardarCita.Text = "Guardar cambios";
             pnlFormCita.Visible = true;
-        }
-
-        // Busca, dentro de un combo cargado con un DataTable (cboPropietario,
-        // cboVeterinario), la fila cuyo texto visible coincida exactamente, y
-        // selecciona esa fila por su ValueMember (Id_Propietario / Id_Veterinario).
-        private void SeleccionarEnComboPorTexto(ComboBox combo, string nombreColumnaTexto, string valorBuscado)
-        {
-            DataTable tabla = combo.DataSource as DataTable;
-            if (tabla == null)
-            {
-                return;
-            }
-
-            foreach (DataRow fila in tabla.Rows)
-            {
-                if (fila[nombreColumnaTexto].ToString() == valorBuscado)
-                {
-                    combo.SelectedValue = fila[combo.ValueMember];
-                    return;
-                }
-            }
-        }
-
-        // cboMascota es distinto: su DataSource es un DataView YA FILTRADO por el
-        // propietario elegido (ver cboPropietario_SelectedIndexChanged), asi que
-        // buscamos por Nombre solo dentro de ese subconjunto, no en todas las
-        // mascotas del sistema.
-        private void SeleccionarMascotaPorNombre(string nombreMascotaBuscada)
-        {
-            DataView vista = cboMascota.DataSource as DataView;
-            if (vista == null)
-            {
-                return;
-            }
-
-            foreach (DataRowView filaVista in vista)
-            {
-                if (filaVista["Nombre"].ToString() == nombreMascotaBuscada)
-                {
-                    cboMascota.SelectedValue = filaVista["Id_Mascota"];
-                    return;
-                }
-            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -359,13 +282,7 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         #endregion
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            cargaCitas();
-        }
-
-
-        #region Cargadores de datos
+        #region Eventos de Manipulacion de datos // Cargar-Filtrar-Limpiar
         private void cargaDatosUsuarioGlobal()
         {
             try
@@ -404,7 +321,6 @@ namespace PL_VETNOVA.Pantallas.Citas
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void cargaCombos()
         {
@@ -472,6 +388,86 @@ namespace PL_VETNOVA.Pantallas.Citas
             {
                 MessageBox.Show("Ocurrió un error al intentar cargar las citas. Error: " + ex.ToString(), "Citas",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cboPropietario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboMascota.DataSource = null;
+            cboMascota.Items.Clear();
+
+            if (cboPropietario.SelectedValue == null || dtMascotasCompleto == null)
+            {
+                return;
+            }
+
+            int idPropietarioSeleccionado = Convert.ToInt32(cboPropietario.SelectedValue);
+
+            DataView vista = new DataView(dtMascotasCompleto);
+            vista.RowFilter = "Id_Propietario = " + idPropietarioSeleccionado;
+
+            cboMascota.DataSource = vista;
+            cboMascota.DisplayMember = "Nombre";
+            cboMascota.ValueMember = "Id_Mascota";
+            cboMascota.SelectedIndex = -1;
+        }
+
+        private void LimpiarFormulario()
+        {
+            cboPropietario.SelectedIndex = -1;
+            cboMascota.SelectedIndex = -1;
+            cboVeterinario.SelectedIndex = -1;
+            cboEstado.SelectedIndex = -1;
+            dtpFecha.Value = DateTime.Now;
+            dtpHora.Value = DateTime.Now;
+            txtMotivo.Clear();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            cargaCitas();
+        }
+
+        // Busca, dentro de un combo cargado con un DataTable (cboPropietario,
+        // cboVeterinario), la fila cuyo texto visible coincida exactamente, y
+        // selecciona esa fila por su ValueMember (Id_Propietario / Id_Veterinario).
+        private void SeleccionarEnComboPorTexto(ComboBox combo, string nombreColumnaTexto, string valorBuscado)
+        {
+            DataTable tabla = combo.DataSource as DataTable;
+            if (tabla == null)
+            {
+                return;
+            }
+
+            foreach (DataRow fila in tabla.Rows)
+            {
+                if (fila[nombreColumnaTexto].ToString() == valorBuscado)
+                {
+                    combo.SelectedValue = fila[combo.ValueMember];
+                    return;
+                }
+            }
+        }
+
+        // cboMascota es distinto: su DataSource es un DataView YA FILTRADO por el
+        // propietario elegido (ver cboPropietario_SelectedIndexChanged), asi que
+        // buscamos por Nombre solo dentro de ese subconjunto, no en todas las
+        // mascotas del sistema.
+        private void SeleccionarMascotaPorNombre(string nombreMascotaBuscada)
+        {
+            DataView vista = cboMascota.DataSource as DataView;
+            if (vista == null)
+            {
+                return;
+            }
+
+            foreach (DataRowView filaVista in vista)
+            {
+                if (filaVista["Nombre"].ToString() == nombreMascotaBuscada)
+                {
+                    cboMascota.SelectedValue = filaVista["Id_Mascota"];
+                    return;
+                }
             }
         }
 
