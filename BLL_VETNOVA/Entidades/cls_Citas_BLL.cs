@@ -82,7 +82,7 @@ namespace BLL_VETNOVA.Entidades
             }
         }
 
-        public void ListarFiltrarCitas(string sFiltro, ref cls_Citas_DAL obj_Citas_DAL)
+        public void ListarCitas(ref cls_Citas_DAL obj_Citas_DAL)
         {
             try
             {
@@ -91,17 +91,9 @@ namespace BLL_VETNOVA.Entidades
                 cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
                 cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
 
-                if (string.IsNullOrEmpty(sFiltro))
-                {
-                    obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_LISTAR_Citas"].ToString();
-                }
-                else
-                {
-                    obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_FILTRAR_Citas"].ToString();
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_LISTAR_Citas"].ToString();
 
-                    obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
-                    obj_BD_DAL.DT_Param.Rows.Add("@Filtro", "6", sFiltro);
-                }
+                obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
 
                 obj_BD_DAL.sNomTabla = "Citas";
                 obj_BD_BLL.ExecuteDataAdapter(ref obj_BD_DAL);
@@ -122,7 +114,6 @@ namespace BLL_VETNOVA.Entidades
                 obj_Citas_DAL.sMsjError = ex.ToString();
             }
         }
-
         public void InsertaCita(ref cls_Citas_DAL obj_Citas_DAL)
         {
             try

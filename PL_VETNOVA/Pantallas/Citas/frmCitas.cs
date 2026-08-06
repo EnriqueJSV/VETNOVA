@@ -42,6 +42,7 @@ namespace PL_VETNOVA.Pantallas.Citas
         public cls_Mascotas_BLL obj_Mascotas_Global_BLL = new cls_Mascotas_BLL();
 
         private DataTable dtMascotasCompleto; // todas las mascotas, para filtrar por propietario en memoria
+        private DataView vistaCitas; // vista filtrable sobre todas las citas, para filtrar en memoria sin ir a la BD
 
         // Si es null, pnlFormCita esta en modo "Nueva cita" (INSERT).
         // Si tiene valor, esta en modo "Editar cita" (UPDATE) sobre ese Id_Cita.
@@ -371,11 +372,13 @@ namespace PL_VETNOVA.Pantallas.Citas
         {
             try
             {
-                obj_Citas_Global_BLL.ListarFiltrarCitas(txtBuscar.Text.Trim(), ref obj_Citas_Global_DAL);
+                obj_Citas_Global_BLL.ListarCitas(ref obj_Citas_Global_DAL);
 
                 if (obj_Citas_Global_DAL.sMsjError == string.Empty)
                 {
-                    dgvCitas.DataSource = obj_Citas_Global_DAL.dtDatos;
+                    vistaCitas = new DataView(obj_Citas_Global_DAL.dtDatos);
+                    dgvCitas.DataSource = vistaCitas;
+                    FiltrarCitas(); // reaplica lo que haya en txtBuscar sobre los datos frescos
                 }
                 else
                 {
@@ -391,6 +394,26 @@ namespace PL_VETNOVA.Pantallas.Citas
             }
         }
 
+        private void FiltrarCitas()
+        {
+            if (vistaCitas == null)
+            {
+                return;
+            }
+
+            string filtro = txtBuscar.Text.Trim().Replace("'", "''"); // escapa comillas simples para no romper el RowFilter
+
+            if (string.IsNullOrEmpty(filtro))
+            {
+                vistaCitas.RowFilter = string.Empty;
+            }
+            else
+            {
+                vistaCitas.RowFilter =
+                    "Mascota LIKE '%" + filtro + "%'" +
+                    " OR Propietario LIKE '%" + filtro + "%'";
+            }
+        }
         private void cboPropietario_SelectedIndexChanged(object sender, EventArgs e)
         {
             cboMascota.DataSource = null;
@@ -425,7 +448,7 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            cargaCitas();
+            FiltrarCitas();
         }
 
         // Busca, dentro de un combo cargado con un DataTable (cboPropietario,
