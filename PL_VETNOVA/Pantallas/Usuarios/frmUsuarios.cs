@@ -453,9 +453,5 @@ namespace PL_VETNOVA.Pantallas.Usuarios
 
         #endregion
 
-
-        
-
-
     }
 }
