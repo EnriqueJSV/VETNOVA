@@ -58,11 +58,11 @@
     <Compile Include="Pantallas\Citas\frmCitas.Designer.cs">
       <DependentUpon>frmCitas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Consultas\frmConsultasConsultas.cs">
+    <Compile Include="Pantallas\Consultas\frmConsultas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Consultas\frmConsultasConsultas.Designer.cs">
-      <DependentUpon>frmConsultasConsultas.cs</DependentUpon>
+    <Compile Include="Pantallas\Consultas\frmConsultas.Designer.cs">
+      <DependentUpon>frmConsultas.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Especialidades\frmConsultasEspecialidades.cs">
       <SubType>Form</SubType>

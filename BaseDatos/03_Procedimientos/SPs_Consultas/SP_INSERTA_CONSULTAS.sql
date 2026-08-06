@@ -22,6 +22,10 @@ AS BEGIN
 		@Id_Cita, @Diagnostico, @Tratamiento, @Observaciones
 		)
 
+		UPDATE Citas
+		SET Estado_Cita = 'Atendida'
+		WHERE Id_Cita = @Id_Cita
+
 		SELECT @@IDENTITY
 
 		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------

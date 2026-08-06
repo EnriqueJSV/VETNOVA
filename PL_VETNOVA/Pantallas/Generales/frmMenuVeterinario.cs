@@ -192,5 +192,24 @@ namespace PL_VETNOVA.Pantallas.Generales
                 this.Close();
             }
         }
+
+        private void lblNavConsultas_Click(object sender, EventArgs e)
+        {
+            Pantallas.Consultas.frmConsultas obj_Formulario = new Pantallas.Consultas.frmConsultas();
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; // ajusta el nombre exacto de tu propiedad si es distinto
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+            // Al volver de Citas, refrescamos el panel principal por si se
+            // agregó/modificó/eliminó algo mientras estuvimos en esa pantalla.
+            cargaConteoCitas();
+            cargaCitasHoy();
+            cargaConteoMascotas();
+        }
+
+        private void lblNavMascotas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

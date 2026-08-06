@@ -18,7 +18,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuRecepcionista));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -136,6 +136,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavMascotas.TabIndex = 4;
             this.lblNavMascotas.Text = "Mascotas";
             this.lblNavMascotas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavMascotas.Click += new System.EventHandler(this.lblNavMascotas_Click);
             // 
             // lblNavPropietarios
             // 
@@ -148,6 +149,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavPropietarios.TabIndex = 3;
             this.lblNavPropietarios.Text = "Propietarios";
             this.lblNavPropietarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavPropietarios.Click += new System.EventHandler(this.lblNavPropietarios_Click);
             // 
             // lblNavConsultas
             // 
@@ -160,6 +162,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavConsultas.TabIndex = 2;
             this.lblNavConsultas.Text = "Consultas";
             this.lblNavConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavConsultas.Click += new System.EventHandler(this.lblNavConsultas_Click);
             // 
             // lblNavCitas
             // 
@@ -262,14 +265,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
