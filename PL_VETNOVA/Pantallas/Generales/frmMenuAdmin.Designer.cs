@@ -174,6 +174,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCatalogos.TabIndex = 6;
             this.lblNavCatalogos.Text = "Catalogos";
             this.lblNavCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCatalogos.Click += new System.EventHandler(this.lblNavCatalogos_Click);
             // 
             // lblNavVeterinarios
             // 
