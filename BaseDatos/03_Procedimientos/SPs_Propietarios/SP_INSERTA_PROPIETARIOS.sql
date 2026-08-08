@@ -4,6 +4,7 @@ GO
 CREATE OR ALTER PROCEDURE SP_INSERTA_PROPIETARIOS
 (
 @Id_Tipo_Identificacion INT,
+@Identificacion VARCHAR(100),
 @Nombre VARCHAR(100),
 @Apellido1 VARCHAR(100),
 @Apellido2 VARCHAR(100),
@@ -19,11 +20,11 @@ AS BEGIN
 	BEGIN
 		INSERT INTO Propietarios
 		(
-		[Id_Tipo_Identificacion], [Nombre], [Apellido1], [Apellido2], [Telefono], [Email], [Direccion], [Estado]
+		[Id_Tipo_Identificacion], [Identificacion], [Nombre], [Apellido1], [Apellido2], [Telefono], [Email], [Direccion], [Estado]
 		)
 		VALUES
 		(
-		@Id_Tipo_Identificacion, @Nombre, @Apellido1, @Apellido2, @Telefono, @Email, @Direccion, @Estado
+		@Id_Tipo_Identificacion, @Identificacion, @Nombre, @Apellido1, @Apellido2, @Telefono, @Email, @Direccion, @Estado
 		)
 
 		SELECT @@IDENTITY

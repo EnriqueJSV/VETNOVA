@@ -9,6 +9,7 @@ AS BEGIN
 	SELECT
 	Id_Propietario,
 	Id_Tipo_Identificacion,
+	Identificacion,
 	Nombre,
 	Apellido1,
 	Apellido2,

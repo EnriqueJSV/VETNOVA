@@ -100,11 +100,11 @@
     <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.Designer.cs">
       <DependentUpon>frmConsultasMascotas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Propietarios\frmConsultasPropietarios.cs">
+    <Compile Include="Pantallas\Propietarios\frmPropietarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Propietarios\frmConsultasPropietarios.Designer.cs">
-      <DependentUpon>frmConsultasPropietarios.cs</DependentUpon>
+    <Compile Include="Pantallas\Propietarios\frmPropietarios.Designer.cs">
+      <DependentUpon>frmPropietarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>
@@ -137,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Generales\frmMenuVeterinario.resx">
       <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Propietarios\frmPropietarios.resx">
+      <DependentUpon>frmPropietarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Usuarios\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>

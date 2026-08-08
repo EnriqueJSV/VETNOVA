@@ -212,6 +212,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavPropietarios.TabIndex = 3;
             this.lblNavPropietarios.Text = "Propietarios";
             this.lblNavPropietarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavPropietarios.Click += new System.EventHandler(this.lblNavPropietarios_Click);
             // 
             // lblNavConsultas
             // 

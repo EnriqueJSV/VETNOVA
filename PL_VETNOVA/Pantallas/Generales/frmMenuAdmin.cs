@@ -350,7 +350,23 @@ namespace PL_VETNOVA.Pantallas.Generales
         private void lblNavCatalogos_Click(object sender, EventArgs e)
         {
             Pantallas.Catalogos.frmCatalogos obj_Formulario = new Pantallas.Catalogos.frmCatalogos();
-            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; // ajusta el nombre exacto de tu propiedad si es distinto
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; 
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+            // Al volver de Citas, refrescamos el panel principal por si se
+            // agregó/modificó/eliminó algo mientras estuvimos en esa pantalla.
+            cargaConteoCitas();
+            cargaCitasHoy();
+            cargaConteoMascotas();
+            cargaConteoPropietarios();
+            cargaConteoVeterinarios();
+        }
+
+        private void lblNavPropietarios_Click(object sender, EventArgs e)
+        {
+            Pantallas.Propietarios.frmPropietarios obj_Formulario = new Pantallas.Propietarios.frmPropietarios();
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL;
 
             this.Hide();
             obj_Formulario.ShowDialog(this);

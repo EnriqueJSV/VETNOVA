@@ -1188,6 +1188,7 @@ AS BEGIN
 	SELECT
 	Id_Propietario,
 	Id_Tipo_Identificacion,
+	Identificacion,
 	Nombre,
 	Apellido1,
 	Apellido2,
@@ -1211,6 +1212,7 @@ AS BEGIN
 	SELECT
 	Id_Propietario,
 	Id_Tipo_Identificacion,
+	Identificacion,
 	Nombre,
 	Apellido1,
 	Apellido2,
@@ -1230,6 +1232,7 @@ GO
 CREATE OR ALTER PROCEDURE SP_INSERTA_PROPIETARIOS
 (
 @Id_Tipo_Identificacion INT,
+@Identificacion VARCHAR(100),
 @Nombre VARCHAR(100),
 @Apellido1 VARCHAR(100),
 @Apellido2 VARCHAR(100),
@@ -1245,11 +1248,11 @@ AS BEGIN
 	BEGIN
 		INSERT INTO Propietarios
 		(
-		[Id_Tipo_Identificacion], [Nombre], [Apellido1], [Apellido2], [Telefono], [Email], [Direccion], [Estado]
+		[Id_Tipo_Identificacion], [Identificacion], [Nombre], [Apellido1], [Apellido2], [Telefono], [Email], [Direccion], [Estado]
 		)
 		VALUES
 		(
-		@Id_Tipo_Identificacion, @Nombre, @Apellido1, @Apellido2, @Telefono, @Email, @Direccion, @Estado
+		@Id_Tipo_Identificacion, @Identificacion, @Nombre, @Apellido1, @Apellido2, @Telefono, @Email, @Direccion, @Estado
 		)
 
 		SELECT @@IDENTITY
@@ -1290,6 +1293,7 @@ CREATE OR ALTER PROCEDURE SP_ACTUALIZA_PROPIETARIOS
 (
 @Id_Propietario INT,
 @Id_Tipo_Identificacion INT,
+@Identificacion VARCHAR(100),
 @Nombre VARCHAR(100),
 @Apellido1 VARCHAR(100),
 @Apellido2 VARCHAR(100),
@@ -1311,7 +1315,7 @@ AS BEGIN
 	IF NOT EXISTS (SELECT Id_Propietario FROM Propietarios WHERE Email=@Email AND Id_Propietario<>@Id_Propietario)
 	BEGIN
 		UPDATE Propietarios
-		SET Id_Tipo_Identificacion=@Id_Tipo_Identificacion, Nombre=@Nombre, Apellido1=@Apellido1, Apellido2=@Apellido2, Telefono=@Telefono, Email=@Email, Direccion=@Direccion, Estado=@Estado
+		SET Id_Tipo_Identificacion=@Id_Tipo_Identificacion, Identificacion=@Identificacion, Nombre=@Nombre, Apellido1=@Apellido1, Apellido2=@Apellido2, Telefono=@Telefono, Email=@Email, Direccion=@Direccion, Estado=@Estado
 		WHERE Id_Propietario=@Id_Propietario
 
 		-----------------------PARA EL CONTROL DE AUDITORIA DEL SISTEMA-------------------------------------------
