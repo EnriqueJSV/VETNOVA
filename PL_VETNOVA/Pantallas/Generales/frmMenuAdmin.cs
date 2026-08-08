@@ -378,5 +378,21 @@ namespace PL_VETNOVA.Pantallas.Generales
             cargaConteoPropietarios();
             cargaConteoVeterinarios();
         }
+
+        private void lblNavMascotas_Click(object sender, EventArgs e)
+        {
+            Pantallas.Mascotas.frmMascotas obj_Formulario = new Pantallas.Mascotas.frmMascotas();
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL;
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+            // Al volver de Citas, refrescamos el panel principal por si se
+            // agregó/modificó/eliminó algo mientras estuvimos en esa pantalla.
+            cargaConteoCitas();
+            cargaCitasHoy();
+            cargaConteoMascotas();
+            cargaConteoPropietarios();
+            cargaConteoVeterinarios();
+        }
     }
 }

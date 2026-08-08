@@ -94,11 +94,11 @@
     <Compile Include="Pantallas\Generales\frmMenuVeterinario.Designer.cs">
       <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.cs">
+    <Compile Include="Pantallas\Mascotas\frmMascotas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Mascotas\frmConsultasMascotas.Designer.cs">
-      <DependentUpon>frmConsultasMascotas.cs</DependentUpon>
+    <Compile Include="Pantallas\Mascotas\frmMascotas.Designer.cs">
+      <DependentUpon>frmMascotas.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Propietarios\frmPropietarios.cs">
       <SubType>Form</SubType>
