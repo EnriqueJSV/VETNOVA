@@ -52,6 +52,12 @@
     <Compile Include="Pantallas\Auditoria\frmConsultasAuditoria.Designer.cs">
       <DependentUpon>frmConsultasAuditoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Catalogos\frmCatalogos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Catalogos\frmCatalogos.Designer.cs">
+      <DependentUpon>frmCatalogos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Citas\frmCitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,18 +69,6 @@
     </Compile>
     <Compile Include="Pantallas\Consultas\frmConsultas.Designer.cs">
       <DependentUpon>frmConsultas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\Especialidades\frmConsultasEspecialidades.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Especialidades\frmConsultasEspecialidades.Designer.cs">
-      <DependentUpon>frmConsultasEspecialidades.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\Especies\frmConsultasEspecies.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Especies\frmConsultasEspecies.Designer.cs">
-      <DependentUpon>frmConsultasEspecies.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Generales\frmInicioSesion.cs">
       <SubType>Form</SubType>
@@ -123,6 +117,11 @@
     </Compile>
     <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.Designer.cs">
       <DependentUpon>frmConsultasTipos_Identificacion.cs</DependentUpon>
+    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.Designer.cs">
+      <DependentUpon>frmConsultasUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>

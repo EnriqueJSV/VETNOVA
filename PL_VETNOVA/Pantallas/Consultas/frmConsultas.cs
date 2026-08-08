@@ -19,8 +19,6 @@ namespace PL_VETNOVA.Pantallas.Consultas
         public cls_Usuarios_DAL obj_Usuario_Global_DAL;
         public cls_Usuarios_BLL obj_Usuario_Global_BLL = new cls_Usuarios_BLL();
 
-        // Reutilizamos cls_Citas_BLL.ListarCitas y cls_Mascotas_BLL.ListarMascotas
-        // (las mismas que usa frmCitas) para armar los combos, sin SPs nuevos.
         public cls_Citas_DAL obj_Citas_Global_DAL = new cls_Citas_DAL();
         public cls_Citas_BLL obj_Citas_Global_BLL = new cls_Citas_BLL();
 

@@ -37,7 +37,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
                 if (obj_Usuarios_DAL.sMsjError == string.Empty)
                 {
-                    if (obj_Usuarios_DAL.sValorScalar != "0" && obj_Usuarios_DAL.sValorScalar != "-1")
+                    if (obj_Usuarios_DAL.sValorScalar != "0" && obj_Usuarios_DAL.sValorScalar != "-1" && obj_Usuarios_DAL.sValorScalar != "-3")
                     {
                         obj_Usuarios_DAL.iId_Usuario = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
                         obj_Usuarios_DAL.iId_UsuarioGlobal = Convert.ToInt32(obj_Usuarios_DAL.sValorScalar);
@@ -67,6 +67,11 @@ namespace PL_VETNOVA.Pantallas.Generales
                         }
 
                     }
+                    else if (obj_Usuarios_DAL.sValorScalar == "-3")
+                    {
+                        MessageBox.Show("Tu usuario está inactivo. Contacta al administrador para reactivarlo.", "Inicio de Sesión",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                     else if (obj_Usuarios_DAL.sValorScalar == "-1")
                     {
                         MessageBox.Show("Las credenciales de acceso al sistema son incorrectas", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -91,7 +96,6 @@ namespace PL_VETNOVA.Pantallas.Generales
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public void LimpiarCampos()
         {
             txtUsuario.Clear();

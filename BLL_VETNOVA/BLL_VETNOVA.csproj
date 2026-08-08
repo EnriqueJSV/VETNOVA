@@ -47,8 +47,10 @@
     <Compile Include="Entidades\cls_Citas_BLL.cs" />
     <Compile Include="Entidades\cls_Consultas_BLL.cs" />
     <Compile Include="Entidades\cls_Especialidades_BLL.cs" />
+    <Compile Include="Entidades\cls_Especies_BLL.cs" />
     <Compile Include="Entidades\cls_Mascotas_BLL.cs" />
     <Compile Include="Entidades\cls_Propietarios_BLL.cs" />
+    <Compile Include="Entidades\cls_Razas_BLL.cs" />
     <Compile Include="Entidades\cls_Roles_BLL.cs" />
     <Compile Include="Entidades\cls_Tipos_Identificacion_BLL.cs" />
     <Compile Include="Entidades\cls_Usuarios_BLL.cs" />
