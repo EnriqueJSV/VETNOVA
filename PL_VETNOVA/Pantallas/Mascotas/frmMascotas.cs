@@ -104,7 +104,8 @@ namespace PL_VETNOVA.Pantallas.Mascotas
 
         private void CargarCombos()
         {
-            // Propietarios (mismo patron NombreCompleto que ya usa frmCitas)
+            // Propietarios (mismo patron NombreCompleto que ya usa frmCitas),
+            // ordenados alfabeticamente con DefaultView.Sort.
             obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
             if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
             {
@@ -118,7 +119,9 @@ namespace PL_VETNOVA.Pantallas.Mascotas
                     fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
                 }
 
-                cboPropietarioMascota.DataSource = dtProp;
+                dtProp.DefaultView.Sort = "NombreCompleto ASC";
+
+                cboPropietarioMascota.DataSource = dtProp.DefaultView;
                 cboPropietarioMascota.DisplayMember = "NombreCompleto";
                 cboPropietarioMascota.ValueMember = "Id_Propietario";
                 cboPropietarioMascota.SelectedIndex = -1;
@@ -193,7 +196,10 @@ namespace PL_VETNOVA.Pantallas.Mascotas
                 dtMascotas.Columns.Add("RazaNombre", typeof(string));
             }
 
-            DataTable dtPropLookup = cboPropietarioMascota.DataSource as DataTable;
+            // cboPropietarioMascota.DataSource ahora es un DataView (por el
+            // ordenamiento alfabetico en CargarCombos), no un DataTable
+            // directo, asi que hay que sacar el DataTable de abajo con .Table.
+            DataTable dtPropLookup = (cboPropietarioMascota.DataSource as DataView)?.Table;
 
             foreach (DataRow filaMascota in dtMascotas.Rows)
             {

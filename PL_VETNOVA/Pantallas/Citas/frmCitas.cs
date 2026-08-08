@@ -66,6 +66,8 @@ namespace PL_VETNOVA.Pantallas.Citas
             cboEstado.Items.Clear();
             cboEstado.Items.AddRange(new object[] { "Pendiente", "Confirmada", "Atendida", "Cancelada" });
 
+            CargarHorasDisponibles();
+
             cargaCitas();
             cargaCombos();
         }
@@ -101,6 +103,7 @@ namespace PL_VETNOVA.Pantallas.Citas
         {
             if (cboPropietario.SelectedIndex == -1 || cboMascota.SelectedIndex == -1 ||
                 cboVeterinario.SelectedIndex == -1 || cboEstado.SelectedIndex == -1 ||
+                cboHora.SelectedIndex == -1 ||
                 string.IsNullOrWhiteSpace(txtMotivo.Text))
             {
                 MessageBox.Show("Completa todos los campos antes de guardar.", "Nueva cita",
@@ -113,7 +116,7 @@ namespace PL_VETNOVA.Pantallas.Citas
                 obj_Citas_Global_DAL.iId_Mascota = Convert.ToInt32(cboMascota.SelectedValue);
                 obj_Citas_Global_DAL.iId_Veterinario = Convert.ToInt32(cboVeterinario.SelectedValue);
                 obj_Citas_Global_DAL.dtFecha = dtpFecha.Value;
-                obj_Citas_Global_DAL.dtHora = dtpHora.Value;
+                obj_Citas_Global_DAL.dtHora = DateTime.ParseExact(cboHora.SelectedItem.ToString(), "HH:mm", CultureInfo.InvariantCulture);
                 obj_Citas_Global_DAL.sMotivo = txtMotivo.Text.Trim();
                 obj_Citas_Global_DAL.sEstado_Cita = cboEstado.SelectedItem.ToString();
                 obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
@@ -199,17 +202,18 @@ namespace PL_VETNOVA.Pantallas.Citas
             string nombreVeterinario = filaSeleccionada["Veterinario"].ToString();
 
             // No usamos IDs ocultos: buscamos el propietario y el veterinario por
-            // el mismo texto (Nombre + Apellido1) que ya se ve en la tabla. Esto
-            // dispara cboPropietario_SelectedIndexChanged, que filtra cboMascota;
-            // recien ahi buscamos la mascota por su Nombre dentro de esa lista ya
+            // el mismo texto que ya se ve en la tabla (NombreCompleto para
+            // Propietario, NombreConEspecialidad para Veterinario). Esto dispara
+            // cboPropietario_SelectedIndexChanged, que filtra cboMascota; recien
+            // ahi buscamos la mascota por su Nombre dentro de esa lista ya
             // filtrada (evita confundir mascotas con el mismo nombre de OTRO dueño).
             SeleccionarEnComboPorTexto(cboPropietario, "NombreCompleto", nombrePropietario);
             SeleccionarMascotaPorNombre(nombreMascota);
-            SeleccionarEnComboPorTexto(cboVeterinario, "NombreCompleto", nombreVeterinario);
+            SeleccionarVeterinarioPorNombre(nombreVeterinario);
 
             cboEstado.SelectedItem = filaSeleccionada["Estado"].ToString();
             dtpFecha.Value = DateTime.ParseExact(filaSeleccionada["Fecha"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            dtpHora.Value = DateTime.ParseExact(filaSeleccionada["Hora"].ToString(), "HH:mm", CultureInfo.InvariantCulture);
+            cboHora.SelectedItem = filaSeleccionada["Hora"].ToString();
             txtMotivo.Text = filaSeleccionada["Motivo"].ToString();
 
             lblFormTitulo.Text = "Editar cita";
@@ -294,7 +298,7 @@ namespace PL_VETNOVA.Pantallas.Citas
                 {
                     if (obj_Usuario_Global_DAL.dtDatos.Rows.Count > 0)
                     {
-                        // Mismos indices que usa frmMenuAdmin: [2]=Email (usado como
+                        // Mismos indices que usa frmMenu: [2]=Email (usado como
                         // "nombre" a mostrar), [4]=Id_Rol, [5]=Rol (nombre del rol).
                         // Ajusta estos indices si tu SP_INFO_Usuarios trae otro orden.
                         obj_Usuario_Global_DAL.sNombre_Usuario = obj_Usuario_Global_DAL.dtDatos.Rows[0][2].ToString();
@@ -323,38 +327,71 @@ namespace PL_VETNOVA.Pantallas.Citas
             }
         }
 
+        // Llena cboHora con las 288 horas del dia en pasos de 5 minutos
+        // (00:00, 00:05, ... 23:55), para que no se pueda escribir una hora
+        // "suelta" como 10:02 - solo se puede ELEGIR de la lista.
+        private void CargarHorasDisponibles()
+        {
+            cboHora.Items.Clear();
+
+            for (int hora = 6; hora < 22; hora++)
+            {
+                for (int minuto = 0; minuto < 60; minuto += 5)
+                {
+                    cboHora.Items.Add(string.Format("{0:D2}:{1:D2}", hora, minuto));
+                }
+            }
+        }
+
         private void cargaCombos()
         {
-            // Propietarios
+            // Propietarios (ordenados alfabeticamente por NombreCompleto)
             obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
             if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
             {
                 DataTable dtProp = obj_Propietarios_Global_DAL.dtDatos;
-                dtProp.Columns.Add("NombreCompleto", typeof(string));
+                if (!dtProp.Columns.Contains("NombreCompleto"))
+                {
+                    dtProp.Columns.Add("NombreCompleto", typeof(string));
+                }
                 foreach (DataRow fila in dtProp.Rows)
                 {
                     fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
                 }
 
-                cboPropietario.DataSource = dtProp;
+                // DefaultView.Sort ordena sin tener que tocar el SP ni pedir
+                // otra vez a la base de datos.
+                dtProp.DefaultView.Sort = "NombreCompleto ASC";
+
+                cboPropietario.DataSource = dtProp.DefaultView;
                 cboPropietario.DisplayMember = "NombreCompleto";
                 cboPropietario.ValueMember = "Id_Propietario";
                 cboPropietario.SelectedIndex = -1;
             }
 
-            // Veterinarios
+            // Veterinarios (con su especialidad a la par, ej. "Ana Ruiz - Especialidad: Cirugia general")
             obj_Veterinarios_Global_BLL.ListarVeterinarios(ref obj_Veterinarios_Global_DAL);
             if (obj_Veterinarios_Global_DAL.sMsjError == string.Empty && obj_Veterinarios_Global_DAL.dtDatos != null)
             {
                 DataTable dtVet = obj_Veterinarios_Global_DAL.dtDatos;
-                dtVet.Columns.Add("NombreCompleto", typeof(string));
+                if (!dtVet.Columns.Contains("NombreCompleto"))
+                {
+                    dtVet.Columns.Add("NombreCompleto", typeof(string));
+                }
+                if (!dtVet.Columns.Contains("NombreConEspecialidad"))
+                {
+                    dtVet.Columns.Add("NombreConEspecialidad", typeof(string));
+                }
                 foreach (DataRow fila in dtVet.Rows)
                 {
                     fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
+                    fila["NombreConEspecialidad"] = fila["NombreCompleto"].ToString() + " - " + fila["Especialidad"].ToString();
                 }
 
-                cboVeterinario.DataSource = dtVet;
-                cboVeterinario.DisplayMember = "NombreCompleto";
+                dtVet.DefaultView.Sort = "NombreCompleto ASC";
+
+                cboVeterinario.DataSource = dtVet.DefaultView;
+                cboVeterinario.DisplayMember = "NombreConEspecialidad";
                 cboVeterinario.ValueMember = "Id_Veterinario";
                 cboVeterinario.SelectedIndex = -1;
             }
@@ -442,7 +479,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             cboVeterinario.SelectedIndex = -1;
             cboEstado.SelectedIndex = -1;
             dtpFecha.Value = DateTime.Now;
-            dtpHora.Value = DateTime.Now;
+            cboHora.SelectedIndex = -1;
             txtMotivo.Clear();
         }
 
@@ -451,25 +488,33 @@ namespace PL_VETNOVA.Pantallas.Citas
             FiltrarCitas();
         }
 
-        // Busca, dentro de un combo cargado con un DataTable (cboPropietario,
-        // cboVeterinario), la fila cuyo texto visible coincida exactamente, y
-        // selecciona esa fila por su ValueMember (Id_Propietario / Id_Veterinario).
+        // Busca, dentro de un combo cargado con un DataView (cboPropietario),
+        // la fila cuyo texto visible coincida exactamente, y selecciona esa
+        // fila por su ValueMember (Id_Propietario).
         private void SeleccionarEnComboPorTexto(ComboBox combo, string nombreColumnaTexto, string valorBuscado)
         {
-            DataTable tabla = combo.DataSource as DataTable;
-            if (tabla == null)
+            DataView vista = combo.DataSource as DataView;
+            if (vista == null)
             {
                 return;
             }
 
-            foreach (DataRow fila in tabla.Rows)
+            foreach (DataRowView filaVista in vista)
             {
-                if (fila[nombreColumnaTexto].ToString() == valorBuscado)
+                if (filaVista[nombreColumnaTexto].ToString() == valorBuscado)
                 {
-                    combo.SelectedValue = fila[combo.ValueMember];
+                    combo.SelectedValue = filaVista[combo.ValueMember];
                     return;
                 }
             }
+        }
+
+        // cboVeterinario muestra "Nombre - Especialidad: X" (NombreConEspecialidad),
+        // pero el grid solo trae el nombre plano (columna "Veterinario"), asi que
+        // buscamos por NombreCompleto en vez de por el texto visible del combo.
+        private void SeleccionarVeterinarioPorNombre(string nombreVeterinarioBuscado)
+        {
+            SeleccionarEnComboPorTexto(cboVeterinario, "NombreCompleto", nombreVeterinarioBuscado);
         }
 
         // cboMascota es distinto: su DataSource es un DataView YA FILTRADO por el

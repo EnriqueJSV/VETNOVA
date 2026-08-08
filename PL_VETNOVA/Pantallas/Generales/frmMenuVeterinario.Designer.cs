@@ -17,7 +17,8 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuVeterinario));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -92,7 +93,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCerrarSesion.Name = "lblNavCerrarSesion";
             this.lblNavCerrarSesion.Size = new System.Drawing.Size(180, 24);
             this.lblNavCerrarSesion.TabIndex = 0;
-            this.lblNavCerrarSesion.Text = "Cerrar sesion";
+            this.lblNavCerrarSesion.Text = "Cerrar sesión";
             this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavCerrarSesion.Click += new System.EventHandler(this.lblNavCerrarSesion_Click);
             // 
@@ -189,6 +190,8 @@ namespace PL_VETNOVA.Pantallas.Generales
             // picLogoSidebar
             // 
             this.picLogoSidebar.BackColor = System.Drawing.Color.Transparent;
+            this.picLogoSidebar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picLogoSidebar.BackgroundImage")));
+            this.picLogoSidebar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picLogoSidebar.Location = new System.Drawing.Point(14, 14);
             this.picLogoSidebar.Name = "picLogoSidebar";
             this.picLogoSidebar.Size = new System.Drawing.Size(24, 24);
@@ -227,14 +230,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -407,6 +410,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.Controls.Add(this.pnlContentWrapper);
             this.Controls.Add(this.pnlSidebar);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 500);
             this.Name = "frmMenuVeterinario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

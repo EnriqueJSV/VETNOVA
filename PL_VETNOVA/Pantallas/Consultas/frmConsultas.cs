@@ -25,6 +25,9 @@ namespace PL_VETNOVA.Pantallas.Consultas
         public cls_Mascotas_DAL obj_Mascotas_Global_DAL = new cls_Mascotas_DAL();
         public cls_Mascotas_BLL obj_Mascotas_Global_BLL = new cls_Mascotas_BLL();
 
+        public cls_Propietarios_DAL obj_Propietarios_Global_DAL = new cls_Propietarios_DAL();
+        public cls_Propietarios_BLL obj_Propietarios_Global_BLL = new cls_Propietarios_BLL();
+
         public cls_Consultas_DAL obj_Consultas_Global_DAL = new cls_Consultas_DAL();
         public cls_Consultas_BLL obj_Consultas_Global_BLL = new cls_Consultas_BLL();
 
@@ -84,13 +87,15 @@ namespace PL_VETNOVA.Pantallas.Consultas
                 return;
             }
 
-            string nombreMascota = cboMascota.Text;
-            string nombreEscapado = nombreMascota.Replace("'", "''");
+            // Ahora filtramos por Id_Mascota (numero), no por el nombre de la
+            // mascota - asi dos mascotas con el mismo nombre pero distinto
+            // propietario ya NO se mezclan entre si.
+            int idMascotaSeleccionada = Convert.ToInt32(cboMascota.SelectedValue);
 
             vistaCitasPendientes.RowFilter =
-                "(Estado = 'Pendiente' OR Estado = 'Confirmada') AND Mascota = '" + nombreEscapado + "'";
+                "(Estado = 'Pendiente' OR Estado = 'Confirmada') AND Id_Mascota = " + idMascotaSeleccionada;
 
-            cargaHistorialConsultas(nombreMascota);
+            cargaHistorialConsultas(idMascotaSeleccionada);
         }
 
         private void btnGuardarConsulta_Click(object sender, EventArgs e)
@@ -123,24 +128,22 @@ namespace PL_VETNOVA.Pantallas.Consultas
                     MessageBox.Show("La consulta se guardó correctamente.", "Consultas",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    string nombreMascotaActual = cboMascota.Text;
+                    // Igual que en cboMascota_SelectedIndexChanged: filtramos
+                    // por Id_Mascota, no por nombre.
+                    int idMascotaActual = Convert.ToInt32(cboMascota.SelectedValue);
 
                     txtDiagnostico.Clear();
                     txtTratamiento.Clear();
                     txtObservaciones.Clear();
 
                     cargaCitasCompleto();     // refresca estados (la cita quedo "Atendida")
-                    cargaConsultasCompleto(); // trae la consulta recien insertada, ya con Fecha/Mascota enlazadas
+                    cargaConsultasCompleto(); // trae la consulta recien insertada, ya con Fecha/Mascota/Id_Mascota enlazadas
 
                     // Se mantiene la mascota elegida y se reaplica su filtro +
                     // historial, ya con los datos frescos.
-                    if (!string.IsNullOrEmpty(nombreMascotaActual))
-                    {
-                        string nombreEscapado = nombreMascotaActual.Replace("'", "''");
-                        vistaCitasPendientes.RowFilter =
-                            "(Estado = 'Pendiente' OR Estado = 'Confirmada') AND Mascota = '" + nombreEscapado + "'";
-                        cargaHistorialConsultas(nombreMascotaActual);
-                    }
+                    vistaCitasPendientes.RowFilter =
+                        "(Estado = 'Pendiente' OR Estado = 'Confirmada') AND Id_Mascota = " + idMascotaActual;
+                    cargaHistorialConsultas(idMascotaActual);
                 }
                 else
                 {
@@ -195,7 +198,9 @@ namespace PL_VETNOVA.Pantallas.Consultas
             }
         }
 
-        // Ordenado alfabeticamente con DataView.Sort, sin buscador.
+        // Ordenado alfabeticamente con DataView.Sort. Ahora tambien muestra el
+        // propietario a la par ("Firulais - Propietario: Juan Perez"), para
+        // distinguir mascotas con el mismo nombre pero distinto dueño.
         private void cargaMascotas()
         {
             try
@@ -204,11 +209,53 @@ namespace PL_VETNOVA.Pantallas.Consultas
 
                 if (obj_Mascotas_Global_DAL.sMsjError == string.Empty && obj_Mascotas_Global_DAL.dtDatos != null)
                 {
-                    DataView vistaMascotas = new DataView(obj_Mascotas_Global_DAL.dtDatos);
+                    DataTable dtMascotas = obj_Mascotas_Global_DAL.dtDatos;
+
+                    // SP_LISTAR_MASCOTAS solo trae Id_Propietario (numero).
+                    // Resolvemos el nombre en memoria contra los propietarios,
+                    // mismo patron que ya usamos en Razas/Mascotas.
+                    obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
+
+                    DataTable dtPropLookup = null;
+                    if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
+                    {
+                        dtPropLookup = obj_Propietarios_Global_DAL.dtDatos;
+                        if (!dtPropLookup.Columns.Contains("NombreCompleto"))
+                        {
+                            dtPropLookup.Columns.Add("NombreCompleto", typeof(string));
+                        }
+                        foreach (DataRow filaProp in dtPropLookup.Rows)
+                        {
+                            filaProp["NombreCompleto"] = filaProp["Nombre"].ToString() + " " + filaProp["Apellido1"].ToString();
+                        }
+                    }
+
+                    if (!dtMascotas.Columns.Contains("NombreConPropietario"))
+                    {
+                        dtMascotas.Columns.Add("NombreConPropietario", typeof(string));
+                    }
+
+                    foreach (DataRow filaMascota in dtMascotas.Rows)
+                    {
+                        string nombrePropietario = string.Empty;
+
+                        if (dtPropLookup != null)
+                        {
+                            DataRow[] filasProp = dtPropLookup.Select("Id_Propietario = " + filaMascota["Id_Propietario"]);
+                            if (filasProp.Length > 0)
+                            {
+                                nombrePropietario = filasProp[0]["NombreCompleto"].ToString();
+                            }
+                        }
+
+                        filaMascota["NombreConPropietario"] = filaMascota["Nombre"].ToString() + " - " + nombrePropietario;
+                    }
+
+                    DataView vistaMascotas = new DataView(dtMascotas);
                     vistaMascotas.Sort = "Nombre ASC";
 
                     cboMascota.DataSource = vistaMascotas;
-                    cboMascota.DisplayMember = "Nombre";
+                    cboMascota.DisplayMember = "NombreConPropietario";
                     cboMascota.ValueMember = "Id_Mascota";
                     cboMascota.SelectedIndex = -1;
                 }
@@ -292,6 +339,10 @@ namespace PL_VETNOVA.Pantallas.Consultas
                     {
                         dtConsultasCompleto.Columns.Add("Mascota", typeof(string));
                     }
+                    if (!dtConsultasCompleto.Columns.Contains("Id_Mascota"))
+                    {
+                        dtConsultasCompleto.Columns.Add("Id_Mascota", typeof(int));
+                    }
 
                     if (obj_Citas_Global_DAL.dtDatos != null)
                     {
@@ -304,6 +355,7 @@ namespace PL_VETNOVA.Pantallas.Consultas
                             {
                                 filaConsulta["Fecha"] = citaCoincidente[0]["Fecha"];
                                 filaConsulta["Mascota"] = citaCoincidente[0]["Mascota"];
+                                filaConsulta["Id_Mascota"] = citaCoincidente[0]["Id_Mascota"];
                             }
                         }
                     }
@@ -322,10 +374,11 @@ namespace PL_VETNOVA.Pantallas.Consultas
             }
         }
 
-        // Ya con Fecha y Mascota puestas en dtConsultasCompleto, esto es
-        // simplemente un DataView filtrado y ordenado. Nada de diccionarios ni
-        // recorridos manuales por cada mascota que se elige.
-        private void cargaHistorialConsultas(string nombreMascota)
+        // Ya con Fecha, Mascota e Id_Mascota puestas en dtConsultasCompleto,
+        // esto es simplemente un DataView filtrado y ordenado. Filtra por
+        // Id_Mascota (numero), asi que dos mascotas con el mismo nombre pero
+        // distinto propietario ya no se mezclan en el historial.
+        private void cargaHistorialConsultas(int idMascota)
         {
             if (dtConsultasCompleto == null)
             {
@@ -333,10 +386,8 @@ namespace PL_VETNOVA.Pantallas.Consultas
                 return;
             }
 
-            string nombreEscapado = nombreMascota.Replace("'", "''");
-
             DataView vistaHistorial = new DataView(dtConsultasCompleto);
-            vistaHistorial.RowFilter = "Mascota = '" + nombreEscapado + "'";
+            vistaHistorial.RowFilter = "Id_Mascota = " + idMascota;
             vistaHistorial.Sort = "Fecha DESC";
 
             dgvHistorial.DataSource = vistaHistorial;

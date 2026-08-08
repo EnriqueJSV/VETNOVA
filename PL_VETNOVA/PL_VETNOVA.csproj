@@ -123,8 +123,14 @@
     <EmbeddedResource Include="Pantallas\Auditoria\frmConsultasAuditoria.resx">
       <DependentUpon>frmConsultasAuditoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Catalogos\frmCatalogos.resx">
+      <DependentUpon>frmCatalogos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Citas\frmCitas.resx">
       <DependentUpon>frmCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Consultas\frmConsultas.resx">
+      <DependentUpon>frmConsultas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Generales\frmInicioSesion.resx">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Generales\frmMenuVeterinario.resx">
       <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Mascotas\frmMascotas.resx">
+      <DependentUpon>frmMascotas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Propietarios\frmPropietarios.resx">
       <DependentUpon>frmPropietarios.cs</DependentUpon>
