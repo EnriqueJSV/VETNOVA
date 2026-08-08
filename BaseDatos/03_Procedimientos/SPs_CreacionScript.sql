@@ -1904,6 +1904,7 @@ AS BEGIN
 	BEGIN TRY
 		SELECT 
 			CIT.Id_Cita,
+			CIT.Id_Mascota,
 			MASC.Nombre AS Mascota,
 			PROP.Nombre + ' ' + PROP.Apellido1 AS Propietario,
 			VET.Nombre + ' ' + VET.Apellido1 AS Veterinario,
@@ -1918,7 +1919,7 @@ AS BEGIN
 		ORDER BY CIT.Fecha DESC, CIT.Hora DESC
 	END TRY
 	BEGIN CATCH
-		SELECT CAST(NULL AS INT) AS Id_Cita, CAST(NULL AS VARCHAR(100)) AS Mascota, CAST(NULL AS VARCHAR(200)) AS Propietario,
+		SELECT CAST(NULL AS INT) AS Id_Cita, CAST(NULL AS INT) AS Id_Mascota, CAST(NULL AS VARCHAR(100)) AS Mascota, CAST(NULL AS VARCHAR(200)) AS Propietario,
 		       CAST(NULL AS VARCHAR(200)) AS Veterinario, CAST(NULL AS VARCHAR(10)) AS Fecha,
 		       CAST(NULL AS VARCHAR(5)) AS Hora, CAST(NULL AS VARCHAR(500)) AS Motivo,
 		       CAST(NULL AS VARCHAR(50)) AS Estado

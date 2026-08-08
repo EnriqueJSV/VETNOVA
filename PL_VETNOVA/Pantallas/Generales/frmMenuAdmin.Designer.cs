@@ -107,7 +107,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCerrarSesion.Name = "lblNavCerrarSesion";
             this.lblNavCerrarSesion.Size = new System.Drawing.Size(180, 24);
             this.lblNavCerrarSesion.TabIndex = 0;
-            this.lblNavCerrarSesion.Text = "Cerrar sesion";
+            this.lblNavCerrarSesion.Text = "Cerrar sesión";
             this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavCerrarSesion.Click += new System.EventHandler(this.lblNavCerrarSesion_Click);
             // 
@@ -146,7 +146,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavAuditoria.Name = "lblNavAuditoria";
             this.lblNavAuditoria.Size = new System.Drawing.Size(180, 32);
             this.lblNavAuditoria.TabIndex = 8;
-            this.lblNavAuditoria.Text = "Auditoria";
+            this.lblNavAuditoria.Text = "Auditoría";
             this.lblNavAuditoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavAuditoria.Click += new System.EventHandler(this.lblNavAuditoria_Click);
             // 
@@ -172,7 +172,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavCatalogos.Name = "lblNavCatalogos";
             this.lblNavCatalogos.Size = new System.Drawing.Size(180, 32);
             this.lblNavCatalogos.TabIndex = 6;
-            this.lblNavCatalogos.Text = "Catalogos";
+            this.lblNavCatalogos.Text = "Catálogos";
             this.lblNavCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblNavCatalogos.Click += new System.EventHandler(this.lblNavCatalogos_Click);
             // 
@@ -395,7 +395,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblProximasCitas.Name = "lblProximasCitas";
             this.lblProximasCitas.Size = new System.Drawing.Size(219, 28);
             this.lblProximasCitas.TabIndex = 4;
-            this.lblProximasCitas.Text = "Proximas citas de hoy";
+            this.lblProximasCitas.Text = "Próximas citas de hoy";
             // 
             // pnlCardVeterinarios
             // 

@@ -18,6 +18,7 @@ namespace PL_VETNOVA.Pantallas.Citas
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCitas));
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblInfoUsuario = new System.Windows.Forms.Label();
@@ -41,7 +42,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.btnGuardarCita = new System.Windows.Forms.Button();
             this.txtMotivo = new System.Windows.Forms.TextBox();
             this.lblMotivo = new System.Windows.Forms.Label();
-            this.dtpHora = new System.Windows.Forms.DateTimePicker();
+            this.cboHora = new System.Windows.Forms.ComboBox();
             this.lblHora = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.lblFecha = new System.Windows.Forms.Label();
@@ -177,7 +178,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.dgvCitas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -221,6 +222,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.colMascota.MinimumWidth = 8;
             this.colMascota.Name = "colMascota";
             this.colMascota.ReadOnly = true;
+            this.colMascota.Width = 150;
             // 
             // colPropietario
             // 
@@ -274,6 +276,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.colEstado.MinimumWidth = 8;
             this.colEstado.Name = "colEstado";
             this.colEstado.ReadOnly = true;
+            this.colEstado.Width = 150;
             // 
             // pnlFormCita
             // 
@@ -283,7 +286,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.pnlFormCita.Controls.Add(this.btnGuardarCita);
             this.pnlFormCita.Controls.Add(this.txtMotivo);
             this.pnlFormCita.Controls.Add(this.lblMotivo);
-            this.pnlFormCita.Controls.Add(this.dtpHora);
+            this.pnlFormCita.Controls.Add(this.cboHora);
             this.pnlFormCita.Controls.Add(this.lblHora);
             this.pnlFormCita.Controls.Add(this.dtpFecha);
             this.pnlFormCita.Controls.Add(this.lblFecha);
@@ -350,15 +353,15 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblMotivo.TabIndex = 13;
             this.lblMotivo.Text = "Motivo";
             // 
-            // dtpHora
+            // cboHora
             // 
-            this.dtpHora.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.dtpHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHora.Location = new System.Drawing.Point(200, 172);
-            this.dtpHora.Name = "dtpHora";
-            this.dtpHora.ShowUpDown = true;
-            this.dtpHora.Size = new System.Drawing.Size(170, 33);
-            this.dtpHora.TabIndex = 12;
+            this.cboHora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHora.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.cboHora.FormattingEnabled = true;
+            this.cboHora.Location = new System.Drawing.Point(200, 172);
+            this.cboHora.Name = "cboHora";
+            this.cboHora.Size = new System.Drawing.Size(170, 33);
+            this.cboHora.TabIndex = 12;
             // 
             // lblHora
             // 
@@ -512,6 +515,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(850, 650);
             this.Name = "frmCitas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -553,7 +557,7 @@ namespace PL_VETNOVA.Pantallas.Citas
         private System.Windows.Forms.Button btnGuardarCita;
         private System.Windows.Forms.TextBox txtMotivo;
         private System.Windows.Forms.Label lblMotivo;
-        private System.Windows.Forms.DateTimePicker dtpHora;
+        private System.Windows.Forms.ComboBox cboHora;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label lblFecha;
