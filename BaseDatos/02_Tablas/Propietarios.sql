@@ -5,6 +5,7 @@ CREATE TABLE Propietarios(
 	
 	Id_Propietario              INT             IDENTITY(1,1)       NOT NULL,
     Id_Tipo_Identificacion      INT             NOT NULL,
+    Identificacion              VARCHAR(100)    NOT NULL,
     Nombre                      VARCHAR(100)    NOT NULL,
     Apellido1                   VARCHAR(100)    NOT NULL,
     Apellido2                   VARCHAR(100)    NOT NULL,

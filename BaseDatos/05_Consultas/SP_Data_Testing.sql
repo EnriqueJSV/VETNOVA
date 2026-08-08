@@ -237,11 +237,11 @@ PRINT 'PROBANDO PROCEDIMIENTOS DE: PROPIETARIOS'
 PRINT '=============================================='
 
 PRINT '-> Creando registro de prueba...'
-INSERT INTO Propietarios (Id_Tipo_Identificacion, Nombre, Apellido1, Apellido2, Telefono, Email, Direccion, Estado) VALUES (1, 'TEST_Nombre', 'TEST_Apellido1', 'TEST_Apellido2', '80000000', 'test.propietario@correo.com', 'Direccion de prueba', 'A')
+INSERT INTO Propietarios (Id_Tipo_Identificacion, Identificacion, Nombre, Apellido1, Apellido2, Telefono, Email, Direccion, Estado) VALUES (1, 'TEST_Identificacion','TEST_Nombre', 'TEST_Apellido1', 'TEST_Apellido2', '80000000', 'test.propietario@correo.com', 'Direccion de prueba', 'A')
 DECLARE @Id_Test_PROPIETARIOS INT = SCOPE_IDENTITY()
 
 PRINT '-> Ejecutando SP_INSERTA_PROPIETARIOS con Email DUPLICADO (debe devolver -1)...'
-EXEC SP_INSERTA_PROPIETARIOS @Id_Tipo_Identificacion=1, @Nombre='TEST_Otro', @Apellido1='TEST_Otro', @Apellido2='TEST_Otro', @Telefono='80000099', @Email='test.propietario@correo.com', @Direccion='Otra direccion', @Estado='A', @IdUsuarioGlobal=1
+EXEC SP_INSERTA_PROPIETARIOS @Id_Tipo_Identificacion=1, @Identificacion='TEST_Otro', @Nombre='TEST_Otro', @Apellido1='TEST_Otro', @Apellido2='TEST_Otro', @Telefono='80000099', @Email='test.propietario@correo.com', @Direccion='Otra direccion', @Estado='A', @IdUsuarioGlobal=1
 
 PRINT '-> Ejecutando SP_LISTAR_PROPIETARIOS...'
 EXEC SP_LISTAR_PROPIETARIOS
@@ -250,13 +250,13 @@ PRINT '-> Ejecutando SP_FILTRAR_PROPIETARIOS (buscando "TEST")...'
 EXEC SP_FILTRAR_PROPIETARIOS @Filtro='TEST'
 
 PRINT '-> Ejecutando SP_ACTUALIZA_PROPIETARIOS sobre el registro REAL (debe funcionar)...'
-EXEC SP_ACTUALIZA_PROPIETARIOS @Id_Propietario=@Id_Test_PROPIETARIOS, @Id_Tipo_Identificacion=1, @Nombre='TEST_Nombre_MOD', @Apellido1='TEST_Apellido1', @Apellido2='TEST_Apellido2', @Telefono='80000001', @Email='test.propietario.mod@correo.com', @Direccion='Direccion modificada', @Estado='I', @IdUsuarioGlobal=1
+EXEC SP_ACTUALIZA_PROPIETARIOS @Id_Propietario=@Id_Test_PROPIETARIOS, @Id_Tipo_Identificacion=1, @Identificacion='TEST_Identificacion_MOD', @Nombre='TEST_Nombre_MOD', @Apellido1='TEST_Apellido1', @Apellido2='TEST_Apellido2', @Telefono='80000001', @Email='test.propietario.mod@correo.com', @Direccion='Direccion modificada', @Estado='I', @IdUsuarioGlobal=1
 
 PRINT '-> Verificando que el UPDATE se aplico correctamente:'
-SELECT Id_Propietario, Nombre, Apellido1, Telefono, Email, Estado FROM Propietarios WHERE Id_Propietario=@Id_Test_PROPIETARIOS
+SELECT Id_Propietario, Identificacion, Nombre, Apellido1, Telefono, Email, Estado FROM Propietarios WHERE Id_Propietario=@Id_Test_PROPIETARIOS
 
 PRINT '-> Ejecutando SP_ACTUALIZA_PROPIETARIOS sobre un Id INEXISTENTE 999999 (debe devolver -2)...'
-EXEC SP_ACTUALIZA_PROPIETARIOS @Id_Propietario=999999, @Id_Tipo_Identificacion=1, @Nombre='TEST_Fantasma', @Apellido1='TEST_Fantasma', @Apellido2='TEST_Fantasma', @Telefono='80000000', @Email='fantasma@correo.com', @Direccion='N/A', @Estado='A', @IdUsuarioGlobal=1
+EXEC SP_ACTUALIZA_PROPIETARIOS @Id_Propietario=999999, @Id_Tipo_Identificacion=1, @Identificacion='TEST_Fantasma', @Nombre='TEST_Fantasma', @Apellido1='TEST_Fantasma', @Apellido2='TEST_Fantasma', @Telefono='80000000', @Email='fantasma@correo.com', @Direccion='N/A', @Estado='A', @IdUsuarioGlobal=1
 
 PRINT '-> Estado de Auditoria (revisa que NO aparezca ningun "Id: 999999"):'
 SELECT * FROM Auditoria ORDER BY Id_Auditoria DESC

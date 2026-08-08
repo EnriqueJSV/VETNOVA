@@ -13,7 +13,8 @@ namespace DAL_VETNOVA.Entidades
         #region Variables privadas
         // Atributos de la tablas
         private int _iId_Propietario, _iId_Tipo_Identificacion;
-        private string _sNombre, _sApellido1, _sApellido2, _sTelefono, _sEmail, _sDireccion, _sEstado;
+        private string _sIdentificacion, _sNombre, _sApellido1, _sApellido2, _sTelefono, _sEmail, _sDireccion, _sEstado;
+        private string _sFiltro;
 
         // Atributos generales en todas las clases
         private string _sValorScalar, _sAxn, _sMsjError;
@@ -36,5 +37,7 @@ namespace DAL_VETNOVA.Entidades
         public string sEmail { get => _sEmail; set => _sEmail = value; }
         public string sDireccion { get => _sDireccion; set => _sDireccion = value; }
         public string sEstado { get => _sEstado; set => _sEstado = value; }
+        public string sFiltro { get => _sFiltro; set => _sFiltro = value; }
+        public string sIdentificacion { get => _sIdentificacion; set => _sIdentificacion = value; }
     }
 }
