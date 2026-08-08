@@ -14,6 +14,7 @@ namespace DAL_VETNOVA.Entidades
         // Atributos de la tablas
         private int _iId_Veterinario, _iId_Tipo_Identificacion, _iId_Especialidad;
         private string _sIdentificacion, _sNombre, _sApellido1, _sApellido2, _sTelefono, _sEmail, _sEstado;
+        private string _sFiltro;
 
         // Atributos generales en todas las clases
         private string _sValorScalar, _sAxn, _sMsjError;
@@ -37,5 +38,6 @@ namespace DAL_VETNOVA.Entidades
         public string sTelefono { get => _sTelefono; set => _sTelefono = value; }
         public string sEmail { get => _sEmail; set => _sEmail = value; }
         public string sEstado { get => _sEstado; set => _sEstado = value; }
+        public string sFiltro { get => _sFiltro; set => _sFiltro = value; }
     }
 }

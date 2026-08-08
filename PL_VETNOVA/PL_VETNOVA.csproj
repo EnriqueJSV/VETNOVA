@@ -124,23 +124,17 @@
     <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.Designer.cs">
       <DependentUpon>frmConsultasTipos_Identificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.Designer.cs">
-      <DependentUpon>frmConsultasUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pantallas\Usuarios\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Veterinarios\frmConsultasVeterinarios.cs">
+    <Compile Include="Pantallas\Veterinarios\frmVeterinarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Veterinarios\frmConsultasVeterinarios.Designer.cs">
-      <DependentUpon>frmConsultasVeterinarios.cs</DependentUpon>
+    <Compile Include="Pantallas\Veterinarios\frmVeterinarios.Designer.cs">
+      <DependentUpon>frmVeterinarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Usuarios\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Veterinarios\frmVeterinarios.resx">
+      <DependentUpon>frmVeterinarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

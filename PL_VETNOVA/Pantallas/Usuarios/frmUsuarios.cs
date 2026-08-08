@@ -40,7 +40,6 @@ namespace PL_VETNOVA.Pantallas.Usuarios
             cargaDatosUsuarioGlobal();
             cargaUsuarios();
             cargarComboRoles();
-
         }
 
         private void frmUsuarios_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,6 +56,7 @@ namespace PL_VETNOVA.Pantallas.Usuarios
 
         private void btnNuevoUsuario_Click(object sender, EventArgs e)
         {
+            lblFormTitulo.Text = "Nuevo Usuario";
             cboRoles.SelectedIndex = 0;
             txtNomUsuario.Text = string.Empty;
             txtEmail.Text = string.Empty;
@@ -84,6 +84,7 @@ namespace PL_VETNOVA.Pantallas.Usuarios
             try
             {
                 pnlFormUsuario.Visible = true;
+                lblFormTitulo.Text = "Editar Usuario";
 
                 /* EVALUAR SI LA TABLA CARGADA EN DGV TIENE FILAS */
                 if (dgvUsuarios.Rows.Count != 0)
@@ -141,22 +142,15 @@ namespace PL_VETNOVA.Pantallas.Usuarios
                     if (dgvUsuarios.SelectedRows[0] != null)
                     {
                         if (MessageBox.Show("Desea eliminar el registro [ " +
-                            dgvUsuarios.SelectedRows[0].Cells[0].Value.ToString() + " - " +
-                            dgvUsuarios.SelectedRows[0].Cells[1].Value.ToString() + " - " +
                             dgvUsuarios.SelectedRows[0].Cells[2].Value.ToString() + " - " +
-                            dgvUsuarios.SelectedRows[0].Cells[3].Value.ToString() + " ] ? ",
+                            dgvUsuarios.SelectedRows[0].Cells[3].Value.ToString() + " - " +
+                            dgvUsuarios.SelectedRows[0].Cells[4].Value.ToString() + " ] ? ",
                             "Confirmacion de proceso",
                             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             /* Establecer propiedades para eliminar el registro */
                             obj_Usuarios_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
                             obj_Usuarios_DAL.iId_Usuario = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[0].Value.ToString());
-                            obj_Usuarios_DAL.iId_Rol = Convert.ToInt32(dgvUsuarios.SelectedRows[0].Cells[1].Value.ToString());
-                            obj_Usuarios_DAL.sNombreRol = dgvUsuarios.SelectedRows[0].Cells[2].Value.ToString();
-                            obj_Usuarios_DAL.sNombre_Usuario = dgvUsuarios.SelectedRows[0].Cells[3].Value.ToString();
-                            obj_Usuarios_DAL.sEmail = dgvUsuarios.SelectedRows[0].Cells[4].Value.ToString();
-                            obj_Usuarios_DAL.sContrasena = dgvUsuarios.SelectedRows[0].Cells[5].Value.ToString();
-                            obj_Usuarios_DAL.sEstado = dgvUsuarios.SelectedRows[0].Cells[6].Value.ToString();
 
                             /* LLAMAR A BLL DEL PROCESO ELIMINAR REGISTROS */
                             obj_Usuarios_BLL.EliminarUsuarios(ref obj_Usuarios_DAL);
@@ -208,6 +202,17 @@ namespace PL_VETNOVA.Pantallas.Usuarios
         {
             try
             {
+
+                if (cboRoles.SelectedIndex == -1 ||
+                   string.IsNullOrEmpty(txtNomUsuario.Text) ||
+                   string.IsNullOrEmpty(txtEmail.Text) ||
+                   string.IsNullOrEmpty(txtContrasena.Text) ||
+                   cboEstado.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debe completar todos los campos del formulario antes de guardar.",
+                        "Informacion del sistema", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 /* Capturar info del formulario y guardarla en el obj*/
                 obj_Usuarios_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal; // Para auditoria

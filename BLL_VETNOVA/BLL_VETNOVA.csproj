@@ -46,9 +46,11 @@
     <Compile Include="Entidades\cls_Auditoria_BLL.cs" />
     <Compile Include="Entidades\cls_Citas_BLL.cs" />
     <Compile Include="Entidades\cls_Consultas_BLL.cs" />
+    <Compile Include="Entidades\cls_Especialidades_BLL.cs" />
     <Compile Include="Entidades\cls_Mascotas_BLL.cs" />
     <Compile Include="Entidades\cls_Propietarios_BLL.cs" />
     <Compile Include="Entidades\cls_Roles_BLL.cs" />
+    <Compile Include="Entidades\cls_Tipos_Identificacion_BLL.cs" />
     <Compile Include="Entidades\cls_Usuarios_BLL.cs" />
     <Compile Include="Entidades\cls_Veterinarios_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +61,5 @@
       <Name>DAL_VETNOVA</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
