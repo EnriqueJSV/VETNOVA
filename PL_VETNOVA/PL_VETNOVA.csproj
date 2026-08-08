@@ -106,23 +106,6 @@
     <Compile Include="Pantallas\Propietarios\frmConsultasPropietarios.Designer.cs">
       <DependentUpon>frmConsultasPropietarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Razas\frmConsultasRazas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Razas\frmConsultasRazas.Designer.cs">
-      <DependentUpon>frmConsultasRazas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Tipos_Identificacion\frmConsultasTipos_Identificacion.Designer.cs">
-      <DependentUpon>frmConsultasTipos_Identificacion.cs</DependentUpon>
-    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Usuarios\frmConsultasUsuarios.Designer.cs">
-      <DependentUpon>frmConsultasUsuarios.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pantallas\Usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>

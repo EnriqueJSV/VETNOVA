@@ -488,7 +488,7 @@ namespace PL_VETNOVA.Pantallas.Veterinarios
             try
             {
 
-                obj_Tipos_Identificacion_BLL.ListarTipos_Identificacion(ref obj_Tipos_Identificacion_DAL);
+                obj_Tipos_Identificacion_BLL.ListarTiposIdentificacion(ref obj_Tipos_Identificacion_DAL);
 
                 if (obj_Tipos_Identificacion_DAL.dtDatos != null)
                 {
