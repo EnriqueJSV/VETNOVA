@@ -76,23 +76,11 @@
     <Compile Include="Pantallas\Generales\frmInicioSesion.Designer.cs">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuAdmin.cs">
+    <Compile Include="Pantallas\Generales\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuAdmin.Designer.cs">
-      <DependentUpon>frmMenuAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuRecepcionista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuRecepcionista.Designer.cs">
-      <DependentUpon>frmMenuRecepcionista.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuVeterinario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pantallas\Generales\frmMenuVeterinario.Designer.cs">
-      <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
+    <Compile Include="Pantallas\Generales\frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Pantallas\Mascotas\frmMascotas.cs">
       <SubType>Form</SubType>
@@ -135,14 +123,8 @@
     <EmbeddedResource Include="Pantallas\Generales\frmInicioSesion.resx">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Generales\frmMenuAdmin.resx">
-      <DependentUpon>frmMenuAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Generales\frmMenuRecepcionista.resx">
-      <DependentUpon>frmMenuRecepcionista.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pantallas\Generales\frmMenuVeterinario.resx">
-      <DependentUpon>frmMenuVeterinario.cs</DependentUpon>
+    <EmbeddedResource Include="Pantallas\Generales\frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Mascotas\frmMascotas.resx">
       <DependentUpon>frmMascotas.cs</DependentUpon>

@@ -44,28 +44,15 @@ namespace PL_VETNOVA.Pantallas.Generales
 
                         MessageBox.Show("Bienvenido al sistema", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        if (obj_Usuarios_DAL.iId_Rol == 1)
-                        {
-                            Pantallas.Generales.frmMenuAdmin obj_Formuario = new Pantallas.Generales.frmMenuAdmin();
-                            this.Hide();
-                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show(this);
-                        }
-                        else if (obj_Usuarios_DAL.iId_Rol == 2)
-                        {
-                            Pantallas.Generales.frmMenuVeterinario obj_Formuario = new Pantallas.Generales.frmMenuVeterinario();
-                            this.Hide();
-                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show(this);
-                        }
-                        else if (obj_Usuarios_DAL.iId_Rol == 3)
-                        {
-                            Pantallas.Generales.frmMenuRecepcionista obj_Formuario = new Pantallas.Generales.frmMenuRecepcionista();
-                            this.Hide();
-                            obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
-                            obj_Formuario.Show(this);
-                        }
-
+                        // Un solo formulario de menu para los 3 roles (antes eran
+                        // frmMenuAdmin/frmMenuVeterinario/frmMenuRecepcionista,
+                        // identicos graficamente y duplicados). frmMenu decide
+                        // internamente, con obj_Usuario_Global_DAL.iId_Rol, que
+                        // labels y contadores mostrar.
+                        Pantallas.Generales.frmMenu obj_Formuario = new Pantallas.Generales.frmMenu();
+                        this.Hide();
+                        obj_Formuario.obj_Usuario_Global_DAL = obj_Usuarios_DAL;
+                        obj_Formuario.Show(this);
                     }
                     else if (obj_Usuarios_DAL.sValorScalar == "-3")
                     {

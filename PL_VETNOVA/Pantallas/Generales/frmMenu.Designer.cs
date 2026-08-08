@@ -1,6 +1,6 @@
-namespace PL_VETNOVA.Pantallas.Generales
+﻿namespace PL_VETNOVA.Pantallas.Generales
 {
-    partial class frmMenuAdmin
+    partial class frmMenu
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -17,8 +17,8 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuAdmin));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -187,7 +187,6 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.lblNavVeterinarios.TabIndex = 5;
             this.lblNavVeterinarios.Text = "Veterinarios";
             this.lblNavVeterinarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblNavVeterinarios.Click += new System.EventHandler(this.lblNavVeterinarios_Click);
             // 
             // lblNavMascotas
             // 
@@ -330,14 +329,14 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -563,7 +562,7 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.pnlTopBarBorde.Size = new System.Drawing.Size(830, 1);
             this.pnlTopBarBorde.TabIndex = 2;
             // 
-            // frmMenuAdmin
+            // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -574,10 +573,10 @@ namespace PL_VETNOVA.Pantallas.Generales
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(900, 500);
-            this.Name = "frmMenuAdmin";
+            this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VetNova - Menú Administrador";
-            this.Load += new System.EventHandler(this.frmMenuAdmin_Load);
+            this.Text = "VetNova - Menú Principal";
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlCerrarSesion.ResumeLayout(false);
             this.pnlNav.ResumeLayout(false);
