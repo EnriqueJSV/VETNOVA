@@ -14,6 +14,7 @@ namespace DAL_VETNOVA.Entidades
         // Atributos de la tablas
         private int _iId_Auditoria, _iId_Usuario;
         private string _sAccion, _sDescripcion;
+        private string _sFiltro;
         private DateTime _dtFechaDesde, _dtFechaHasta;
 
         // Atributos generales en todas las clases
@@ -33,7 +34,6 @@ namespace DAL_VETNOVA.Entidades
         public string sMsjError { get => _sMsjError; set => _sMsjError = value; }
         public DataTable dtDatos { get => _dtDatos; set => _dtDatos = value; }
         public int iId_UsuarioGlobal { get => _iId_UsuarioGlobal; set => _iId_UsuarioGlobal = value; }
-        
-
+        public string sFiltro { get => _sFiltro; set => _sFiltro = value; }
     }
 }

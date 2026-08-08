@@ -196,7 +196,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         private void lblNavConsultas_Click(object sender, EventArgs e)
         {
             Pantallas.Consultas.frmConsultas obj_Formulario = new Pantallas.Consultas.frmConsultas();
-            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; // ajusta el nombre exacto de tu propiedad si es distinto
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL; 
 
             this.Hide();
             obj_Formulario.ShowDialog(this);
