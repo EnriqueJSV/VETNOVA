@@ -33,6 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPropietarios));
             this.dgvPropietarios = new System.Windows.Forms.DataGridView();
+            this.colId_Propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colId_Tipo_Identificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdentificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -64,16 +74,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblPropietario = new System.Windows.Forms.Label();
             this.lblFormTitulo = new System.Windows.Forms.Label();
-            this.colId_Propietario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colId_Tipo_Identificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdentificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colApellido2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropietarios)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlForm.SuspendLayout();
@@ -133,6 +133,99 @@
             this.dgvPropietarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPropietarios.Size = new System.Drawing.Size(1155, 354);
             this.dgvPropietarios.TabIndex = 26;
+            // 
+            // colId_Propietario
+            // 
+            this.colId_Propietario.DataPropertyName = "Id_Propietario";
+            this.colId_Propietario.HeaderText = "Id_Propietario";
+            this.colId_Propietario.MinimumWidth = 8;
+            this.colId_Propietario.Name = "colId_Propietario";
+            this.colId_Propietario.ReadOnly = true;
+            this.colId_Propietario.Visible = false;
+            this.colId_Propietario.Width = 150;
+            // 
+            // colId_Tipo_Identificacion
+            // 
+            this.colId_Tipo_Identificacion.DataPropertyName = "Id_Tipo_Identificacion";
+            this.colId_Tipo_Identificacion.HeaderText = "Id_Tipo_Identificacion";
+            this.colId_Tipo_Identificacion.MinimumWidth = 8;
+            this.colId_Tipo_Identificacion.Name = "colId_Tipo_Identificacion";
+            this.colId_Tipo_Identificacion.ReadOnly = true;
+            this.colId_Tipo_Identificacion.Visible = false;
+            this.colId_Tipo_Identificacion.Width = 150;
+            // 
+            // colIdentificacion
+            // 
+            this.colIdentificacion.DataPropertyName = "Identificacion";
+            this.colIdentificacion.HeaderText = "Identificación";
+            this.colIdentificacion.MinimumWidth = 8;
+            this.colIdentificacion.Name = "colIdentificacion";
+            this.colIdentificacion.ReadOnly = true;
+            this.colIdentificacion.Width = 150;
+            // 
+            // colNombre
+            // 
+            this.colNombre.DataPropertyName = "Nombre";
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.MinimumWidth = 8;
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
+            this.colNombre.Width = 110;
+            // 
+            // colApellido
+            // 
+            this.colApellido.DataPropertyName = "Apellido1";
+            this.colApellido.HeaderText = "Apellido";
+            this.colApellido.MinimumWidth = 8;
+            this.colApellido.Name = "colApellido";
+            this.colApellido.ReadOnly = true;
+            this.colApellido.Width = 110;
+            // 
+            // colApellido2
+            // 
+            this.colApellido2.DataPropertyName = "Apellido2";
+            this.colApellido2.HeaderText = "Apellido2";
+            this.colApellido2.MinimumWidth = 8;
+            this.colApellido2.Name = "colApellido2";
+            this.colApellido2.ReadOnly = true;
+            this.colApellido2.Visible = false;
+            this.colApellido2.Width = 150;
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.DataPropertyName = "Telefono";
+            this.colTelefono.HeaderText = "Teléfono";
+            this.colTelefono.MinimumWidth = 8;
+            this.colTelefono.Name = "colTelefono";
+            this.colTelefono.ReadOnly = true;
+            this.colTelefono.Width = 150;
+            // 
+            // colEmail
+            // 
+            this.colEmail.DataPropertyName = "Email";
+            this.colEmail.HeaderText = "Email";
+            this.colEmail.MinimumWidth = 8;
+            this.colEmail.Name = "colEmail";
+            this.colEmail.ReadOnly = true;
+            this.colEmail.Width = 130;
+            // 
+            // colDireccion
+            // 
+            this.colDireccion.DataPropertyName = "Direccion";
+            this.colDireccion.HeaderText = "Dirección";
+            this.colDireccion.MinimumWidth = 8;
+            this.colDireccion.Name = "colDireccion";
+            this.colDireccion.ReadOnly = true;
+            this.colDireccion.Width = 120;
+            // 
+            // colEstado
+            // 
+            this.colEstado.DataPropertyName = "Estado";
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.MinimumWidth = 8;
+            this.colEstado.Name = "colEstado";
+            this.colEstado.ReadOnly = true;
+            this.colEstado.Width = 99;
             // 
             // btnEliminar
             // 
@@ -254,7 +347,7 @@
             // 
             // pnlForm
             // 
-            this.pnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlForm.Controls.Add(this.txtDireccion);
             this.pnlForm.Controls.Add(this.cboTipos_Identificacion);
@@ -527,99 +620,6 @@
             this.lblFormTitulo.Size = new System.Drawing.Size(186, 28);
             this.lblFormTitulo.TabIndex = 0;
             this.lblFormTitulo.Text = "Nuevo Propietario";
-            // 
-            // colId_Propietario
-            // 
-            this.colId_Propietario.DataPropertyName = "Id_Propietario";
-            this.colId_Propietario.HeaderText = "Id_Propietario";
-            this.colId_Propietario.MinimumWidth = 8;
-            this.colId_Propietario.Name = "colId_Propietario";
-            this.colId_Propietario.ReadOnly = true;
-            this.colId_Propietario.Visible = false;
-            this.colId_Propietario.Width = 150;
-            // 
-            // colId_Tipo_Identificacion
-            // 
-            this.colId_Tipo_Identificacion.DataPropertyName = "Id_Tipo_Identificacion";
-            this.colId_Tipo_Identificacion.HeaderText = "Id_Tipo_Identificacion";
-            this.colId_Tipo_Identificacion.MinimumWidth = 8;
-            this.colId_Tipo_Identificacion.Name = "colId_Tipo_Identificacion";
-            this.colId_Tipo_Identificacion.ReadOnly = true;
-            this.colId_Tipo_Identificacion.Visible = false;
-            this.colId_Tipo_Identificacion.Width = 150;
-            // 
-            // colIdentificacion
-            // 
-            this.colIdentificacion.DataPropertyName = "Identificacion";
-            this.colIdentificacion.HeaderText = "Identificación";
-            this.colIdentificacion.MinimumWidth = 8;
-            this.colIdentificacion.Name = "colIdentificacion";
-            this.colIdentificacion.ReadOnly = true;
-            this.colIdentificacion.Width = 150;
-            // 
-            // colNombre
-            // 
-            this.colNombre.DataPropertyName = "Nombre";
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.MinimumWidth = 8;
-            this.colNombre.Name = "colNombre";
-            this.colNombre.ReadOnly = true;
-            this.colNombre.Width = 110;
-            // 
-            // colApellido
-            // 
-            this.colApellido.DataPropertyName = "Apellido1";
-            this.colApellido.HeaderText = "Apellido";
-            this.colApellido.MinimumWidth = 8;
-            this.colApellido.Name = "colApellido";
-            this.colApellido.ReadOnly = true;
-            this.colApellido.Width = 110;
-            // 
-            // colApellido2
-            // 
-            this.colApellido2.DataPropertyName = "Apellido2";
-            this.colApellido2.HeaderText = "Apellido2";
-            this.colApellido2.MinimumWidth = 8;
-            this.colApellido2.Name = "colApellido2";
-            this.colApellido2.ReadOnly = true;
-            this.colApellido2.Visible = false;
-            this.colApellido2.Width = 150;
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.DataPropertyName = "Telefono";
-            this.colTelefono.HeaderText = "Teléfono";
-            this.colTelefono.MinimumWidth = 8;
-            this.colTelefono.Name = "colTelefono";
-            this.colTelefono.ReadOnly = true;
-            this.colTelefono.Width = 150;
-            // 
-            // colEmail
-            // 
-            this.colEmail.DataPropertyName = "Email";
-            this.colEmail.HeaderText = "Email";
-            this.colEmail.MinimumWidth = 8;
-            this.colEmail.Name = "colEmail";
-            this.colEmail.ReadOnly = true;
-            this.colEmail.Width = 130;
-            // 
-            // colDireccion
-            // 
-            this.colDireccion.DataPropertyName = "Direccion";
-            this.colDireccion.HeaderText = "Dirección";
-            this.colDireccion.MinimumWidth = 8;
-            this.colDireccion.Name = "colDireccion";
-            this.colDireccion.ReadOnly = true;
-            this.colDireccion.Width = 120;
-            // 
-            // colEstado
-            // 
-            this.colEstado.DataPropertyName = "Estado";
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.MinimumWidth = 8;
-            this.colEstado.Name = "colEstado";
-            this.colEstado.ReadOnly = true;
-            this.colEstado.Width = 99;
             // 
             // frmPropietarios
             // 

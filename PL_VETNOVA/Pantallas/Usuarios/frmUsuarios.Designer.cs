@@ -288,7 +288,7 @@
             // 
             // pnlFormUsuario
             // 
-            this.pnlFormUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormUsuario.Controls.Add(this.txtEmail);
             this.pnlFormUsuario.Controls.Add(this.txtContrasena);
