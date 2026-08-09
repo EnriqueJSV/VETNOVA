@@ -201,6 +201,8 @@ namespace PL_VETNOVA.Pantallas.Consultas
         // Ordenado alfabeticamente con DataView.Sort. Ahora tambien muestra el
         // propietario a la par ("Firulais - Propietario: Juan Perez"), para
         // distinguir mascotas con el mismo nombre pero distinto dueño.
+        // RowFilter deja afuera las mascotas Inactivas (Estado = 'I'), mismo
+        // criterio que ya se aplico en frmCitas para Propietarios/Veterinarios/Mascotas.
         private void cargaMascotas()
         {
             try
@@ -252,6 +254,7 @@ namespace PL_VETNOVA.Pantallas.Consultas
                     }
 
                     DataView vistaMascotas = new DataView(dtMascotas);
+                    vistaMascotas.RowFilter = "Estado = 'A'";
                     vistaMascotas.Sort = "Nombre ASC";
 
                     cboMascota.DataSource = vistaMascotas;
