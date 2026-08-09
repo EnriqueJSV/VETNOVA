@@ -472,10 +472,16 @@ namespace PL_VETNOVA.Pantallas.Generales
             RefrescarPanelPrincipal();
         }
 
-        // Nota: lblNavVeterinarios todavia no tiene Click asignado en el
-        // Designer porque ese formulario aun no existe. Cuando se construya,
-        // aqui va su respectivo _Click siguiendo el mismo patron que
-        // lblNavPropietarios_Click / lblNavMascotas_Click.
+        private void lblNavVeterinarios_Click(object sender, EventArgs e)
+        {
+            Pantallas.Veterinarios.frmVeterinarios obj_Formulario = new Pantallas.Veterinarios.frmVeterinarios();
+            obj_Formulario.obj_Usuario_Global_DAL = obj_Usuario_Global_DAL;
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+
+            RefrescarPanelPrincipal();
+        }
 
         // Reune el refresco del dashboard que se repetia despues de cada
         // navegacion, respetando que cards/roles no aplican a todos.
@@ -497,5 +503,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         }
 
         #endregion
+
+        
     }
 }
