@@ -280,7 +280,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             // 
             // pnlFormCita
             // 
-            this.pnlFormCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormCita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormCita.Controls.Add(this.btnCancelarCita);
             this.pnlFormCita.Controls.Add(this.btnGuardarCita);

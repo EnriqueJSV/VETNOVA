@@ -206,7 +206,7 @@
             // 
             // pnlFormEspecie
             // 
-            this.pnlFormEspecie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormEspecie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormEspecie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormEspecie.Controls.Add(this.btnCancelarEspecie);
             this.pnlFormEspecie.Controls.Add(this.btnGuardarEspecie);
@@ -433,7 +433,7 @@
             // 
             // pnlFormRaza
             // 
-            this.pnlFormRaza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormRaza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormRaza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormRaza.Controls.Add(this.btnCancelarRaza);
             this.pnlFormRaza.Controls.Add(this.btnGuardarRaza);
@@ -690,7 +690,7 @@
             // 
             // pnlFormEspecialidad
             // 
-            this.pnlFormEspecialidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormEspecialidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormEspecialidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormEspecialidad.Controls.Add(this.btnCancelarEspecialidad);
             this.pnlFormEspecialidad.Controls.Add(this.btnGuardarEspecialidad);
@@ -915,7 +915,7 @@
             // 
             // pnlFormTipoIdentificacion
             // 
-            this.pnlFormTipoIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormTipoIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormTipoIdentificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormTipoIdentificacion.Controls.Add(this.btnCancelarTipoIdentificacion);
             this.pnlFormTipoIdentificacion.Controls.Add(this.btnGuardarTipoIdentificacion);

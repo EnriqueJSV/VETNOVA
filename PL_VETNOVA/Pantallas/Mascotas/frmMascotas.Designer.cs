@@ -264,6 +264,7 @@
             this.colFechaNacimientoMascota.MinimumWidth = 8;
             this.colFechaNacimientoMascota.Name = "colFechaNacimientoMascota";
             this.colFechaNacimientoMascota.ReadOnly = true;
+            this.colFechaNacimientoMascota.Width = 150;
             // 
             // colPesoMascota
             // 
@@ -294,7 +295,7 @@
             // 
             // pnlFormMascota
             // 
-            this.pnlFormMascota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            this.pnlFormMascota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.pnlFormMascota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormMascota.Controls.Add(this.btnCancelarMascota);
             this.pnlFormMascota.Controls.Add(this.btnGuardarMascota);
@@ -384,12 +385,12 @@
             // nudPesoMascota
             // 
             this.nudPesoMascota.DecimalPlaces = 2;
+            this.nudPesoMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.nudPesoMascota.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.nudPesoMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.nudPesoMascota.Location = new System.Drawing.Point(14, 228);
             this.nudPesoMascota.Maximum = new decimal(new int[] {
             500,
