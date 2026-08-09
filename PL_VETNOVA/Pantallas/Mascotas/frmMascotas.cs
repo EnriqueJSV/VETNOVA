@@ -119,6 +119,7 @@ namespace PL_VETNOVA.Pantallas.Mascotas
                     fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
                 }
 
+                dtProp.DefaultView.RowFilter = "Estado = 'A'";
                 dtProp.DefaultView.Sort = "NombreCompleto ASC";
 
                 cboPropietarioMascota.DataSource = dtProp.DefaultView;
@@ -131,6 +132,8 @@ namespace PL_VETNOVA.Pantallas.Mascotas
             obj_Especies_Global_BLL.ListarEspecies(ref obj_Especies_Global_DAL);
             if (obj_Especies_Global_DAL.sMsjError == string.Empty && obj_Especies_Global_DAL.dtDatos != null)
             {
+                obj_Especies_Global_DAL.dtDatos.DefaultView.RowFilter = "Estado = 'A'";
+
                 cboEspecieMascota.DataSource = obj_Especies_Global_DAL.dtDatos;
                 cboEspecieMascota.DisplayMember = "Especie";
                 cboEspecieMascota.ValueMember = "Id_Especie";
@@ -143,6 +146,7 @@ namespace PL_VETNOVA.Pantallas.Mascotas
             if (obj_Razas_Global_DAL.sMsjError == string.Empty && obj_Razas_Global_DAL.dtDatos != null)
             {
                 dtRazasCompleto = obj_Razas_Global_DAL.dtDatos;
+                dtRazasCompleto.DefaultView.RowFilter = "Estado = 'A'";
             }
         }
 
@@ -159,7 +163,10 @@ namespace PL_VETNOVA.Pantallas.Mascotas
             int idEspecieSeleccionada = Convert.ToInt32(cboEspecieMascota.SelectedValue);
 
             DataView vista = new DataView(dtRazasCompleto);
-            vista.RowFilter = "Id_Especie = " + idEspecieSeleccionada;
+
+            // Filtrar por especie y solo razas activas
+            vista.RowFilter = "Id_Especie = " + idEspecieSeleccionada + " AND Estado = 'A'";
+            vista.Sort = "Raza ASC";
 
             cboRazaMascota.DataSource = vista;
             cboRazaMascota.DisplayMember = "Raza";
