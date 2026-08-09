@@ -18,7 +18,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -103,13 +103,15 @@
             this.lblNavCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavCerrarSesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavCerrarSesion.Location = new System.Drawing.Point(18, 10);
+            this.lblNavCerrarSesion.Location = new System.Drawing.Point(-1, 0);
             this.lblNavCerrarSesion.Name = "lblNavCerrarSesion";
-            this.lblNavCerrarSesion.Size = new System.Drawing.Size(180, 24);
+            this.lblNavCerrarSesion.Size = new System.Drawing.Size(220, 43);
             this.lblNavCerrarSesion.TabIndex = 0;
             this.lblNavCerrarSesion.Text = "Cerrar sesión";
-            this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavCerrarSesion.Click += new System.EventHandler(this.lblNavCerrarSesion_Click);
+            this.lblNavCerrarSesion.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavCerrarSesion.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // pnlNav
             // 
@@ -142,38 +144,42 @@
             this.lblNavAuditoria.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavAuditoria.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavAuditoria.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavAuditoria.Location = new System.Drawing.Point(18, 296);
+            this.lblNavAuditoria.Location = new System.Drawing.Point(0, 296);
             this.lblNavAuditoria.Name = "lblNavAuditoria";
-            this.lblNavAuditoria.Size = new System.Drawing.Size(180, 32);
+            this.lblNavAuditoria.Size = new System.Drawing.Size(220, 32);
             this.lblNavAuditoria.TabIndex = 8;
             this.lblNavAuditoria.Text = "Auditoría";
-            this.lblNavAuditoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavAuditoria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavAuditoria.Click += new System.EventHandler(this.lblNavAuditoria_Click);
+            this.lblNavAuditoria.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavAuditoria.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavUsuarios
             // 
             this.lblNavUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavUsuarios.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavUsuarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavUsuarios.Location = new System.Drawing.Point(18, 260);
+            this.lblNavUsuarios.Location = new System.Drawing.Point(0, 260);
             this.lblNavUsuarios.Name = "lblNavUsuarios";
-            this.lblNavUsuarios.Size = new System.Drawing.Size(180, 32);
+            this.lblNavUsuarios.Size = new System.Drawing.Size(220, 32);
             this.lblNavUsuarios.TabIndex = 7;
             this.lblNavUsuarios.Text = "Usuarios";
-            this.lblNavUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavUsuarios.Click += new System.EventHandler(this.lblNavUsuarios_Click);
+            this.lblNavUsuarios.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavUsuarios.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavCatalogos
             // 
             this.lblNavCatalogos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavCatalogos.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavCatalogos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavCatalogos.Location = new System.Drawing.Point(18, 224);
+            this.lblNavCatalogos.Location = new System.Drawing.Point(0, 224);
             this.lblNavCatalogos.Name = "lblNavCatalogos";
-            this.lblNavCatalogos.Size = new System.Drawing.Size(180, 32);
+            this.lblNavCatalogos.Size = new System.Drawing.Size(220, 32);
             this.lblNavCatalogos.TabIndex = 6;
             this.lblNavCatalogos.Text = "Catálogos";
-            this.lblNavCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavCatalogos.Click += new System.EventHandler(this.lblNavCatalogos_Click);
             // 
             // lblNavVeterinarios
@@ -181,77 +187,89 @@
             this.lblNavVeterinarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavVeterinarios.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavVeterinarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavVeterinarios.Location = new System.Drawing.Point(18, 188);
+            this.lblNavVeterinarios.Location = new System.Drawing.Point(0, 188);
             this.lblNavVeterinarios.Name = "lblNavVeterinarios";
-            this.lblNavVeterinarios.Size = new System.Drawing.Size(180, 32);
+            this.lblNavVeterinarios.Size = new System.Drawing.Size(220, 32);
             this.lblNavVeterinarios.TabIndex = 5;
             this.lblNavVeterinarios.Text = "Veterinarios";
-            this.lblNavVeterinarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavVeterinarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavVeterinarios.Click += new System.EventHandler(this.lblNavVeterinarios_Click);
+            this.lblNavVeterinarios.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavVeterinarios.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavMascotas
             // 
             this.lblNavMascotas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavMascotas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavMascotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavMascotas.Location = new System.Drawing.Point(18, 152);
+            this.lblNavMascotas.Location = new System.Drawing.Point(3, 152);
             this.lblNavMascotas.Name = "lblNavMascotas";
-            this.lblNavMascotas.Size = new System.Drawing.Size(180, 32);
+            this.lblNavMascotas.Size = new System.Drawing.Size(217, 32);
             this.lblNavMascotas.TabIndex = 4;
             this.lblNavMascotas.Text = "Mascotas";
-            this.lblNavMascotas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavMascotas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavMascotas.Click += new System.EventHandler(this.lblNavMascotas_Click);
+            this.lblNavMascotas.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavMascotas.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavPropietarios
             // 
             this.lblNavPropietarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavPropietarios.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavPropietarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavPropietarios.Location = new System.Drawing.Point(18, 116);
+            this.lblNavPropietarios.Location = new System.Drawing.Point(0, 116);
             this.lblNavPropietarios.Name = "lblNavPropietarios";
-            this.lblNavPropietarios.Size = new System.Drawing.Size(180, 32);
+            this.lblNavPropietarios.Size = new System.Drawing.Size(220, 32);
             this.lblNavPropietarios.TabIndex = 3;
             this.lblNavPropietarios.Text = "Propietarios";
-            this.lblNavPropietarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavPropietarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavPropietarios.Click += new System.EventHandler(this.lblNavPropietarios_Click);
+            this.lblNavPropietarios.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavPropietarios.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavConsultas
             // 
             this.lblNavConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavConsultas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavConsultas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavConsultas.Location = new System.Drawing.Point(18, 80);
+            this.lblNavConsultas.Location = new System.Drawing.Point(0, 80);
             this.lblNavConsultas.Name = "lblNavConsultas";
-            this.lblNavConsultas.Size = new System.Drawing.Size(180, 32);
+            this.lblNavConsultas.Size = new System.Drawing.Size(220, 32);
             this.lblNavConsultas.TabIndex = 2;
             this.lblNavConsultas.Text = "Consultas";
-            this.lblNavConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavConsultas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavConsultas.Click += new System.EventHandler(this.lblNavConsultas_Click);
+            this.lblNavConsultas.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavConsultas.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavCitas
             // 
             this.lblNavCitas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavCitas.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblNavCitas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblNavCitas.Location = new System.Drawing.Point(18, 44);
+            this.lblNavCitas.Location = new System.Drawing.Point(0, 44);
             this.lblNavCitas.Name = "lblNavCitas";
-            this.lblNavCitas.Size = new System.Drawing.Size(180, 32);
+            this.lblNavCitas.Size = new System.Drawing.Size(220, 32);
             this.lblNavCitas.TabIndex = 1;
             this.lblNavCitas.Text = "Citas";
-            this.lblNavCitas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavCitas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblNavCitas.Click += new System.EventHandler(this.lblNavCitas_Click);
+            this.lblNavCitas.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavCitas.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // lblNavDashboard
             // 
             this.lblNavDashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNavDashboard.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblNavDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(28)))));
-            this.lblNavDashboard.Location = new System.Drawing.Point(18, 8);
+            this.lblNavDashboard.Location = new System.Drawing.Point(0, 8);
             this.lblNavDashboard.Name = "lblNavDashboard";
-            this.lblNavDashboard.Size = new System.Drawing.Size(180, 32);
+            this.lblNavDashboard.Size = new System.Drawing.Size(220, 32);
             this.lblNavDashboard.TabIndex = 0;
             this.lblNavDashboard.Text = "Panel principal";
-            this.lblNavDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNavDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNavDashboard.MouseEnter += new System.EventHandler(this.lblNav_MouseEnter);
+            this.lblNavDashboard.MouseLeave += new System.EventHandler(this.lblNav_MouseLeave);
             // 
             // pnlSidebarHeader
             // 
@@ -330,14 +348,14 @@
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -393,7 +411,7 @@
             this.lblProximasCitas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblProximasCitas.Location = new System.Drawing.Point(20, 170);
             this.lblProximasCitas.Name = "lblProximasCitas";
-            this.lblProximasCitas.Size = new System.Drawing.Size(156, 19);
+            this.lblProximasCitas.Size = new System.Drawing.Size(219, 28);
             this.lblProximasCitas.TabIndex = 4;
             this.lblProximasCitas.Text = "Próximas citas de hoy";
             // 
@@ -413,7 +431,7 @@
             this.lblCardVeterinariosValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardVeterinariosValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardVeterinariosValor.Name = "lblCardVeterinariosValor";
-            this.lblCardVeterinariosValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardVeterinariosValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardVeterinariosValor.TabIndex = 1;
             this.lblCardVeterinariosValor.Text = "0";
             // 
@@ -424,7 +442,7 @@
             this.lblCardVeterinariosTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardVeterinariosTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardVeterinariosTitulo.Name = "lblCardVeterinariosTitulo";
-            this.lblCardVeterinariosTitulo.Size = new System.Drawing.Size(108, 15);
+            this.lblCardVeterinariosTitulo.Size = new System.Drawing.Size(157, 23);
             this.lblCardVeterinariosTitulo.TabIndex = 0;
             this.lblCardVeterinariosTitulo.Text = "Veterinarios activos";
             // 
@@ -444,7 +462,7 @@
             this.lblCardPropietariosValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardPropietariosValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardPropietariosValor.Name = "lblCardPropietariosValor";
-            this.lblCardPropietariosValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardPropietariosValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardPropietariosValor.TabIndex = 1;
             this.lblCardPropietariosValor.Text = "0";
             // 
@@ -455,7 +473,7 @@
             this.lblCardPropietariosTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardPropietariosTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardPropietariosTitulo.Name = "lblCardPropietariosTitulo";
-            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(110, 15);
+            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(158, 23);
             this.lblCardPropietariosTitulo.TabIndex = 0;
             this.lblCardPropietariosTitulo.Text = "Propietarios activos";
             // 
@@ -475,7 +493,7 @@
             this.lblCardMascotasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardMascotasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardMascotasValor.Name = "lblCardMascotasValor";
-            this.lblCardMascotasValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardMascotasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardMascotasValor.TabIndex = 1;
             this.lblCardMascotasValor.Text = "0";
             // 
@@ -486,7 +504,7 @@
             this.lblCardMascotasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardMascotasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardMascotasTitulo.Name = "lblCardMascotasTitulo";
-            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(96, 15);
+            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(137, 23);
             this.lblCardMascotasTitulo.TabIndex = 0;
             this.lblCardMascotasTitulo.Text = "Mascotas activas";
             // 
@@ -506,7 +524,7 @@
             this.lblCardCitasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardCitasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardCitasValor.Name = "lblCardCitasValor";
-            this.lblCardCitasValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardCitasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardCitasValor.TabIndex = 1;
             this.lblCardCitasValor.Text = "0";
             // 
@@ -517,7 +535,7 @@
             this.lblCardCitasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardCitasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardCitasTitulo.Name = "lblCardCitasTitulo";
-            this.lblCardCitasTitulo.Size = new System.Drawing.Size(56, 15);
+            this.lblCardCitasTitulo.Size = new System.Drawing.Size(80, 23);
             this.lblCardCitasTitulo.TabIndex = 0;
             this.lblCardCitasTitulo.Text = "Citas hoy";
             // 
@@ -550,7 +568,7 @@
             this.lblTituloPantalla.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTituloPantalla.Location = new System.Drawing.Point(20, 14);
             this.lblTituloPantalla.Name = "lblTituloPantalla";
-            this.lblTituloPantalla.Size = new System.Drawing.Size(111, 20);
+            this.lblTituloPantalla.Size = new System.Drawing.Size(166, 30);
             this.lblTituloPantalla.TabIndex = 0;
             this.lblTituloPantalla.Text = "Panel principal";
             // 
@@ -565,7 +583,7 @@
             // 
             // frmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1050, 650);

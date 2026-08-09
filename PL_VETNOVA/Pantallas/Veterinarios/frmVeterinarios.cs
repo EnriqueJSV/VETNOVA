@@ -453,12 +453,20 @@ namespace PL_VETNOVA.Pantallas.Veterinarios
                 {
                     if (obj_Especialidades_DAL.dtDatos.Rows.Count != 0)
                     {
+                        // Crear una vista filtrando solo las especialidades activas
+                        DataView vista = obj_Especialidades_DAL.dtDatos.DefaultView;
+                        vista.RowFilter = "Estado = 'A'";
+
                         cboEspecialidades.ValueMember = "Id_Especialidad";
                         cboEspecialidades.DisplayMember = "Especialidad";
 
-                        cboEspecialidades.DataSource = obj_Especialidades_DAL.dtDatos;
+                        cboEspecialidades.DataSource = vista;
 
-                        cboEspecialidades.SelectedIndex = 0;
+                        if (vista.Count > 0)
+                        {
+                            cboEspecialidades.SelectedIndex = 0;
+                        }
+                        
                     }
                     else
                     {

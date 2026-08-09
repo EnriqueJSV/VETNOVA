@@ -96,6 +96,7 @@ AS BEGIN
 	END CATCH
 
 END
+GO
 
 USE VetNova
 GO
