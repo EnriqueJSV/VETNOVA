@@ -12,7 +12,8 @@ namespace DAL_VETNOVA.Entidades
 
         #region Variables privadas
         // Atributos de la tablas
-        private int _iId_Mascota, _iId_Propietario, _iId_Raza, _iPeso;
+        private int _iId_Mascota, _iId_Propietario, _iId_Raza;
+        private decimal _dePeso; // Peso admite decimales (ej. 7.5 kg) - antes era int y truncaba
         private string _sNombre, _sSexo, _sColor, _sEstado;
         private DateTime _dtFecha_Nacimiento;
 
@@ -31,7 +32,7 @@ namespace DAL_VETNOVA.Entidades
         public int iId_Mascota { get => _iId_Mascota; set => _iId_Mascota = value; }
         public int iId_Propietario { get => _iId_Propietario; set => _iId_Propietario = value; }
         public int iId_Raza { get => _iId_Raza; set => _iId_Raza = value; }
-        public int iPeso { get => _iPeso; set => _iPeso = value; }
+        public decimal dePeso { get => _dePeso; set => _dePeso = value; }
         public string sNombre { get => _sNombre; set => _sNombre = value; }
         public string sSexo { get => _sSexo; set => _sSexo = value; }
         public string sColor { get => _sColor; set => _sColor = value; }

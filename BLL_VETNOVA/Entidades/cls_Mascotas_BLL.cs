@@ -3,6 +3,7 @@ using DAL_VETNOVA.BD;
 using DAL_VETNOVA.Entidades;
 using System;
 using System.Configuration;
+using System.Globalization;
 
 namespace BLL_VETNOVA.Entidades
 {
@@ -87,7 +88,11 @@ namespace BLL_VETNOVA.Entidades
                 obj_BD_DAL.DT_Param.Rows.Add("@Nombre", "6", obj_Mascotas_DAL.sNombre);
                 obj_BD_DAL.DT_Param.Rows.Add("@Sexo", "6", obj_Mascotas_DAL.sSexo);
                 obj_BD_DAL.DT_Param.Rows.Add("@Fecha_Nacimiento", "8", obj_Mascotas_DAL.dtFecha_Nacimiento.ToString("yyyy-MM-dd"));
-                obj_BD_DAL.DT_Param.Rows.Add("@Peso", "6", obj_Mascotas_DAL.iPeso.ToString());
+                // CultureInfo.InvariantCulture asegura que el decimal siempre se mande con
+                // punto (ej. "7.5"), sin importar la configuracion regional de la maquina.
+                // El SP recibe @Peso como VARCHAR y SQL Server convierte implicitamente
+                // usando siempre punto como separador decimal.
+                obj_BD_DAL.DT_Param.Rows.Add("@Peso", "6", obj_Mascotas_DAL.dePeso.ToString(CultureInfo.InvariantCulture));
                 obj_BD_DAL.DT_Param.Rows.Add("@Color", "6", obj_Mascotas_DAL.sColor);
                 obj_BD_DAL.DT_Param.Rows.Add("@Estado", "4", obj_Mascotas_DAL.sEstado);
                 obj_BD_DAL.DT_Param.Rows.Add("@IdUsuarioGlobal", "1", obj_Mascotas_DAL.iId_UsuarioGlobal);
@@ -124,7 +129,8 @@ namespace BLL_VETNOVA.Entidades
                 obj_BD_DAL.DT_Param.Rows.Add("@Nombre", "6", obj_Mascotas_DAL.sNombre);
                 obj_BD_DAL.DT_Param.Rows.Add("@Sexo", "6", obj_Mascotas_DAL.sSexo);
                 obj_BD_DAL.DT_Param.Rows.Add("@Fecha_Nacimiento", "8", obj_Mascotas_DAL.dtFecha_Nacimiento.ToString("yyyy-MM-dd"));
-                obj_BD_DAL.DT_Param.Rows.Add("@Peso", "6", obj_Mascotas_DAL.iPeso.ToString());
+                // Mismo motivo que en InsertarMascota: forzamos punto decimal.
+                obj_BD_DAL.DT_Param.Rows.Add("@Peso", "6", obj_Mascotas_DAL.dePeso.ToString(CultureInfo.InvariantCulture));
                 obj_BD_DAL.DT_Param.Rows.Add("@Color", "6", obj_Mascotas_DAL.sColor);
                 obj_BD_DAL.DT_Param.Rows.Add("@Estado", "4", obj_Mascotas_DAL.sEstado);
                 obj_BD_DAL.DT_Param.Rows.Add("@IdUsuarioGlobal", "1", obj_Mascotas_DAL.iId_UsuarioGlobal);

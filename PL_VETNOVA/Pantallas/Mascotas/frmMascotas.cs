@@ -2,6 +2,7 @@
 using DAL_VETNOVA.Entidades;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace PL_VETNOVA.Pantallas.Mascotas
@@ -290,7 +291,7 @@ namespace PL_VETNOVA.Pantallas.Mascotas
             obj_Mascotas_Global_DAL.sNombre = txtNombreMascota.Text.Trim();
             obj_Mascotas_Global_DAL.sSexo = cboSexoMascota.SelectedItem.ToString();
             obj_Mascotas_Global_DAL.dtFecha_Nacimiento = dtpFechaNacimientoMascota.Value;
-            obj_Mascotas_Global_DAL.iPeso = (int)nudPesoMascota.Value;
+            obj_Mascotas_Global_DAL.dePeso = nudPesoMascota.Value;
             obj_Mascotas_Global_DAL.sColor = txtColorMascota.Text.Trim();
             obj_Mascotas_Global_DAL.sEstado = sEstado;
             obj_Mascotas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
@@ -373,7 +374,15 @@ namespace PL_VETNOVA.Pantallas.Mascotas
             txtNombreMascota.Text = fila["Nombre"].ToString();
             cboSexoMascota.SelectedItem = fila["Sexo"].ToString();
             dtpFechaNacimientoMascota.Value = Convert.ToDateTime(fila["Fecha_Nacimiento"]);
-            nudPesoMascota.Value = Convert.ToDecimal(fila["Peso"]);
+
+            // Antes: Convert.ToDecimal(fila["Peso"]) directo -> tronaba con
+            // FormatException cuando el valor venia con decimales (ej. "7.5")
+            // porque la cultura activa no coincidia con el separador decimal.
+            // Se fuerza CultureInfo.InvariantCulture para el parseo. Peso ya
+            // se maneja como decimal en todo el flujo (dePeso en el DAL), asi
+            // que aca se preserva la precision sin redondear.
+            nudPesoMascota.Value = Convert.ToDecimal(fila["Peso"], CultureInfo.InvariantCulture);
+
             txtColorMascota.Text = fila["Color"].ToString();
             cboEstadoMascota.SelectedItem = fila["Estado"].ToString() == "A" ? "Activo" : "Inactivo";
 

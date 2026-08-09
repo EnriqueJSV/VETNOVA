@@ -178,6 +178,10 @@ namespace PL_VETNOVA.Pantallas.Propietarios
             configurarGridPropietarios();
         }
 
+        // cboTipos_Identificacion ahora se llena desde un DataView con
+        // RowFilter = "Estado = 'A'" en vez de bindear el DataTable directo,
+        // mismo criterio ya aplicado en frmCitas/frmMascotas/frmConsultas para
+        // no ofrecer catalogos/registros inactivos en los combos de seleccion.
         private void cargarComboTiposIdentificacion()
         {
             try
@@ -189,10 +193,21 @@ namespace PL_VETNOVA.Pantallas.Propietarios
                 {
                     if (obj_Tipos_Identificacion_DAL.dtDatos.Rows.Count != 0)
                     {
+                        DataView vistaTiposActivos = new DataView(obj_Tipos_Identificacion_DAL.dtDatos);
+                        vistaTiposActivos.RowFilter = "Estado = 'A'";
+
+                        if (vistaTiposActivos.Count == 0)
+                        {
+                            MessageBox.Show("No hay tipos de identificación activos disponibles.",
+                                "Informacion del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cboTipos_Identificacion.DataSource = null;
+                            return;
+                        }
+
                         cboTipos_Identificacion.ValueMember = "Id_Tipo_Identificacion";
                         cboTipos_Identificacion.DisplayMember = "Tipo_Identificacion";
 
-                        cboTipos_Identificacion.DataSource = obj_Tipos_Identificacion_DAL.dtDatos;
+                        cboTipos_Identificacion.DataSource = vistaTiposActivos;
 
                         cboTipos_Identificacion.SelectedIndex = 0;
                     }
@@ -291,6 +306,11 @@ namespace PL_VETNOVA.Pantallas.Propietarios
 
                         obj_Propietarios_DAL.sAxn = "A"; // I = Insertar, A = Actualizar, E = Eliminar, L = Inicio Sesion, X = Cerrar Sesion
 
+                        // OJO: cboTipos_Identificacion ahora solo trae tipos
+                        // Activos. Si este propietario tiene un tipo de
+                        // identificacion que despues se desactivo, SelectedValue
+                        // no lo va a encontrar en la lista y el combo va a
+                        // quedar sin seleccion.
                         cboTipos_Identificacion.SelectedValue = obj_Propietarios_DAL.iId_Tipo_Identificacion;
                         txtIdentificacion.Text = obj_Propietarios_DAL.sIdentificacion;
                         txtNombre.Text = obj_Propietarios_DAL.sNombre;

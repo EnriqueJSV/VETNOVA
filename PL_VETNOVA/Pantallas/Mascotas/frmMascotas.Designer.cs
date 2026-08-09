@@ -383,6 +383,12 @@
             // 
             // nudPesoMascota
             // 
+            this.nudPesoMascota.DecimalPlaces = 2;
+            this.nudPesoMascota.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nudPesoMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.nudPesoMascota.Location = new System.Drawing.Point(14, 228);
             this.nudPesoMascota.Maximum = new decimal(new int[] {

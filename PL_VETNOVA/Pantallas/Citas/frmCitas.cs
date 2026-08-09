@@ -41,7 +41,7 @@ namespace PL_VETNOVA.Pantallas.Citas
         public cls_Mascotas_DAL obj_Mascotas_Global_DAL = new cls_Mascotas_DAL();
         public cls_Mascotas_BLL obj_Mascotas_Global_BLL = new cls_Mascotas_BLL();
 
-        private DataTable dtMascotasCompleto; // todas las mascotas, para filtrar por propietario en memoria
+        private DataTable dtMascotasCompleto; // todas las mascotas (activas e inactivas), para filtrar por propietario en memoria
         private DataView vistaCitas; // vista filtrable sobre todas las citas, para filtrar en memoria sin ir a la BD
 
         // Si es null, pnlFormCita esta en modo "Nueva cita" (INSERT).
@@ -207,6 +207,11 @@ namespace PL_VETNOVA.Pantallas.Citas
             // cboPropietario_SelectedIndexChanged, que filtra cboMascota; recien
             // ahi buscamos la mascota por su Nombre dentro de esa lista ya
             // filtrada (evita confundir mascotas con el mismo nombre de OTRO dueño).
+            //
+            // OJO: como los combos ahora solo muestran activos (Estado = 1), si la
+            // cita quedó asociada a un propietario/mascota/veterinario que
+            // DESPUES se desactivó, estas búsquedas no lo van a encontrar y el
+            // combo correspondiente va a quedar sin selección (-1).
             SeleccionarEnComboPorTexto(cboPropietario, "NombreCompleto", nombrePropietario);
             SeleccionarMascotaPorNombre(nombreMascota);
             SeleccionarVeterinarioPorNombre(nombreVeterinario);
@@ -345,7 +350,7 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         private void cargaCombos()
         {
-            // Propietarios (ordenados alfabeticamente por NombreCompleto)
+            // Propietarios (ordenados alfabeticamente por NombreCompleto, solo Activos)
             obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
             if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
             {
@@ -360,7 +365,10 @@ namespace PL_VETNOVA.Pantallas.Citas
                 }
 
                 // DefaultView.Sort ordena sin tener que tocar el SP ni pedir
-                // otra vez a la base de datos.
+                // otra vez a la base de datos. RowFilter oculta los inactivos
+                // (mismo principio que el filtrado en memoria que ya usa el form).
+                // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
+                dtProp.DefaultView.RowFilter = "Estado = 'A'";
                 dtProp.DefaultView.Sort = "NombreCompleto ASC";
 
                 cboPropietario.DataSource = dtProp.DefaultView;
@@ -369,7 +377,7 @@ namespace PL_VETNOVA.Pantallas.Citas
                 cboPropietario.SelectedIndex = -1;
             }
 
-            // Veterinarios (con su especialidad a la par, ej. "Ana Ruiz - Especialidad: Cirugia general")
+            // Veterinarios (con su especialidad a la par, ej. "Ana Ruiz - Especialidad: Cirugia general"), solo Activos
             obj_Veterinarios_Global_BLL.ListarVeterinarios(ref obj_Veterinarios_Global_DAL);
             if (obj_Veterinarios_Global_DAL.sMsjError == string.Empty && obj_Veterinarios_Global_DAL.dtDatos != null)
             {
@@ -388,6 +396,8 @@ namespace PL_VETNOVA.Pantallas.Citas
                     fila["NombreConEspecialidad"] = fila["NombreCompleto"].ToString() + " - " + fila["Especialidad"].ToString();
                 }
 
+                // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
+                dtVet.DefaultView.RowFilter = "Estado = 'A'";
                 dtVet.DefaultView.Sort = "NombreCompleto ASC";
 
                 cboVeterinario.DataSource = dtVet.DefaultView;
@@ -396,8 +406,10 @@ namespace PL_VETNOVA.Pantallas.Citas
                 cboVeterinario.SelectedIndex = -1;
             }
 
-            // Mascotas: se guardan TODAS en memoria; cboMascota se llena luego,
-            // filtrado, cuando el usuario elija un propietario (o al Modificar)
+            // Mascotas: se guardan TODAS en memoria (activas e inactivas); el
+            // filtro de "solo Activas" se aplica en cboPropietario_SelectedIndexChanged,
+            // combinado con el filtro por propietario, para no perder la
+            // referencia completa que se necesita en btnModificar_Click.
             obj_Mascotas_Global_BLL.ListarMascotas(ref obj_Mascotas_Global_DAL);
             if (obj_Mascotas_Global_DAL.sMsjError == string.Empty && obj_Mascotas_Global_DAL.dtDatos != null)
             {
@@ -463,8 +475,11 @@ namespace PL_VETNOVA.Pantallas.Citas
 
             int idPropietarioSeleccionado = Convert.ToInt32(cboPropietario.SelectedValue);
 
+            // Se combina el filtro por propietario con "solo mascotas Activas"
+            // para que en el formulario de Nueva/Editar cita no se puedan elegir
+            // mascotas dadas de baja. Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
             DataView vista = new DataView(dtMascotasCompleto);
-            vista.RowFilter = "Id_Propietario = " + idPropietarioSeleccionado;
+            vista.RowFilter = "Id_Propietario = " + idPropietarioSeleccionado + " AND Estado = 'A'";
 
             cboMascota.DataSource = vista;
             cboMascota.DisplayMember = "Nombre";
