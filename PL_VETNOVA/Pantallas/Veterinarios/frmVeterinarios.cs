@@ -502,12 +502,19 @@ namespace PL_VETNOVA.Pantallas.Veterinarios
                 {
                     if (obj_Tipos_Identificacion_DAL.dtDatos.Rows.Count != 0)
                     {
+                        // Crear una vista filtrando solo los tipos de identificación activos
+                        DataView vista = obj_Tipos_Identificacion_DAL.dtDatos.DefaultView;
+                        vista.RowFilter = "Estado = 'A'";
+
                         cboTipos_Identificacion.ValueMember = "Id_Tipo_Identificacion";
                         cboTipos_Identificacion.DisplayMember = "Tipo_Identificacion";
 
-                        cboTipos_Identificacion.DataSource = obj_Tipos_Identificacion_DAL.dtDatos;
+                        cboTipos_Identificacion.DataSource = vista;
 
-                        cboTipos_Identificacion.SelectedIndex = 0;
+                        if (vista.Count > 0)
+                        {
+                            cboTipos_Identificacion.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
