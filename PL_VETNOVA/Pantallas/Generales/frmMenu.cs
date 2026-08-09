@@ -30,8 +30,49 @@ namespace PL_VETNOVA.Pantallas.Generales
         private bool bMuestraCardPropietarios;
         private bool bMuestraCardVeterinarios;
 
+        private readonly Color colorSidebarHoverFondo = Color.FromArgb(225, 245, 238);
+        private readonly Color colorSidebarHoverTexto = Color.FromArgb(8, 80, 65);
+
         #endregion
 
+        #region Hover del Sidebar
+
+        // Estos dos metodos se enganchan desde el Designer (icono del rayo en
+        // el panel de Properties) al MouseEnter/MouseLeave de CADA label de
+        // pnlNav y de lblNavCerrarSesion.
+        private void lblNav_MouseEnter(object sender, EventArgs e)
+        {
+            if (sender is Label lbl)
+            {
+                lbl.BackColor = colorSidebarHoverFondo;
+                lbl.ForeColor = colorSidebarHoverTexto;
+                lbl.Font = new Font(lbl.Font, FontStyle.Bold);
+            }
+        }
+
+        private void lblNav_MouseLeave(object sender, EventArgs e)
+        {
+            if (sender is Label lbl)
+            {
+                lbl.BackColor = Color.Transparent;
+
+                // lblNavDashboard es el unico que arranca en negrita y con un
+                // gris mas oscuro por defecto; los demas vuelven al gris
+                // normal sin negrita.
+                if (lbl == lblNavDashboard)
+                {
+                    lbl.ForeColor = Color.FromArgb(30, 30, 28);
+                    lbl.Font = new Font(lbl.Font, FontStyle.Bold);
+                }
+                else
+                {
+                    lbl.ForeColor = Color.FromArgb(95, 94, 90);
+                    lbl.Font = new Font(lbl.Font, FontStyle.Regular);
+                }
+            }
+        }
+
+        #endregion
         public frmMenu()
         {
             InitializeComponent();
