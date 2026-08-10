@@ -18,7 +18,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
             this.lblNavCerrarSesion = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(220, 650);
+            this.pnlSidebar.Size = new System.Drawing.Size(220, 925);
             this.pnlSidebar.TabIndex = 0;
             // 
             // pnlCerrarSesion
@@ -93,7 +93,7 @@
             this.pnlCerrarSesion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCerrarSesion.Controls.Add(this.lblNavCerrarSesion);
             this.pnlCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlCerrarSesion.Location = new System.Drawing.Point(0, 606);
+            this.pnlCerrarSesion.Location = new System.Drawing.Point(0, 881);
             this.pnlCerrarSesion.Name = "pnlCerrarSesion";
             this.pnlCerrarSesion.Size = new System.Drawing.Size(220, 44);
             this.pnlCerrarSesion.TabIndex = 2;
@@ -128,7 +128,7 @@
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNav.Location = new System.Drawing.Point(0, 70);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(220, 580);
+            this.pnlNav.Size = new System.Drawing.Size(220, 855);
             this.pnlNav.TabIndex = 1;
             // 
             // pnlNavActiveMarker
@@ -324,7 +324,7 @@
             this.pnlContentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentWrapper.Location = new System.Drawing.Point(220, 0);
             this.pnlContentWrapper.Name = "pnlContentWrapper";
-            this.pnlContentWrapper.Size = new System.Drawing.Size(830, 650);
+            this.pnlContentWrapper.Size = new System.Drawing.Size(968, 925);
             this.pnlContentWrapper.TabIndex = 1;
             // 
             // pnlContent
@@ -341,7 +341,7 @@
             this.pnlContent.Location = new System.Drawing.Point(0, 50);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlContent.Size = new System.Drawing.Size(830, 600);
+            this.pnlContent.Size = new System.Drawing.Size(968, 875);
             this.pnlContent.TabIndex = 1;
             // 
             // dgvCitasHoy
@@ -350,14 +350,14 @@
             this.dgvCitasHoy.AllowUserToDeleteRows = false;
             this.dgvCitasHoy.BackgroundColor = System.Drawing.Color.White;
             this.dgvCitasHoy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCitasHoy.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCitasHoy.ColumnHeadersHeight = 34;
             this.dgvCitasHoy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCitasHoy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -372,7 +372,7 @@
             this.dgvCitasHoy.RowHeadersVisible = false;
             this.dgvCitasHoy.RowHeadersWidth = 62;
             this.dgvCitasHoy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCitasHoy.Size = new System.Drawing.Size(770, 260);
+            this.dgvCitasHoy.Size = new System.Drawing.Size(914, 260);
             this.dgvCitasHoy.TabIndex = 5;
             // 
             // colHora
@@ -413,7 +413,7 @@
             this.lblProximasCitas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblProximasCitas.Location = new System.Drawing.Point(20, 170);
             this.lblProximasCitas.Name = "lblProximasCitas";
-            this.lblProximasCitas.Size = new System.Drawing.Size(156, 19);
+            this.lblProximasCitas.Size = new System.Drawing.Size(219, 28);
             this.lblProximasCitas.TabIndex = 4;
             this.lblProximasCitas.Text = "Próximas citas de hoy";
             // 
@@ -433,7 +433,7 @@
             this.lblCardVeterinariosValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardVeterinariosValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardVeterinariosValor.Name = "lblCardVeterinariosValor";
-            this.lblCardVeterinariosValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardVeterinariosValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardVeterinariosValor.TabIndex = 1;
             this.lblCardVeterinariosValor.Text = "0";
             // 
@@ -444,7 +444,7 @@
             this.lblCardVeterinariosTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardVeterinariosTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardVeterinariosTitulo.Name = "lblCardVeterinariosTitulo";
-            this.lblCardVeterinariosTitulo.Size = new System.Drawing.Size(108, 15);
+            this.lblCardVeterinariosTitulo.Size = new System.Drawing.Size(157, 23);
             this.lblCardVeterinariosTitulo.TabIndex = 0;
             this.lblCardVeterinariosTitulo.Text = "Veterinarios activos";
             // 
@@ -464,7 +464,7 @@
             this.lblCardPropietariosValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardPropietariosValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardPropietariosValor.Name = "lblCardPropietariosValor";
-            this.lblCardPropietariosValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardPropietariosValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardPropietariosValor.TabIndex = 1;
             this.lblCardPropietariosValor.Text = "0";
             // 
@@ -475,7 +475,7 @@
             this.lblCardPropietariosTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardPropietariosTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardPropietariosTitulo.Name = "lblCardPropietariosTitulo";
-            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(110, 15);
+            this.lblCardPropietariosTitulo.Size = new System.Drawing.Size(158, 23);
             this.lblCardPropietariosTitulo.TabIndex = 0;
             this.lblCardPropietariosTitulo.Text = "Propietarios activos";
             // 
@@ -495,7 +495,7 @@
             this.lblCardMascotasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardMascotasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardMascotasValor.Name = "lblCardMascotasValor";
-            this.lblCardMascotasValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardMascotasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardMascotasValor.TabIndex = 1;
             this.lblCardMascotasValor.Text = "0";
             // 
@@ -506,7 +506,7 @@
             this.lblCardMascotasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardMascotasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardMascotasTitulo.Name = "lblCardMascotasTitulo";
-            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(96, 15);
+            this.lblCardMascotasTitulo.Size = new System.Drawing.Size(137, 23);
             this.lblCardMascotasTitulo.TabIndex = 0;
             this.lblCardMascotasTitulo.Text = "Mascotas activas";
             // 
@@ -526,7 +526,7 @@
             this.lblCardCitasValor.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblCardCitasValor.Location = new System.Drawing.Point(14, 34);
             this.lblCardCitasValor.Name = "lblCardCitasValor";
-            this.lblCardCitasValor.Size = new System.Drawing.Size(26, 30);
+            this.lblCardCitasValor.Size = new System.Drawing.Size(38, 45);
             this.lblCardCitasValor.TabIndex = 1;
             this.lblCardCitasValor.Text = "0";
             // 
@@ -537,7 +537,7 @@
             this.lblCardCitasTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblCardCitasTitulo.Location = new System.Drawing.Point(14, 12);
             this.lblCardCitasTitulo.Name = "lblCardCitasTitulo";
-            this.lblCardCitasTitulo.Size = new System.Drawing.Size(56, 15);
+            this.lblCardCitasTitulo.Size = new System.Drawing.Size(80, 23);
             this.lblCardCitasTitulo.TabIndex = 0;
             this.lblCardCitasTitulo.Text = "Citas hoy";
             // 
@@ -550,7 +550,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(830, 50);
+            this.pnlTopBar.Size = new System.Drawing.Size(968, 50);
             this.pnlTopBar.TabIndex = 0;
             // 
             // lblInfoUsuario
@@ -558,7 +558,7 @@
             this.lblInfoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInfoUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblInfoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
-            this.lblInfoUsuario.Location = new System.Drawing.Point(510, 16);
+            this.lblInfoUsuario.Location = new System.Drawing.Point(648, 16);
             this.lblInfoUsuario.Name = "lblInfoUsuario";
             this.lblInfoUsuario.Size = new System.Drawing.Size(300, 20);
             this.lblInfoUsuario.TabIndex = 1;
@@ -570,7 +570,7 @@
             this.lblTituloPantalla.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTituloPantalla.Location = new System.Drawing.Point(20, 14);
             this.lblTituloPantalla.Name = "lblTituloPantalla";
-            this.lblTituloPantalla.Size = new System.Drawing.Size(111, 20);
+            this.lblTituloPantalla.Size = new System.Drawing.Size(166, 30);
             this.lblTituloPantalla.TabIndex = 0;
             this.lblTituloPantalla.Text = "Panel principal";
             // 
@@ -580,20 +580,20 @@
             this.pnlTopBarBorde.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlTopBarBorde.Location = new System.Drawing.Point(0, 49);
             this.pnlTopBarBorde.Name = "pnlTopBarBorde";
-            this.pnlTopBarBorde.Size = new System.Drawing.Size(830, 1);
+            this.pnlTopBarBorde.Size = new System.Drawing.Size(968, 1);
             this.pnlTopBarBorde.TabIndex = 2;
             // 
             // frmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1050, 650);
+            this.ClientSize = new System.Drawing.Size(1188, 925);
             this.Controls.Add(this.pnlContentWrapper);
             this.Controls.Add(this.pnlSidebar);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 500);
+            this.MinimumSize = new System.Drawing.Size(900, 820);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VetNova - Menú Principal";

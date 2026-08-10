@@ -1,9 +1,15 @@
 ﻿using BLL_VETNOVA.Entidades;
 using DAL_VETNOVA.Entidades;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using LiveChartsCore.SkiaSharpView.WinForms;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace PL_VETNOVA.Pantallas.Generales
@@ -32,6 +38,13 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private readonly Color colorSidebarHoverFondo = Color.FromArgb(225, 245, 238);
         private readonly Color colorSidebarHoverTexto = Color.FromArgb(8, 80, 65);
+
+        // Grafico de citas por dia del mes actual (ver region Grafico Dashboard).
+        // Se crea por codigo (no desde el Diseñador) porque el control de
+        // LiveCharts2 puede dar problemas de renderizado en el lienzo del
+        // Diseñador de VS, aunque funcione bien en tiempo de ejecucion.
+        private Label lblGraficoCitasPorDia;
+        private CartesianChart chartCitasPorDia;
 
         #endregion
 
@@ -76,6 +89,8 @@ namespace PL_VETNOVA.Pantallas.Generales
         public frmMenu()
         {
             InitializeComponent();
+
+            ConfigurarGraficoCitasPorDia();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -86,6 +101,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
             cargaConteoCitas();
             cargaCitasHoy();
+            cargaGraficoCitasPorDia();
             cargaConteoMascotas();
 
             if (bMuestraCardPropietarios)
@@ -165,6 +181,9 @@ namespace PL_VETNOVA.Pantallas.Generales
 
             ReacomodarNav(ordenNav, navVisibles);
             ReacomodarCards(ordenCards, cardsVisibles);
+
+            // El grafico de citas por dia es visible para TODOS los roles
+            // (no depende de ConfigurarAccesoPorRol), asi que no se toca aca.
         }
 
         // Oculta los labels que no le tocan al rol y reacomoda verticalmente
@@ -205,6 +224,127 @@ namespace PL_VETNOVA.Pantallas.Generales
                     pnl.Location = new Point(x, pnl.Location.Y);
                     x += pnl.Width + gap;
                 }
+            }
+        }
+
+        #endregion
+
+        #region Grafico Dashboard
+
+        // Crea el label + el CartesianChart y los agrega a pnlContent, justo
+        // debajo de dgvCitasHoy (que termina en Y=460: Location.Y 200 + Height 260).
+        // Se llama una sola vez desde el constructor. Los datos se cargan
+        // aparte en cargaGraficoCitasPorDia(), que si se llama repetidamente
+        // (Load, RefrescarPanelPrincipal) sin volver a crear el control.
+        private void ConfigurarGraficoCitasPorDia()
+        {
+            lblGraficoCitasPorDia = new Label
+            {
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                Location = new Point(20, 470),
+                Name = "lblGraficoCitasPorDia",
+                Text = "Citas del mes"
+            };
+
+            chartCitasPorDia = new CartesianChart
+            {
+                Location = new Point(20, 474),
+                Name = "chartCitasPorDia",
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left,
+                LegendPosition = LiveChartsCore.Measure.LegendPosition.Hidden
+            };
+
+            // La vez pasada solo fijamos el MinimumSize, y eso NO evita que
+            // el control crezca - solo evita que encoja. Por eso el grafico
+            // termino siendo mucho mas alto y ancho de lo pedido (de ahi el
+            // hueco enorme arriba de las barras y la necesidad de scrollear).
+            // Fijando MinimumSize Y MaximumSize IGUALES, WinForms no deja que
+            // el control se salga de ese rango en ninguna direccion.
+            Size tamanoChart = new Size(770, 260);
+            chartCitasPorDia.MinimumSize = tamanoChart;
+            chartCitasPorDia.MaximumSize = tamanoChart;
+            chartCitasPorDia.Size = tamanoChart;
+
+            pnlContent.Controls.Add(lblGraficoCitasPorDia);
+            pnlContent.Controls.Add(chartCitasPorDia);
+        }
+
+        // Trae el conteo de citas de TODOS los dias del mes actual (incluye
+        // dias futuros y dias sin citas, en 0) y lo pinta como barras. Al ser
+        // una consulta fresca contra la BD cada vez que se llama, el grafico
+        // siempre refleja el estado actual: si se elimina o cancela una cita,
+        // la proxima vez que se refresque (Load o RefrescarPanelPrincipal) la
+        // barra de ese dia baja sola - no hay nada que acumular a mano.
+        private void cargaGraficoCitasPorDia()
+        {
+            try
+            {
+                obj_Citas_Global_BLL.ContarCitasPorDiaMes(ref obj_Citas_Global_DAL);
+
+                // Nombre del mes actual en español, con mayuscula inicial
+                // (ej. "Citas del mes - Agosto 2026"), para que quede claro
+                // que el grafico es del mes actual y no de otro periodo.
+                CultureInfo culturaEs = new CultureInfo("es-ES");
+                string nombreMes = culturaEs.DateTimeFormat.GetMonthName(DateTime.Now.Month);
+                nombreMes = char.ToUpper(nombreMes[0]) + nombreMes.Substring(1);
+                lblGraficoCitasPorDia.Text = "Citas del mes - " + nombreMes + " " + DateTime.Now.Year;
+
+                if (obj_Citas_Global_DAL.sMsjError == string.Empty && obj_Citas_Global_DAL.dtDatos != null)
+                {
+                    int totalDias = obj_Citas_Global_DAL.dtDatos.Rows.Count;
+                    int[] valores = new int[totalDias];
+                    string[] etiquetas = new string[totalDias];
+
+                    for (int i = 0; i < totalDias; i++)
+                    {
+                        DataRow fila = obj_Citas_Global_DAL.dtDatos.Rows[i];
+                        DateTime fecha = Convert.ToDateTime(fila["Fecha"]);
+
+                        valores[i] = Convert.ToInt32(fila["Cantidad"]);
+                        etiquetas[i] = fecha.Day.ToString(); // solo el numero del dia: 1, 2, 3... 31
+                    }
+
+                    chartCitasPorDia.Series = new ISeries[]
+                    {
+                        new ColumnSeries<int>
+                        {
+                            Values = valores,
+                            Name = "Citas",
+                            Fill = new SolidColorPaint(new SKColor(15, 110, 86)),
+                            MaxBarWidth = 20
+                        }
+                    };
+
+                    chartCitasPorDia.XAxes = new Axis[]
+                    {
+                        new Axis
+                        {
+                            Labels = etiquetas,
+                            LabelsRotation = 0
+                        }
+                    };
+
+                    chartCitasPorDia.YAxes = new Axis[]
+                    {
+                        new Axis
+                        {
+                            MinLimit = 0,
+                            MinStep = 1,
+                            ForceStepToMin = true
+                        }
+                    };
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al intentar cargar el gráfico de citas del mes: " + obj_Citas_Global_DAL.sMsjError, "Panel principal",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al intentar cargar el gráfico de citas del mes. Error: " + ex.ToString(), "Panel principal",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -530,6 +670,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         {
             cargaConteoCitas();
             cargaCitasHoy();
+            cargaGraficoCitasPorDia();
             cargaConteoMascotas();
 
             if (bMuestraCardPropietarios)
@@ -545,6 +686,6 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         #endregion
 
-        
+
     }
 }

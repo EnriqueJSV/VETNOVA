@@ -1,5 +1,5 @@
 /*
-  VETNOVA - LIMPIEZA COMPLETA DE LOS DATOS INSERTADOS POR LoteDatos.sql
+   VETNOVA - SCRIPT 4 DE 4: - LIMPIEZA COMPLETA DE LOS DATOS INSERTADOS POR SistemaVacio_Profesor.sql || LoteDatos.sql
   -----------------------------------------------------------------------
   Este script borra TODOS los registros que inserto el script LoteDatos.sql
   (via los SP_INSERTA_X), dejando las tablas vacias pero SIN borrar la

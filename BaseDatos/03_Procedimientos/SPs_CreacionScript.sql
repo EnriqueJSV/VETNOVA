@@ -2167,6 +2167,40 @@ AS BEGIN
 	END CATCH
 END
 GO
+--Cuenta las citas por el mes actual en que se este corriendo
+USE VetNova
+GO
+
+CREATE OR ALTER PROCEDURE SP_CONTAR_CITAS_POR_DIA_MES
+AS BEGIN
+	BEGIN TRY
+		DECLARE @PrimerDia DATE = DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1);
+		DECLARE @UltimoDia DATE = EOMONTH(GETDATE());
+
+		;WITH DiasMes AS
+		(
+			SELECT @PrimerDia AS Dia
+			UNION ALL
+			SELECT DATEADD(DAY, 1, Dia)
+			FROM DiasMes
+			WHERE Dia < @UltimoDia
+		)
+		SELECT
+			DM.Dia AS Fecha,
+			COUNT(CIT.Id_Cita) AS Cantidad
+		FROM DiasMes DM
+		LEFT JOIN Citas CIT
+			ON CAST(CIT.Fecha AS DATE) = DM.Dia
+			AND CIT.Estado_Cita <> 'Cancelada'
+		GROUP BY DM.Dia
+		ORDER BY DM.Dia
+		OPTION (MAXRECURSION 31);
+	END TRY
+	BEGIN CATCH
+		SELECT CAST(NULL AS DATE) AS Fecha, CAST(NULL AS INT) AS Cantidad WHERE 1=0
+	END CATCH
+END
+GO
 
 -- ===============================================================
 -- MODULO: CONSULTAS

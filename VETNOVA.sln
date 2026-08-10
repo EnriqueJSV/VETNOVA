@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.37301.10 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_VETNOVA", "PL_VETNOVA\PL_VETNOVA.csproj", "{259BFA8B-A20A-4790-96D7-1E88DDDB6BD6}"
 EndProject
@@ -69,6 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Citas", "SPs_Citas", "{
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ACTUALIZA_CITAS.sql
 		SP_CONTAR_CITAS.sql = SP_CONTAR_CITAS.sql
+		SP_CONTAR_CITAS_POR_DIA_MES.sql = SP_CONTAR_CITAS_POR_DIA_MES.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_ELIMINA_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_FILTRAR_CITAS.sql
 		BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql = BaseDatos\03_Procedimientos\SPs_Citas\SP_INSERTA_CITAS.sql
@@ -164,6 +165,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Roles", "SPs_Roles", "{A19E0BA4-A506-44D1-902B-EE07FA759E2C}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Roles\SP_LISTAR_ROLES.sql = BaseDatos\03_Procedimientos\SPs_Roles\SP_LISTAR_ROLES.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntregaScripts_Profe", "EntregaScripts_Profe", "{BB66E881-2B02-413A-AAD2-B6C0C9E8D683}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql = BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql
+		BaseDatos\04_DatosPrueba\BorrarLoteDatos.sql = BaseDatos\04_DatosPrueba\BorrarLoteDatos.sql
+		SistemaVacio_Profesor.sql = SistemaVacio_Profesor.sql
+		BaseDatos\03_Procedimientos\SPs_CreacionScript.sql = BaseDatos\03_Procedimientos\SPs_CreacionScript.sql
 	EndProjectSection
 EndProject
 Global
