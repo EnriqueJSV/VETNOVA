@@ -47,6 +47,7 @@
     <Compile Include="Entidades\cls_Consultas_DAL.cs" />
     <Compile Include="Entidades\cls_Especialidades_DAL.cs" />
     <Compile Include="Entidades\cls_Especies_DAL.cs" />
+    <Compile Include="Entidades\cls_Grafico_DAL.cs" />
     <Compile Include="Entidades\cls_Mascotas_DAL.cs" />
     <Compile Include="Entidades\cls_Propietarios_DAL.cs" />
     <Compile Include="Entidades\cls_Razas_DAL.cs" />

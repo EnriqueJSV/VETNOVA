@@ -18,6 +18,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.pnlCerrarSesion = new System.Windows.Forms.Panel();
@@ -39,6 +42,7 @@
             this.picLogoSidebar = new System.Windows.Forms.PictureBox();
             this.pnlContentWrapper = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
+            this.citasXmes = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvCitasHoy = new System.Windows.Forms.DataGridView();
             this.colHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMascota = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLogoSidebar)).BeginInit();
             this.pnlContentWrapper.SuspendLayout();
             this.pnlContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citasXmes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitasHoy)).BeginInit();
             this.pnlCardVeterinarios.SuspendLayout();
             this.pnlCardPropietarios.SuspendLayout();
@@ -85,7 +90,7 @@
             this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(220, 650);
+            this.pnlSidebar.Size = new System.Drawing.Size(220, 730);
             this.pnlSidebar.TabIndex = 0;
             // 
             // pnlCerrarSesion
@@ -93,7 +98,7 @@
             this.pnlCerrarSesion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlCerrarSesion.Controls.Add(this.lblNavCerrarSesion);
             this.pnlCerrarSesion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlCerrarSesion.Location = new System.Drawing.Point(0, 606);
+            this.pnlCerrarSesion.Location = new System.Drawing.Point(0, 686);
             this.pnlCerrarSesion.Name = "pnlCerrarSesion";
             this.pnlCerrarSesion.Size = new System.Drawing.Size(220, 44);
             this.pnlCerrarSesion.TabIndex = 2;
@@ -128,7 +133,7 @@
             this.pnlNav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNav.Location = new System.Drawing.Point(0, 70);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(220, 580);
+            this.pnlNav.Size = new System.Drawing.Size(220, 660);
             this.pnlNav.TabIndex = 1;
             // 
             // pnlNavActiveMarker
@@ -324,13 +329,14 @@
             this.pnlContentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentWrapper.Location = new System.Drawing.Point(220, 0);
             this.pnlContentWrapper.Name = "pnlContentWrapper";
-            this.pnlContentWrapper.Size = new System.Drawing.Size(830, 650);
+            this.pnlContentWrapper.Size = new System.Drawing.Size(830, 730);
             this.pnlContentWrapper.TabIndex = 1;
             // 
             // pnlContent
             // 
             this.pnlContent.AutoScroll = true;
             this.pnlContent.BackColor = System.Drawing.Color.White;
+            this.pnlContent.Controls.Add(this.citasXmes);
             this.pnlContent.Controls.Add(this.dgvCitasHoy);
             this.pnlContent.Controls.Add(this.lblProximasCitas);
             this.pnlContent.Controls.Add(this.pnlCardVeterinarios);
@@ -341,8 +347,24 @@
             this.pnlContent.Location = new System.Drawing.Point(0, 50);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlContent.Size = new System.Drawing.Size(830, 600);
+            this.pnlContent.Size = new System.Drawing.Size(830, 680);
             this.pnlContent.TabIndex = 1;
+            // 
+            // citasXmes
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.citasXmes.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.citasXmes.Legends.Add(legend1);
+            this.citasXmes.Location = new System.Drawing.Point(20, 367);
+            this.citasXmes.Name = "citasXmes";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Citas por mes";
+            this.citasXmes.Series.Add(series1);
+            this.citasXmes.Size = new System.Drawing.Size(770, 301);
+            this.citasXmes.TabIndex = 6;
+            this.citasXmes.Text = "Citas por Mes";
             // 
             // dgvCitasHoy
             // 
@@ -366,13 +388,13 @@
             this.colVeterinario,
             this.colEstado});
             this.dgvCitasHoy.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(222)))));
-            this.dgvCitasHoy.Location = new System.Drawing.Point(20, 200);
+            this.dgvCitasHoy.Location = new System.Drawing.Point(20, 145);
             this.dgvCitasHoy.Name = "dgvCitasHoy";
             this.dgvCitasHoy.ReadOnly = true;
             this.dgvCitasHoy.RowHeadersVisible = false;
             this.dgvCitasHoy.RowHeadersWidth = 62;
             this.dgvCitasHoy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCitasHoy.Size = new System.Drawing.Size(770, 260);
+            this.dgvCitasHoy.Size = new System.Drawing.Size(770, 203);
             this.dgvCitasHoy.TabIndex = 5;
             // 
             // colHora
@@ -411,7 +433,7 @@
             // 
             this.lblProximasCitas.AutoSize = true;
             this.lblProximasCitas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblProximasCitas.Location = new System.Drawing.Point(20, 170);
+            this.lblProximasCitas.Location = new System.Drawing.Point(20, 115);
             this.lblProximasCitas.Name = "lblProximasCitas";
             this.lblProximasCitas.Size = new System.Drawing.Size(156, 19);
             this.lblProximasCitas.TabIndex = 4;
@@ -588,7 +610,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1050, 650);
+            this.ClientSize = new System.Drawing.Size(1050, 730);
             this.Controls.Add(this.pnlContentWrapper);
             this.Controls.Add(this.pnlSidebar);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -606,6 +628,7 @@
             this.pnlContentWrapper.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.citasXmes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCitasHoy)).EndInit();
             this.pnlCardVeterinarios.ResumeLayout(false);
             this.pnlCardVeterinarios.PerformLayout();
@@ -665,5 +688,6 @@
         private System.Windows.Forms.Label lblInfoUsuario;
         private System.Windows.Forms.Label lblTituloPantalla;
         private System.Windows.Forms.Panel pnlTopBarBorde;
+        private System.Windows.Forms.DataVisualization.Charting.Chart citasXmes;
     }
 }
