@@ -109,7 +109,7 @@
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(20, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(139, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(94, 25);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Mascotas";
             // 
@@ -127,7 +127,7 @@
             this.txtBuscarMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscarMascota.Location = new System.Drawing.Point(20, 70);
             this.txtBuscarMascota.Name = "txtBuscarMascota";
-            this.txtBuscarMascota.Size = new System.Drawing.Size(400, 33);
+            this.txtBuscarMascota.Size = new System.Drawing.Size(400, 24);
             this.txtBuscarMascota.TabIndex = 1;
             this.txtBuscarMascota.TextChanged += new System.EventHandler(this.txtBuscarMascota_TextChanged);
             // 
@@ -295,7 +295,7 @@
             // 
             // pnlFormMascota
             // 
-            this.pnlFormMascota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormMascota.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormMascota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormMascota.Controls.Add(this.btnCancelarMascota);
             this.pnlFormMascota.Controls.Add(this.btnGuardarMascota);
@@ -359,7 +359,7 @@
             this.lblColorMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblColorMascota.Location = new System.Drawing.Point(450, 212);
             this.lblColorMascota.Name = "lblColorMascota";
-            this.lblColorMascota.Size = new System.Drawing.Size(51, 23);
+            this.lblColorMascota.Size = new System.Drawing.Size(36, 15);
             this.lblColorMascota.TabIndex = 17;
             this.lblColorMascota.Text = "Color";
             // 
@@ -368,7 +368,7 @@
             this.txtColorMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtColorMascota.Location = new System.Drawing.Point(450, 228);
             this.txtColorMascota.Name = "txtColorMascota";
-            this.txtColorMascota.Size = new System.Drawing.Size(420, 33);
+            this.txtColorMascota.Size = new System.Drawing.Size(420, 24);
             this.txtColorMascota.TabIndex = 18;
             // 
             // lblPesoMascota
@@ -378,7 +378,7 @@
             this.lblPesoMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblPesoMascota.Location = new System.Drawing.Point(14, 212);
             this.lblPesoMascota.Name = "lblPesoMascota";
-            this.lblPesoMascota.Size = new System.Drawing.Size(78, 23);
+            this.lblPesoMascota.Size = new System.Drawing.Size(56, 15);
             this.lblPesoMascota.TabIndex = 15;
             this.lblPesoMascota.Text = "Peso (kg)";
             // 
@@ -398,7 +398,7 @@
             0,
             0});
             this.nudPesoMascota.Name = "nudPesoMascota";
-            this.nudPesoMascota.Size = new System.Drawing.Size(420, 33);
+            this.nudPesoMascota.Size = new System.Drawing.Size(420, 24);
             this.nudPesoMascota.TabIndex = 16;
             // 
             // lblEstadoMascotaForm
@@ -408,7 +408,7 @@
             this.lblEstadoMascotaForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstadoMascotaForm.Location = new System.Drawing.Point(606, 156);
             this.lblEstadoMascotaForm.Name = "lblEstadoMascotaForm";
-            this.lblEstadoMascotaForm.Size = new System.Drawing.Size(61, 23);
+            this.lblEstadoMascotaForm.Size = new System.Drawing.Size(42, 15);
             this.lblEstadoMascotaForm.TabIndex = 13;
             this.lblEstadoMascotaForm.Text = "Estado";
             // 
@@ -422,7 +422,7 @@
             "Inactivo"});
             this.cboEstadoMascota.Location = new System.Drawing.Point(606, 172);
             this.cboEstadoMascota.Name = "cboEstadoMascota";
-            this.cboEstadoMascota.Size = new System.Drawing.Size(264, 33);
+            this.cboEstadoMascota.Size = new System.Drawing.Size(264, 25);
             this.cboEstadoMascota.TabIndex = 14;
             // 
             // lblFechaNacimientoMascotaForm
@@ -432,7 +432,7 @@
             this.lblFechaNacimientoMascotaForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblFechaNacimientoMascotaForm.Location = new System.Drawing.Point(310, 156);
             this.lblFechaNacimientoMascotaForm.Name = "lblFechaNacimientoMascotaForm";
-            this.lblFechaNacimientoMascotaForm.Size = new System.Drawing.Size(144, 23);
+            this.lblFechaNacimientoMascotaForm.Size = new System.Drawing.Size(101, 15);
             this.lblFechaNacimientoMascotaForm.TabIndex = 11;
             this.lblFechaNacimientoMascotaForm.Text = "Fecha nacimiento";
             // 
@@ -443,7 +443,7 @@
             this.dtpFechaNacimientoMascota.Location = new System.Drawing.Point(310, 172);
             this.dtpFechaNacimientoMascota.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.dtpFechaNacimientoMascota.Name = "dtpFechaNacimientoMascota";
-            this.dtpFechaNacimientoMascota.Size = new System.Drawing.Size(270, 33);
+            this.dtpFechaNacimientoMascota.Size = new System.Drawing.Size(270, 24);
             this.dtpFechaNacimientoMascota.TabIndex = 12;
             // 
             // lblSexoMascota
@@ -453,7 +453,7 @@
             this.lblSexoMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblSexoMascota.Location = new System.Drawing.Point(14, 156);
             this.lblSexoMascota.Name = "lblSexoMascota";
-            this.lblSexoMascota.Size = new System.Drawing.Size(46, 23);
+            this.lblSexoMascota.Size = new System.Drawing.Size(31, 15);
             this.lblSexoMascota.TabIndex = 9;
             this.lblSexoMascota.Text = "Sexo";
             // 
@@ -467,7 +467,7 @@
             "Hembra"});
             this.cboSexoMascota.Location = new System.Drawing.Point(14, 172);
             this.cboSexoMascota.Name = "cboSexoMascota";
-            this.cboSexoMascota.Size = new System.Drawing.Size(270, 33);
+            this.cboSexoMascota.Size = new System.Drawing.Size(270, 25);
             this.cboSexoMascota.TabIndex = 10;
             // 
             // lblNombreMascota
@@ -477,7 +477,7 @@
             this.lblNombreMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblNombreMascota.Location = new System.Drawing.Point(450, 100);
             this.lblNombreMascota.Name = "lblNombreMascota";
-            this.lblNombreMascota.Size = new System.Drawing.Size(73, 23);
+            this.lblNombreMascota.Size = new System.Drawing.Size(51, 15);
             this.lblNombreMascota.TabIndex = 7;
             this.lblNombreMascota.Text = "Nombre";
             // 
@@ -486,7 +486,7 @@
             this.txtNombreMascota.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtNombreMascota.Location = new System.Drawing.Point(450, 116);
             this.txtNombreMascota.Name = "txtNombreMascota";
-            this.txtNombreMascota.Size = new System.Drawing.Size(420, 33);
+            this.txtNombreMascota.Size = new System.Drawing.Size(420, 24);
             this.txtNombreMascota.TabIndex = 8;
             // 
             // lblRazaMascota
@@ -496,7 +496,7 @@
             this.lblRazaMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblRazaMascota.Location = new System.Drawing.Point(14, 100);
             this.lblRazaMascota.Name = "lblRazaMascota";
-            this.lblRazaMascota.Size = new System.Drawing.Size(46, 23);
+            this.lblRazaMascota.Size = new System.Drawing.Size(31, 15);
             this.lblRazaMascota.TabIndex = 5;
             this.lblRazaMascota.Text = "Raza";
             // 
@@ -507,7 +507,7 @@
             this.cboRazaMascota.FormattingEnabled = true;
             this.cboRazaMascota.Location = new System.Drawing.Point(14, 116);
             this.cboRazaMascota.Name = "cboRazaMascota";
-            this.cboRazaMascota.Size = new System.Drawing.Size(420, 33);
+            this.cboRazaMascota.Size = new System.Drawing.Size(420, 25);
             this.cboRazaMascota.TabIndex = 6;
             // 
             // lblEspecieMascota
@@ -517,7 +517,7 @@
             this.lblEspecieMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEspecieMascota.Location = new System.Drawing.Point(450, 44);
             this.lblEspecieMascota.Name = "lblEspecieMascota";
-            this.lblEspecieMascota.Size = new System.Drawing.Size(66, 23);
+            this.lblEspecieMascota.Size = new System.Drawing.Size(46, 15);
             this.lblEspecieMascota.TabIndex = 3;
             this.lblEspecieMascota.Text = "Especie";
             // 
@@ -528,7 +528,7 @@
             this.cboEspecieMascota.FormattingEnabled = true;
             this.cboEspecieMascota.Location = new System.Drawing.Point(450, 60);
             this.cboEspecieMascota.Name = "cboEspecieMascota";
-            this.cboEspecieMascota.Size = new System.Drawing.Size(420, 33);
+            this.cboEspecieMascota.Size = new System.Drawing.Size(420, 25);
             this.cboEspecieMascota.TabIndex = 4;
             this.cboEspecieMascota.SelectedIndexChanged += new System.EventHandler(this.cboEspecieMascota_SelectedIndexChanged);
             // 
@@ -539,7 +539,7 @@
             this.lblPropietarioMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblPropietarioMascota.Location = new System.Drawing.Point(14, 44);
             this.lblPropietarioMascota.Name = "lblPropietarioMascota";
-            this.lblPropietarioMascota.Size = new System.Drawing.Size(94, 23);
+            this.lblPropietarioMascota.Size = new System.Drawing.Size(65, 15);
             this.lblPropietarioMascota.TabIndex = 1;
             this.lblPropietarioMascota.Text = "Propietario";
             // 
@@ -550,7 +550,7 @@
             this.cboPropietarioMascota.FormattingEnabled = true;
             this.cboPropietarioMascota.Location = new System.Drawing.Point(14, 60);
             this.cboPropietarioMascota.Name = "cboPropietarioMascota";
-            this.cboPropietarioMascota.Size = new System.Drawing.Size(420, 33);
+            this.cboPropietarioMascota.Size = new System.Drawing.Size(420, 25);
             this.cboPropietarioMascota.TabIndex = 2;
             // 
             // lblFormTituloMascota
@@ -559,13 +559,13 @@
             this.lblFormTituloMascota.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTituloMascota.Location = new System.Drawing.Point(14, 10);
             this.lblFormTituloMascota.Name = "lblFormTituloMascota";
-            this.lblFormTituloMascota.Size = new System.Drawing.Size(158, 28);
+            this.lblFormTituloMascota.Size = new System.Drawing.Size(112, 19);
             this.lblFormTituloMascota.TabIndex = 0;
             this.lblFormTituloMascota.Text = "Nueva mascota";
             // 
             // frmMascotas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 780);
