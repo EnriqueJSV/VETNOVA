@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PL_VETNOVA.Pantallas.Generales
 {
@@ -32,6 +33,9 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         private readonly Color colorSidebarHoverFondo = Color.FromArgb(225, 245, 238);
         private readonly Color colorSidebarHoverTexto = Color.FromArgb(8, 80, 65);
+
+        private cls_Grafico_BLL obj_Grafico_BLL = new cls_Grafico_BLL();
+        private cls_Grafico_DAL obj_Grafico_DAL = new cls_Grafico_DAL();
 
         #endregion
 
@@ -97,6 +101,8 @@ namespace PL_VETNOVA.Pantallas.Generales
             {
                 cargaConteoVeterinarios();
             }
+
+            cargarGraficoCitasXMes();
         }
 
         #region Acceso por Rol
@@ -545,6 +551,113 @@ namespace PL_VETNOVA.Pantallas.Generales
 
         #endregion
 
-        
+
+        private void cargarGraficoCitasXMes()
+        {
+            try
+            {
+                // Obtener la información desde BLL
+                obj_Grafico_BLL.ListarCitasXMes(ref obj_Grafico_DAL);
+
+                if (obj_Grafico_DAL.dtDatos == null)
+                {
+                    MessageBox.Show("No se pudo cargar la información del gráfico.",
+                        "Información del sistema",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Limpiar cualquier configuración previa
+                citasXmes.Series.Clear();
+                citasXmes.ChartAreas.Clear();
+                citasXmes.Legends.Clear();
+                citasXmes.Titles.Clear();
+
+                // Crear el área del gráfico
+                ChartArea area = new ChartArea();
+                area.BackColor = Color.White;
+
+                // Personalización de los ejes
+                // ---------------- EJE X ----------------
+                area.AxisX.Title = "Días";
+                area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisX.TitleForeColor = Color.FromArgb(60, 60, 60);
+                area.AxisX.MajorGrid.Enabled = false;
+                area.AxisX.LineColor = Color.FromArgb(180, 180, 180);
+                area.AxisX.LabelStyle.ForeColor = Color.FromArgb(74, 74, 74);
+                area.AxisX.LabelStyle.Font = new Font("Segoe UI", 9);
+
+                // Mostrar todos los meses
+                area.AxisX.Interval = 1;
+                area.AxisX.LabelStyle.Interval = 1;
+                area.AxisX.IsLabelAutoFit = false;
+
+                // ---------------- EJE Y ----------------
+                area.AxisY.Title = "Citas";
+                area.AxisY.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                area.AxisY.TitleForeColor = Color.FromArgb(60, 60, 60);
+                area.AxisY.MajorGrid.LineColor = Color.FromArgb(230, 230, 230);
+                area.AxisY.LineColor = Color.FromArgb(180, 180, 180);
+                area.AxisY.LabelStyle.ForeColor = Color.FromArgb(74, 74, 74);
+                area.AxisY.LabelStyle.Font = new Font("Segoe UI", 9);
+
+                // Evita la doble numeración
+                area.AxisY.Minimum = 0;
+                area.AxisY.Interval = 2;
+                area.AxisY.LabelStyle.Interval = 2;
+
+                citasXmes.ChartAreas.Add(area);
+
+                // Crear la serie
+                Series serie = new Series();
+                serie.Name = "Citas";
+                serie.ChartType = SeriesChartType.Column;
+                serie.Color = Color.FromArgb(11, 107, 97); // Verde VetNova
+                serie.IsValueShownAsLabel = true;
+                serie.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+
+                // Cargar los datos del DataTable
+                foreach (DataRow fila in obj_Grafico_DAL.dtDatos.Rows)
+                {
+                    serie.Points.AddXY(
+                        fila["Dia"].ToString(),
+                        Convert.ToInt32(fila["TotalCitas"]));
+                }
+
+                citasXmes.Series.Add(serie);
+
+                // Fondo del control
+                citasXmes.BackColor = Color.FromArgb(244, 244, 244);
+
+                string[] meses =
+                    {
+                        "Enero", "Febrero", "Marzo", "Abril",
+                        "Mayo", "Junio", "Julio", "Agosto",
+                        "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                    };
+
+
+                // Título
+                Title titulo = new Title();
+                titulo.Text = "Citas por día - " + meses[DateTime.Now.Month - 1];
+                titulo.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+                titulo.ForeColor = Color.FromArgb(40, 40, 40);
+
+                citasXmes.Titles.Add(titulo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Se presentó un error al cargar el gráfico. Error: " + ex.ToString(),
+                    "Información del sistema",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmMenu_Activated(object sender, EventArgs e)
+        {
+            cargarGraficoCitasXMes();
+        }
     }
 }
