@@ -22,7 +22,7 @@ namespace BLL_VETNOVA.Entidades
                 cls_BDVETNOVA_DAL obj_BD_DAL = new cls_BDVETNOVA_DAL();
                 cls_BDVETNOVA_BLL obj_BD_BLL = new cls_BDVETNOVA_BLL();
 
-                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_GRAFICO_CITAS_POR_MES"].ToString();
+                obj_BD_DAL.sNomSP = ConfigurationManager.AppSettings["SP_GRAFICO_CITAS_POR_DIA"].ToString();
 
                 obj_BD_BLL.CrearDatatable(ref obj_BD_DAL);
 

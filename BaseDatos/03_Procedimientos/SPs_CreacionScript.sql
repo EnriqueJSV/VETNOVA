@@ -2373,42 +2373,65 @@ GO
 USE VetNova
 GO
 
-CREATE OR ALTER PROCEDURE SP_GRAFICO_CITAS_POR_MES
+CREATE OR ALTER PROCEDURE SP_GRAFICO_CITAS_POR_DIA
 AS
 BEGIN
     BEGIN TRY
 
-        ;WITH Meses AS
+        DECLARE @MesActual INT = MONTH(GETDATE());
+        DECLARE @AnioActual INT = YEAR(GETDATE());
+
+        ;WITH Dias AS
         (
-            SELECT 1 AS NumMes, 'Enero' AS Mes UNION ALL
-            SELECT 2, 'Febrero' UNION ALL
-            SELECT 3, 'Marzo' UNION ALL
-            SELECT 4, 'Abril' UNION ALL
-            SELECT 5, 'Mayo' UNION ALL
-            SELECT 6, 'Junio' UNION ALL
-            SELECT 7, 'Julio' UNION ALL
-            SELECT 8, 'Agosto' UNION ALL
-            SELECT 9, 'Septiembre' UNION ALL
-            SELECT 10, 'Octubre' UNION ALL
-            SELECT 11, 'Noviembre' UNION ALL
-            SELECT 12, 'Diciembre'
+            SELECT 1 AS NumDia UNION ALL
+            SELECT 2 UNION ALL
+            SELECT 3 UNION ALL
+            SELECT 4 UNION ALL
+            SELECT 5 UNION ALL
+            SELECT 6 UNION ALL
+            SELECT 7 UNION ALL
+            SELECT 8 UNION ALL
+            SELECT 9 UNION ALL
+            SELECT 10 UNION ALL
+            SELECT 11 UNION ALL
+            SELECT 12 UNION ALL
+            SELECT 13 UNION ALL
+            SELECT 14 UNION ALL
+            SELECT 15 UNION ALL
+            SELECT 16 UNION ALL
+            SELECT 17 UNION ALL
+            SELECT 18 UNION ALL
+            SELECT 19 UNION ALL
+            SELECT 20 UNION ALL
+            SELECT 21 UNION ALL
+            SELECT 22 UNION ALL
+            SELECT 23 UNION ALL
+            SELECT 24 UNION ALL
+            SELECT 25 UNION ALL
+            SELECT 26 UNION ALL
+            SELECT 27 UNION ALL
+            SELECT 28 UNION ALL
+            SELECT 29 UNION ALL
+            SELECT 30 UNION ALL
+            SELECT 31
         )
 
         SELECT
-            M.Mes,
+            D.NumDia AS Dia,
             ISNULL(COUNT(C.Id_Cita), 0) AS TotalCitas
-        FROM Meses M
+        FROM Dias D
         LEFT JOIN Citas C
-            ON MONTH(C.Fecha) = M.NumMes
-           AND YEAR(C.Fecha) = YEAR(GETDATE())
-        GROUP BY M.NumMes, M.Mes
-        ORDER BY M.NumMes;
+            ON DAY(C.Fecha) = D.NumDia
+           AND MONTH(C.Fecha) = @MesActual
+           AND YEAR(C.Fecha) = @AnioActual
+        GROUP BY D.NumDia
+        ORDER BY D.NumDia;
 
     END TRY
     BEGIN CATCH
 
         SELECT
-            CAST(NULL AS VARCHAR(20)) AS Mes,
+            CAST(NULL AS INT) AS Dia,
             CAST(NULL AS INT) AS TotalCitas
         WHERE 1 = 0;
 

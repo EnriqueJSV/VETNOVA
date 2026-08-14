@@ -580,7 +580,7 @@ namespace PL_VETNOVA.Pantallas.Generales
 
                 // Personalización de los ejes
                 // ---------------- EJE X ----------------
-                area.AxisX.Title = "Meses";
+                area.AxisX.Title = "Días";
                 area.AxisX.TitleFont = new Font("Segoe UI", 10, FontStyle.Bold);
                 area.AxisX.TitleForeColor = Color.FromArgb(60, 60, 60);
                 area.AxisX.MajorGrid.Enabled = false;
@@ -621,7 +621,7 @@ namespace PL_VETNOVA.Pantallas.Generales
                 foreach (DataRow fila in obj_Grafico_DAL.dtDatos.Rows)
                 {
                     serie.Points.AddXY(
-                        fila["Mes"].ToString(),
+                        fila["Dia"].ToString(),
                         Convert.ToInt32(fila["TotalCitas"]));
                 }
 
@@ -630,9 +630,17 @@ namespace PL_VETNOVA.Pantallas.Generales
                 // Fondo del control
                 citasXmes.BackColor = Color.FromArgb(244, 244, 244);
 
+                string[] meses =
+                    {
+                        "Enero", "Febrero", "Marzo", "Abril",
+                        "Mayo", "Junio", "Julio", "Agosto",
+                        "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                    };
+
+
                 // Título
                 Title titulo = new Title();
-                titulo.Text = "Citas por mes";
+                titulo.Text = "Citas por día - " + meses[DateTime.Now.Month - 1];
                 titulo.Font = new Font("Segoe UI", 12, FontStyle.Bold);
                 titulo.ForeColor = Color.FromArgb(40, 40, 40);
 
@@ -647,6 +655,9 @@ namespace PL_VETNOVA.Pantallas.Generales
             }
         }
 
-
+        private void frmMenu_Activated(object sender, EventArgs e)
+        {
+            cargarGraficoCitasXMes();
+        }
     }
 }

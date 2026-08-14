@@ -619,6 +619,7 @@
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VetNova - Menú Principal";
+            this.Activated += new System.EventHandler(this.frmMenu_Activated);
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlCerrarSesion.ResumeLayout(false);
