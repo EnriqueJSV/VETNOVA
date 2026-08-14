@@ -104,7 +104,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(20, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(80, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(54, 25);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Citas";
             // 
@@ -122,7 +122,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscar.Location = new System.Drawing.Point(20, 70);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(400, 33);
+            this.txtBuscar.Size = new System.Drawing.Size(400, 24);
             this.txtBuscar.TabIndex = 1;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -280,7 +280,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             // 
             // pnlFormCita
             // 
-            this.pnlFormCita.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormCita.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormCita.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormCita.Controls.Add(this.btnCancelarCita);
             this.pnlFormCita.Controls.Add(this.btnGuardarCita);
@@ -349,7 +349,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblMotivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblMotivo.Location = new System.Drawing.Point(14, 212);
             this.lblMotivo.Name = "lblMotivo";
-            this.lblMotivo.Size = new System.Drawing.Size(63, 23);
+            this.lblMotivo.Size = new System.Drawing.Size(45, 15);
             this.lblMotivo.TabIndex = 13;
             this.lblMotivo.Text = "Motivo";
             // 
@@ -360,7 +360,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboHora.FormattingEnabled = true;
             this.cboHora.Location = new System.Drawing.Point(200, 172);
             this.cboHora.Name = "cboHora";
-            this.cboHora.Size = new System.Drawing.Size(170, 33);
+            this.cboHora.Size = new System.Drawing.Size(170, 25);
             this.cboHora.TabIndex = 12;
             // 
             // lblHora
@@ -370,7 +370,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblHora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblHora.Location = new System.Drawing.Point(200, 156);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(47, 23);
+            this.lblHora.Size = new System.Drawing.Size(33, 15);
             this.lblHora.TabIndex = 11;
             this.lblHora.Text = "Hora";
             // 
@@ -380,7 +380,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(14, 172);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(170, 33);
+            this.dtpFecha.Size = new System.Drawing.Size(170, 24);
             this.dtpFecha.TabIndex = 10;
             // 
             // lblFecha
@@ -390,7 +390,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblFecha.Location = new System.Drawing.Point(14, 156);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(54, 23);
+            this.lblFecha.Size = new System.Drawing.Size(38, 15);
             this.lblFecha.TabIndex = 9;
             this.lblFecha.Text = "Fecha";
             // 
@@ -401,7 +401,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboEstado.FormattingEnabled = true;
             this.cboEstado.Location = new System.Drawing.Point(450, 116);
             this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(420, 33);
+            this.cboEstado.Size = new System.Drawing.Size(420, 25);
             this.cboEstado.TabIndex = 8;
             // 
             // lblEstado
@@ -411,7 +411,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstado.Location = new System.Drawing.Point(450, 100);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(61, 23);
+            this.lblEstado.Size = new System.Drawing.Size(42, 15);
             this.lblEstado.TabIndex = 7;
             this.lblEstado.Text = "Estado";
             // 
@@ -422,7 +422,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboVeterinario.FormattingEnabled = true;
             this.cboVeterinario.Location = new System.Drawing.Point(14, 116);
             this.cboVeterinario.Name = "cboVeterinario";
-            this.cboVeterinario.Size = new System.Drawing.Size(420, 33);
+            this.cboVeterinario.Size = new System.Drawing.Size(420, 25);
             this.cboVeterinario.TabIndex = 6;
             // 
             // lblVeterinario
@@ -432,7 +432,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblVeterinario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblVeterinario.Location = new System.Drawing.Point(14, 100);
             this.lblVeterinario.Name = "lblVeterinario";
-            this.lblVeterinario.Size = new System.Drawing.Size(93, 23);
+            this.lblVeterinario.Size = new System.Drawing.Size(63, 15);
             this.lblVeterinario.TabIndex = 5;
             this.lblVeterinario.Text = "Veterinario";
             // 
@@ -443,7 +443,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboMascota.FormattingEnabled = true;
             this.cboMascota.Location = new System.Drawing.Point(450, 60);
             this.cboMascota.Name = "cboMascota";
-            this.cboMascota.Size = new System.Drawing.Size(420, 33);
+            this.cboMascota.Size = new System.Drawing.Size(420, 25);
             this.cboMascota.TabIndex = 4;
             // 
             // lblMascota
@@ -453,7 +453,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblMascota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblMascota.Location = new System.Drawing.Point(450, 44);
             this.lblMascota.Name = "lblMascota";
-            this.lblMascota.Size = new System.Drawing.Size(74, 23);
+            this.lblMascota.Size = new System.Drawing.Size(52, 15);
             this.lblMascota.TabIndex = 3;
             this.lblMascota.Text = "Mascota";
             // 
@@ -464,7 +464,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.cboPropietario.FormattingEnabled = true;
             this.cboPropietario.Location = new System.Drawing.Point(14, 60);
             this.cboPropietario.Name = "cboPropietario";
-            this.cboPropietario.Size = new System.Drawing.Size(420, 33);
+            this.cboPropietario.Size = new System.Drawing.Size(420, 25);
             this.cboPropietario.TabIndex = 2;
             this.cboPropietario.SelectedIndexChanged += new System.EventHandler(this.cboPropietario_SelectedIndexChanged);
             // 
@@ -475,7 +475,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblPropietario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblPropietario.Location = new System.Drawing.Point(14, 44);
             this.lblPropietario.Name = "lblPropietario";
-            this.lblPropietario.Size = new System.Drawing.Size(94, 23);
+            this.lblPropietario.Size = new System.Drawing.Size(65, 15);
             this.lblPropietario.TabIndex = 1;
             this.lblPropietario.Text = "Propietario";
             // 
@@ -485,7 +485,7 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.lblFormTitulo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTitulo.Location = new System.Drawing.Point(14, 10);
             this.lblFormTitulo.Name = "lblFormTitulo";
-            this.lblFormTitulo.Size = new System.Drawing.Size(114, 28);
+            this.lblFormTitulo.Size = new System.Drawing.Size(80, 19);
             this.lblFormTitulo.TabIndex = 0;
             this.lblFormTitulo.Text = "Nueva cita";
             // 
@@ -496,13 +496,13 @@ namespace PL_VETNOVA.Pantallas.Citas
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.label1.Location = new System.Drawing.Point(23, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(245, 23);
+            this.label1.Size = new System.Drawing.Size(170, 15);
             this.label1.TabIndex = 17;
             this.label1.Text = "Busca por Mascota/Propietario";
             // 
             // frmCitas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 780);

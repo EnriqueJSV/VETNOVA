@@ -158,7 +158,7 @@
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.Location = new System.Drawing.Point(20, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(146, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(100, 25);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Catálogos";
             // 
@@ -197,16 +197,16 @@
             this.tabEspecies.Controls.Add(this.btnNuevaEspecie);
             this.tabEspecies.Controls.Add(this.txtBuscarEspecie);
             this.tabEspecies.Controls.Add(this.dgvEspecies);
-            this.tabEspecies.Location = new System.Drawing.Point(4, 34);
+            this.tabEspecies.Location = new System.Drawing.Point(4, 26);
             this.tabEspecies.Name = "tabEspecies";
             this.tabEspecies.Padding = new System.Windows.Forms.Padding(14);
-            this.tabEspecies.Size = new System.Drawing.Size(902, 662);
+            this.tabEspecies.Size = new System.Drawing.Size(902, 670);
             this.tabEspecies.TabIndex = 0;
             this.tabEspecies.Text = "Especies";
             // 
             // pnlFormEspecie
             // 
-            this.pnlFormEspecie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormEspecie.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormEspecie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormEspecie.Controls.Add(this.btnCancelarEspecie);
             this.pnlFormEspecie.Controls.Add(this.btnGuardarEspecie);
@@ -259,7 +259,7 @@
             "Inactivo"});
             this.cboEstadoEspecie.Location = new System.Drawing.Point(450, 60);
             this.cboEstadoEspecie.Name = "cboEstadoEspecie";
-            this.cboEstadoEspecie.Size = new System.Drawing.Size(200, 33);
+            this.cboEstadoEspecie.Size = new System.Drawing.Size(200, 25);
             this.cboEstadoEspecie.TabIndex = 4;
             // 
             // lblEstadoEspecie
@@ -269,7 +269,7 @@
             this.lblEstadoEspecie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstadoEspecie.Location = new System.Drawing.Point(450, 44);
             this.lblEstadoEspecie.Name = "lblEstadoEspecie";
-            this.lblEstadoEspecie.Size = new System.Drawing.Size(61, 23);
+            this.lblEstadoEspecie.Size = new System.Drawing.Size(42, 15);
             this.lblEstadoEspecie.TabIndex = 3;
             this.lblEstadoEspecie.Text = "Estado";
             // 
@@ -278,7 +278,7 @@
             this.txtNombreEspecie.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtNombreEspecie.Location = new System.Drawing.Point(14, 60);
             this.txtNombreEspecie.Name = "txtNombreEspecie";
-            this.txtNombreEspecie.Size = new System.Drawing.Size(400, 33);
+            this.txtNombreEspecie.Size = new System.Drawing.Size(400, 24);
             this.txtNombreEspecie.TabIndex = 2;
             // 
             // lblNombreEspecie
@@ -288,7 +288,7 @@
             this.lblNombreEspecie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblNombreEspecie.Location = new System.Drawing.Point(14, 44);
             this.lblNombreEspecie.Name = "lblNombreEspecie";
-            this.lblNombreEspecie.Size = new System.Drawing.Size(73, 23);
+            this.lblNombreEspecie.Size = new System.Drawing.Size(51, 15);
             this.lblNombreEspecie.TabIndex = 1;
             this.lblNombreEspecie.Text = "Nombre";
             // 
@@ -298,7 +298,7 @@
             this.lblFormTituloEspecie.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTituloEspecie.Location = new System.Drawing.Point(14, 10);
             this.lblFormTituloEspecie.Name = "lblFormTituloEspecie";
-            this.lblFormTituloEspecie.Size = new System.Drawing.Size(149, 28);
+            this.lblFormTituloEspecie.Size = new System.Drawing.Size(106, 19);
             this.lblFormTituloEspecie.TabIndex = 0;
             this.lblFormTituloEspecie.Text = "Nueva especie";
             // 
@@ -351,7 +351,7 @@
             this.txtBuscarEspecie.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscarEspecie.Location = new System.Drawing.Point(14, 14);
             this.txtBuscarEspecie.Name = "txtBuscarEspecie";
-            this.txtBuscarEspecie.Size = new System.Drawing.Size(400, 33);
+            this.txtBuscarEspecie.Size = new System.Drawing.Size(400, 24);
             this.txtBuscarEspecie.TabIndex = 0;
             this.txtBuscarEspecie.TextChanged += new System.EventHandler(this.txtBuscarEspecie_TextChanged);
             // 
@@ -424,16 +424,16 @@
             this.tabRazas.Controls.Add(this.cboEspecieRaza);
             this.tabRazas.Controls.Add(this.lblEspecieRaza);
             this.tabRazas.Controls.Add(this.dgvRazas);
-            this.tabRazas.Location = new System.Drawing.Point(4, 34);
+            this.tabRazas.Location = new System.Drawing.Point(4, 26);
             this.tabRazas.Name = "tabRazas";
             this.tabRazas.Padding = new System.Windows.Forms.Padding(14);
-            this.tabRazas.Size = new System.Drawing.Size(902, 662);
+            this.tabRazas.Size = new System.Drawing.Size(902, 670);
             this.tabRazas.TabIndex = 1;
             this.tabRazas.Text = "Razas";
             // 
             // pnlFormRaza
             // 
-            this.pnlFormRaza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormRaza.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormRaza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormRaza.Controls.Add(this.btnCancelarRaza);
             this.pnlFormRaza.Controls.Add(this.btnGuardarRaza);
@@ -486,7 +486,7 @@
             "Inactivo"});
             this.cboEstadoRaza.Location = new System.Drawing.Point(450, 60);
             this.cboEstadoRaza.Name = "cboEstadoRaza";
-            this.cboEstadoRaza.Size = new System.Drawing.Size(200, 33);
+            this.cboEstadoRaza.Size = new System.Drawing.Size(200, 25);
             this.cboEstadoRaza.TabIndex = 4;
             // 
             // lblEstadoRazaForm
@@ -496,7 +496,7 @@
             this.lblEstadoRazaForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstadoRazaForm.Location = new System.Drawing.Point(450, 44);
             this.lblEstadoRazaForm.Name = "lblEstadoRazaForm";
-            this.lblEstadoRazaForm.Size = new System.Drawing.Size(61, 23);
+            this.lblEstadoRazaForm.Size = new System.Drawing.Size(42, 15);
             this.lblEstadoRazaForm.TabIndex = 3;
             this.lblEstadoRazaForm.Text = "Estado";
             // 
@@ -505,7 +505,7 @@
             this.txtNombreRaza.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtNombreRaza.Location = new System.Drawing.Point(14, 60);
             this.txtNombreRaza.Name = "txtNombreRaza";
-            this.txtNombreRaza.Size = new System.Drawing.Size(400, 33);
+            this.txtNombreRaza.Size = new System.Drawing.Size(400, 24);
             this.txtNombreRaza.TabIndex = 2;
             // 
             // lblNombreRaza
@@ -515,7 +515,7 @@
             this.lblNombreRaza.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblNombreRaza.Location = new System.Drawing.Point(14, 44);
             this.lblNombreRaza.Name = "lblNombreRaza";
-            this.lblNombreRaza.Size = new System.Drawing.Size(73, 23);
+            this.lblNombreRaza.Size = new System.Drawing.Size(51, 15);
             this.lblNombreRaza.TabIndex = 1;
             this.lblNombreRaza.Text = "Nombre";
             // 
@@ -525,7 +525,7 @@
             this.lblFormTituloRaza.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTituloRaza.Location = new System.Drawing.Point(14, 10);
             this.lblFormTituloRaza.Name = "lblFormTituloRaza";
-            this.lblFormTituloRaza.Size = new System.Drawing.Size(119, 28);
+            this.lblFormTituloRaza.Size = new System.Drawing.Size(85, 19);
             this.lblFormTituloRaza.TabIndex = 0;
             this.lblFormTituloRaza.Text = "Nueva raza";
             // 
@@ -578,7 +578,7 @@
             this.txtBuscarRaza.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscarRaza.Location = new System.Drawing.Point(250, 16);
             this.txtBuscarRaza.Name = "txtBuscarRaza";
-            this.txtBuscarRaza.Size = new System.Drawing.Size(300, 33);
+            this.txtBuscarRaza.Size = new System.Drawing.Size(300, 24);
             this.txtBuscarRaza.TabIndex = 2;
             this.txtBuscarRaza.TextChanged += new System.EventHandler(this.txtBuscarRaza_TextChanged);
             // 
@@ -589,7 +589,7 @@
             this.cboEspecieRaza.FormattingEnabled = true;
             this.cboEspecieRaza.Location = new System.Drawing.Point(14, 16);
             this.cboEspecieRaza.Name = "cboEspecieRaza";
-            this.cboEspecieRaza.Size = new System.Drawing.Size(220, 33);
+            this.cboEspecieRaza.Size = new System.Drawing.Size(220, 25);
             this.cboEspecieRaza.TabIndex = 1;
             this.cboEspecieRaza.SelectedIndexChanged += new System.EventHandler(this.cboEspecieRaza_SelectedIndexChanged);
             // 
@@ -600,7 +600,7 @@
             this.lblEspecieRaza.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEspecieRaza.Location = new System.Drawing.Point(14, 0);
             this.lblEspecieRaza.Name = "lblEspecieRaza";
-            this.lblEspecieRaza.Size = new System.Drawing.Size(66, 23);
+            this.lblEspecieRaza.Size = new System.Drawing.Size(46, 15);
             this.lblEspecieRaza.TabIndex = 0;
             this.lblEspecieRaza.Text = "Especie";
             // 
@@ -681,16 +681,16 @@
             this.tabEspecialidades.Controls.Add(this.btnNuevaEspecialidad);
             this.tabEspecialidades.Controls.Add(this.txtBuscarEspecialidad);
             this.tabEspecialidades.Controls.Add(this.dgvEspecialidades);
-            this.tabEspecialidades.Location = new System.Drawing.Point(4, 34);
+            this.tabEspecialidades.Location = new System.Drawing.Point(4, 26);
             this.tabEspecialidades.Name = "tabEspecialidades";
             this.tabEspecialidades.Padding = new System.Windows.Forms.Padding(14);
-            this.tabEspecialidades.Size = new System.Drawing.Size(902, 662);
+            this.tabEspecialidades.Size = new System.Drawing.Size(902, 670);
             this.tabEspecialidades.TabIndex = 2;
             this.tabEspecialidades.Text = "Especialidades";
             // 
             // pnlFormEspecialidad
             // 
-            this.pnlFormEspecialidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormEspecialidad.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormEspecialidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormEspecialidad.Controls.Add(this.btnCancelarEspecialidad);
             this.pnlFormEspecialidad.Controls.Add(this.btnGuardarEspecialidad);
@@ -743,7 +743,7 @@
             "Inactivo"});
             this.cboEstadoEspecialidadForm.Location = new System.Drawing.Point(450, 60);
             this.cboEstadoEspecialidadForm.Name = "cboEstadoEspecialidadForm";
-            this.cboEstadoEspecialidadForm.Size = new System.Drawing.Size(200, 33);
+            this.cboEstadoEspecialidadForm.Size = new System.Drawing.Size(200, 25);
             this.cboEstadoEspecialidadForm.TabIndex = 4;
             // 
             // lblEstadoEspecialidadForm
@@ -753,7 +753,7 @@
             this.lblEstadoEspecialidadForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstadoEspecialidadForm.Location = new System.Drawing.Point(450, 44);
             this.lblEstadoEspecialidadForm.Name = "lblEstadoEspecialidadForm";
-            this.lblEstadoEspecialidadForm.Size = new System.Drawing.Size(61, 23);
+            this.lblEstadoEspecialidadForm.Size = new System.Drawing.Size(42, 15);
             this.lblEstadoEspecialidadForm.TabIndex = 3;
             this.lblEstadoEspecialidadForm.Text = "Estado";
             // 
@@ -762,7 +762,7 @@
             this.txtNombreEspecialidad.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtNombreEspecialidad.Location = new System.Drawing.Point(14, 60);
             this.txtNombreEspecialidad.Name = "txtNombreEspecialidad";
-            this.txtNombreEspecialidad.Size = new System.Drawing.Size(400, 33);
+            this.txtNombreEspecialidad.Size = new System.Drawing.Size(400, 24);
             this.txtNombreEspecialidad.TabIndex = 2;
             // 
             // lblNombreEspecialidad
@@ -772,7 +772,7 @@
             this.lblNombreEspecialidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblNombreEspecialidad.Location = new System.Drawing.Point(14, 44);
             this.lblNombreEspecialidad.Name = "lblNombreEspecialidad";
-            this.lblNombreEspecialidad.Size = new System.Drawing.Size(73, 23);
+            this.lblNombreEspecialidad.Size = new System.Drawing.Size(51, 15);
             this.lblNombreEspecialidad.TabIndex = 1;
             this.lblNombreEspecialidad.Text = "Nombre";
             // 
@@ -782,7 +782,7 @@
             this.lblFormTituloEspecialidad.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTituloEspecialidad.Location = new System.Drawing.Point(14, 10);
             this.lblFormTituloEspecialidad.Name = "lblFormTituloEspecialidad";
-            this.lblFormTituloEspecialidad.Size = new System.Drawing.Size(196, 28);
+            this.lblFormTituloEspecialidad.Size = new System.Drawing.Size(140, 19);
             this.lblFormTituloEspecialidad.TabIndex = 0;
             this.lblFormTituloEspecialidad.Text = "Nueva especialidad";
             // 
@@ -835,7 +835,7 @@
             this.txtBuscarEspecialidad.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscarEspecialidad.Location = new System.Drawing.Point(14, 14);
             this.txtBuscarEspecialidad.Name = "txtBuscarEspecialidad";
-            this.txtBuscarEspecialidad.Size = new System.Drawing.Size(400, 33);
+            this.txtBuscarEspecialidad.Size = new System.Drawing.Size(400, 24);
             this.txtBuscarEspecialidad.TabIndex = 0;
             this.txtBuscarEspecialidad.TextChanged += new System.EventHandler(this.txtBuscarEspecialidad_TextChanged);
             // 
@@ -906,16 +906,16 @@
             this.tabTiposIdentificacion.Controls.Add(this.btnNuevoTipoIdentificacion);
             this.tabTiposIdentificacion.Controls.Add(this.txtBuscarTipoIdentificacion);
             this.tabTiposIdentificacion.Controls.Add(this.dgvTiposIdentificacion);
-            this.tabTiposIdentificacion.Location = new System.Drawing.Point(4, 34);
+            this.tabTiposIdentificacion.Location = new System.Drawing.Point(4, 26);
             this.tabTiposIdentificacion.Name = "tabTiposIdentificacion";
             this.tabTiposIdentificacion.Padding = new System.Windows.Forms.Padding(14);
-            this.tabTiposIdentificacion.Size = new System.Drawing.Size(902, 662);
+            this.tabTiposIdentificacion.Size = new System.Drawing.Size(902, 670);
             this.tabTiposIdentificacion.TabIndex = 3;
             this.tabTiposIdentificacion.Text = "Tipos de identificación";
             // 
             // pnlFormTipoIdentificacion
             // 
-            this.pnlFormTipoIdentificacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.pnlFormTipoIdentificacion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFormTipoIdentificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFormTipoIdentificacion.Controls.Add(this.btnCancelarTipoIdentificacion);
             this.pnlFormTipoIdentificacion.Controls.Add(this.btnGuardarTipoIdentificacion);
@@ -968,7 +968,7 @@
             "Inactivo"});
             this.cboEstadoTipoIdentificacionForm.Location = new System.Drawing.Point(450, 60);
             this.cboEstadoTipoIdentificacionForm.Name = "cboEstadoTipoIdentificacionForm";
-            this.cboEstadoTipoIdentificacionForm.Size = new System.Drawing.Size(200, 33);
+            this.cboEstadoTipoIdentificacionForm.Size = new System.Drawing.Size(200, 25);
             this.cboEstadoTipoIdentificacionForm.TabIndex = 4;
             // 
             // lblEstadoTipoIdentificacionForm
@@ -978,7 +978,7 @@
             this.lblEstadoTipoIdentificacionForm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblEstadoTipoIdentificacionForm.Location = new System.Drawing.Point(450, 44);
             this.lblEstadoTipoIdentificacionForm.Name = "lblEstadoTipoIdentificacionForm";
-            this.lblEstadoTipoIdentificacionForm.Size = new System.Drawing.Size(61, 23);
+            this.lblEstadoTipoIdentificacionForm.Size = new System.Drawing.Size(42, 15);
             this.lblEstadoTipoIdentificacionForm.TabIndex = 3;
             this.lblEstadoTipoIdentificacionForm.Text = "Estado";
             // 
@@ -987,7 +987,7 @@
             this.txtNombreTipoIdentificacion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtNombreTipoIdentificacion.Location = new System.Drawing.Point(14, 60);
             this.txtNombreTipoIdentificacion.Name = "txtNombreTipoIdentificacion";
-            this.txtNombreTipoIdentificacion.Size = new System.Drawing.Size(400, 33);
+            this.txtNombreTipoIdentificacion.Size = new System.Drawing.Size(400, 24);
             this.txtNombreTipoIdentificacion.TabIndex = 2;
             // 
             // lblNombreTipoIdentificacion
@@ -997,7 +997,7 @@
             this.lblNombreTipoIdentificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(94)))), ((int)(((byte)(90)))));
             this.lblNombreTipoIdentificacion.Location = new System.Drawing.Point(14, 44);
             this.lblNombreTipoIdentificacion.Name = "lblNombreTipoIdentificacion";
-            this.lblNombreTipoIdentificacion.Size = new System.Drawing.Size(73, 23);
+            this.lblNombreTipoIdentificacion.Size = new System.Drawing.Size(51, 15);
             this.lblNombreTipoIdentificacion.TabIndex = 1;
             this.lblNombreTipoIdentificacion.Text = "Nombre";
             // 
@@ -1007,7 +1007,7 @@
             this.lblFormTituloTipoIdentificacion.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFormTituloTipoIdentificacion.Location = new System.Drawing.Point(14, 10);
             this.lblFormTituloTipoIdentificacion.Name = "lblFormTituloTipoIdentificacion";
-            this.lblFormTituloTipoIdentificacion.Size = new System.Drawing.Size(283, 28);
+            this.lblFormTituloTipoIdentificacion.Size = new System.Drawing.Size(199, 19);
             this.lblFormTituloTipoIdentificacion.TabIndex = 0;
             this.lblFormTituloTipoIdentificacion.Text = "Nuevo tipo de identificación";
             // 
@@ -1060,7 +1060,7 @@
             this.txtBuscarTipoIdentificacion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtBuscarTipoIdentificacion.Location = new System.Drawing.Point(14, 14);
             this.txtBuscarTipoIdentificacion.Name = "txtBuscarTipoIdentificacion";
-            this.txtBuscarTipoIdentificacion.Size = new System.Drawing.Size(400, 33);
+            this.txtBuscarTipoIdentificacion.Size = new System.Drawing.Size(400, 24);
             this.txtBuscarTipoIdentificacion.TabIndex = 0;
             this.txtBuscarTipoIdentificacion.TextChanged += new System.EventHandler(this.txtBuscarTipoIdentificacion_TextChanged);
             // 
@@ -1124,7 +1124,7 @@
             // 
             // frmCatalogos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 780);

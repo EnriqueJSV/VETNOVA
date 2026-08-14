@@ -180,113 +180,129 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvCitas.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Selecciona primero una cita de la tabla.", "Modificar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (dgvCitas.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Selecciona primero una cita de la tabla.", "Modificar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
-            if (filaSeleccionada == null)
+                DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
+                if (filaSeleccionada == null)
+                {
+                    MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Modificar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                idCitaEnEdicion = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
+
+                string nombrePropietario = filaSeleccionada["Propietario"].ToString();
+                string nombreMascota = filaSeleccionada["Mascota"].ToString();
+                string nombreVeterinario = filaSeleccionada["Veterinario"].ToString();
+
+                // No usamos IDs ocultos: buscamos el propietario y el veterinario por
+                // el mismo texto que ya se ve en la tabla (NombreCompleto para
+                // Propietario, NombreConEspecialidad para Veterinario). Esto dispara
+                // cboPropietario_SelectedIndexChanged, que filtra cboMascota; recien
+                // ahi buscamos la mascota por su Nombre dentro de esa lista ya
+                // filtrada (evita confundir mascotas con el mismo nombre de OTRO dueño).
+                //
+                // OJO: como los combos ahora solo muestran activos (Estado = 1), si la
+                // cita quedó asociada a un propietario/mascota/veterinario que
+                // DESPUES se desactivó, estas búsquedas no lo van a encontrar y el
+                // combo correspondiente va a quedar sin selección (-1).
+                SeleccionarEnComboPorTexto(cboPropietario, "NombreCompleto", nombrePropietario);
+                SeleccionarMascotaPorNombre(nombreMascota);
+                SeleccionarVeterinarioPorNombre(nombreVeterinario);
+
+                cboEstado.SelectedItem = filaSeleccionada["Estado"].ToString();
+                dtpFecha.Value = DateTime.ParseExact(filaSeleccionada["Fecha"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                cboHora.SelectedItem = filaSeleccionada["Hora"].ToString();
+                txtMotivo.Text = filaSeleccionada["Motivo"].ToString();
+
+                lblFormTitulo.Text = "Editar cita";
+                btnGuardarCita.Text = "Guardar cambios";
+                pnlFormCita.Visible = true;
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Modificar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Se presento un error al intentar editar el registro. Error: " + ex.ToString(),
+                    "Informacion del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            idCitaEnEdicion = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
-
-            string nombrePropietario = filaSeleccionada["Propietario"].ToString();
-            string nombreMascota = filaSeleccionada["Mascota"].ToString();
-            string nombreVeterinario = filaSeleccionada["Veterinario"].ToString();
-
-            // No usamos IDs ocultos: buscamos el propietario y el veterinario por
-            // el mismo texto que ya se ve en la tabla (NombreCompleto para
-            // Propietario, NombreConEspecialidad para Veterinario). Esto dispara
-            // cboPropietario_SelectedIndexChanged, que filtra cboMascota; recien
-            // ahi buscamos la mascota por su Nombre dentro de esa lista ya
-            // filtrada (evita confundir mascotas con el mismo nombre de OTRO dueño).
-            //
-            // OJO: como los combos ahora solo muestran activos (Estado = 1), si la
-            // cita quedó asociada a un propietario/mascota/veterinario que
-            // DESPUES se desactivó, estas búsquedas no lo van a encontrar y el
-            // combo correspondiente va a quedar sin selección (-1).
-            SeleccionarEnComboPorTexto(cboPropietario, "NombreCompleto", nombrePropietario);
-            SeleccionarMascotaPorNombre(nombreMascota);
-            SeleccionarVeterinarioPorNombre(nombreVeterinario);
-
-            cboEstado.SelectedItem = filaSeleccionada["Estado"].ToString();
-            dtpFecha.Value = DateTime.ParseExact(filaSeleccionada["Fecha"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            cboHora.SelectedItem = filaSeleccionada["Hora"].ToString();
-            txtMotivo.Text = filaSeleccionada["Motivo"].ToString();
-
-            lblFormTitulo.Text = "Editar cita";
-            btnGuardarCita.Text = "Guardar cambios";
-            pnlFormCita.Visible = true;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvCitas.SelectedRows.Count == 0)
+            try
             {
-                MessageBox.Show("Selecciona primero una cita de la tabla.", "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (dgvCitas.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Selecciona primero una cita de la tabla.", "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
+                if (filaSeleccionada == null)
+                {
+                    MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                int idCita = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
+
+                string resumen = filaSeleccionada["Mascota"] + " con " + filaSeleccionada["Veterinario"] +
+                    "\n" + filaSeleccionada["Fecha"] + " a las " + filaSeleccionada["Hora"] +
+                    "\nMotivo: " + filaSeleccionada["Motivo"];
+
+                DialogResult confirmacion = MessageBox.Show(
+                    "¿Seguro que deseas eliminar esta cita?\n\n" + resumen,
+                    "Eliminar cita", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (confirmacion != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                obj_Citas_Global_DAL.iId_Cita = idCita;
+                obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
+
+                obj_Citas_Global_BLL.EliminaCita(ref obj_Citas_Global_DAL);
+
+                // Mismo espiritu que Guardar/Actualizar: un mensaje de éxito, un
+                // mensaje de error, y dos casos especiales propios de Eliminar
+                // (-1 tiene dependientes, -2 ya no existe).
+                if (obj_Citas_Global_DAL.sValorScalar == "-1")
+                {
+                    MessageBox.Show("Esta cita tiene una consulta registrada asociada, no se puede eliminar.", "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (obj_Citas_Global_DAL.sValorScalar == "-2")
+                {
+                    MessageBox.Show("La cita ya no existe (puede que ya la hayan eliminado). Se va a refrescar la lista.", "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cargaCitas();
+                }
+                else if (obj_Citas_Global_DAL.sMsjError == string.Empty && obj_Citas_Global_DAL.sValorScalar != "0")
+                {
+                    MessageBox.Show("La cita se eliminó correctamente.", "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargaCitas();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al intentar eliminar la cita: " + obj_Citas_Global_DAL.sMsjError, "Eliminar cita",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
-            DataRowView filaSeleccionada = dgvCitas.SelectedRows[0].DataBoundItem as DataRowView;
-            if (filaSeleccionada == null)
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo leer la información de la fila seleccionada.", "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            int idCita = Convert.ToInt32(filaSeleccionada["Id_Cita"]);
-
-            string resumen = filaSeleccionada["Mascota"] + " con " + filaSeleccionada["Veterinario"] +
-                "\n" + filaSeleccionada["Fecha"] + " a las " + filaSeleccionada["Hora"] +
-                "\nMotivo: " + filaSeleccionada["Motivo"];
-
-            DialogResult confirmacion = MessageBox.Show(
-                "¿Seguro que deseas eliminar esta cita?\n\n" + resumen,
-                "Eliminar cita", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmacion != DialogResult.Yes)
-            {
-                return;
-            }
-
-            obj_Citas_Global_DAL.iId_Cita = idCita;
-            obj_Citas_Global_DAL.iId_UsuarioGlobal = obj_Usuario_Global_DAL.iId_UsuarioGlobal;
-
-            obj_Citas_Global_BLL.EliminaCita(ref obj_Citas_Global_DAL);
-
-            // Mismo espiritu que Guardar/Actualizar: un mensaje de éxito, un
-            // mensaje de error, y dos casos especiales propios de Eliminar
-            // (-1 tiene dependientes, -2 ya no existe).
-            if (obj_Citas_Global_DAL.sValorScalar == "-1")
-            {
-                MessageBox.Show("Esta cita tiene una consulta registrada asociada, no se puede eliminar.", "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (obj_Citas_Global_DAL.sValorScalar == "-2")
-            {
-                MessageBox.Show("La cita ya no existe (puede que ya la hayan eliminado). Se va a refrescar la lista.", "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cargaCitas();
-            }
-            else if (obj_Citas_Global_DAL.sMsjError == string.Empty && obj_Citas_Global_DAL.sValorScalar != "0")
-            {
-                MessageBox.Show("La cita se eliminó correctamente.", "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cargaCitas();
-            }
-            else
-            {
-                MessageBox.Show("Ocurrió un error al intentar eliminar la cita: " + obj_Citas_Global_DAL.sMsjError, "Eliminar cita",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se presento un error al intentar eliminar el registro. Error: " + ex.ToString(),
+                    "Informacion del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -350,70 +366,78 @@ namespace PL_VETNOVA.Pantallas.Citas
 
         private void cargaCombos()
         {
-            // Propietarios (ordenados alfabeticamente por NombreCompleto, solo Activos)
-            obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
-            if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
+            try
             {
-                DataTable dtProp = obj_Propietarios_Global_DAL.dtDatos;
-                if (!dtProp.Columns.Contains("NombreCompleto"))
+                // Propietarios (ordenados alfabeticamente por NombreCompleto, solo Activos)
+                obj_Propietarios_Global_BLL.ListarPropietarios(ref obj_Propietarios_Global_DAL);
+                if (obj_Propietarios_Global_DAL.sMsjError == string.Empty && obj_Propietarios_Global_DAL.dtDatos != null)
                 {
-                    dtProp.Columns.Add("NombreCompleto", typeof(string));
-                }
-                foreach (DataRow fila in dtProp.Rows)
-                {
-                    fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
+                    DataTable dtProp = obj_Propietarios_Global_DAL.dtDatos;
+                    if (!dtProp.Columns.Contains("NombreCompleto"))
+                    {
+                        dtProp.Columns.Add("NombreCompleto", typeof(string));
+                    }
+                    foreach (DataRow fila in dtProp.Rows)
+                    {
+                        fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
+                    }
+
+                    // DefaultView.Sort ordena sin tener que tocar el SP ni pedir
+                    // otra vez a la base de datos. RowFilter oculta los inactivos
+                    // (mismo principio que el filtrado en memoria que ya usa el form).
+                    // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
+                    dtProp.DefaultView.RowFilter = "Estado = 'A'";
+                    dtProp.DefaultView.Sort = "NombreCompleto ASC";
+
+                    cboPropietario.DataSource = dtProp.DefaultView;
+                    cboPropietario.DisplayMember = "NombreCompleto";
+                    cboPropietario.ValueMember = "Id_Propietario";
+                    cboPropietario.SelectedIndex = -1;
                 }
 
-                // DefaultView.Sort ordena sin tener que tocar el SP ni pedir
-                // otra vez a la base de datos. RowFilter oculta los inactivos
-                // (mismo principio que el filtrado en memoria que ya usa el form).
-                // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
-                dtProp.DefaultView.RowFilter = "Estado = 'A'";
-                dtProp.DefaultView.Sort = "NombreCompleto ASC";
+                // Veterinarios (con su especialidad a la par, ej. "Ana Ruiz - Especialidad: Cirugia general"), solo Activos
+                obj_Veterinarios_Global_BLL.ListarVeterinarios(ref obj_Veterinarios_Global_DAL);
+                if (obj_Veterinarios_Global_DAL.sMsjError == string.Empty && obj_Veterinarios_Global_DAL.dtDatos != null)
+                {
+                    DataTable dtVet = obj_Veterinarios_Global_DAL.dtDatos;
+                    if (!dtVet.Columns.Contains("NombreCompleto"))
+                    {
+                        dtVet.Columns.Add("NombreCompleto", typeof(string));
+                    }
+                    if (!dtVet.Columns.Contains("NombreConEspecialidad"))
+                    {
+                        dtVet.Columns.Add("NombreConEspecialidad", typeof(string));
+                    }
+                    foreach (DataRow fila in dtVet.Rows)
+                    {
+                        fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
+                        fila["NombreConEspecialidad"] = fila["NombreCompleto"].ToString() + " - " + fila["Especialidad"].ToString();
+                    }
 
-                cboPropietario.DataSource = dtProp.DefaultView;
-                cboPropietario.DisplayMember = "NombreCompleto";
-                cboPropietario.ValueMember = "Id_Propietario";
-                cboPropietario.SelectedIndex = -1;
+                    // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
+                    dtVet.DefaultView.RowFilter = "Estado = 'A'";
+                    dtVet.DefaultView.Sort = "NombreCompleto ASC";
+
+                    cboVeterinario.DataSource = dtVet.DefaultView;
+                    cboVeterinario.DisplayMember = "NombreConEspecialidad";
+                    cboVeterinario.ValueMember = "Id_Veterinario";
+                    cboVeterinario.SelectedIndex = -1;
+                }
+
+                // Mascotas: se guardan TODAS en memoria (activas e inactivas); el
+                // filtro de "solo Activas" se aplica en cboPropietario_SelectedIndexChanged,
+                // combinado con el filtro por propietario, para no perder la
+                // referencia completa que se necesita en btnModificar_Click.
+                obj_Mascotas_Global_BLL.ListarMascotas(ref obj_Mascotas_Global_DAL);
+                if (obj_Mascotas_Global_DAL.sMsjError == string.Empty && obj_Mascotas_Global_DAL.dtDatos != null)
+                {
+                    dtMascotasCompleto = obj_Mascotas_Global_DAL.dtDatos;
+                }
             }
-
-            // Veterinarios (con su especialidad a la par, ej. "Ana Ruiz - Especialidad: Cirugia general"), solo Activos
-            obj_Veterinarios_Global_BLL.ListarVeterinarios(ref obj_Veterinarios_Global_DAL);
-            if (obj_Veterinarios_Global_DAL.sMsjError == string.Empty && obj_Veterinarios_Global_DAL.dtDatos != null)
+            catch (Exception ex)
             {
-                DataTable dtVet = obj_Veterinarios_Global_DAL.dtDatos;
-                if (!dtVet.Columns.Contains("NombreCompleto"))
-                {
-                    dtVet.Columns.Add("NombreCompleto", typeof(string));
-                }
-                if (!dtVet.Columns.Contains("NombreConEspecialidad"))
-                {
-                    dtVet.Columns.Add("NombreConEspecialidad", typeof(string));
-                }
-                foreach (DataRow fila in dtVet.Rows)
-                {
-                    fila["NombreCompleto"] = fila["Nombre"].ToString() + " " + fila["Apellido1"].ToString();
-                    fila["NombreConEspecialidad"] = fila["NombreCompleto"].ToString() + " - " + fila["Especialidad"].ToString();
-                }
-
-                // Estado se guarda como char 'A' (Activo) / 'I' (Inactivo).
-                dtVet.DefaultView.RowFilter = "Estado = 'A'";
-                dtVet.DefaultView.Sort = "NombreCompleto ASC";
-
-                cboVeterinario.DataSource = dtVet.DefaultView;
-                cboVeterinario.DisplayMember = "NombreConEspecialidad";
-                cboVeterinario.ValueMember = "Id_Veterinario";
-                cboVeterinario.SelectedIndex = -1;
-            }
-
-            // Mascotas: se guardan TODAS en memoria (activas e inactivas); el
-            // filtro de "solo Activas" se aplica en cboPropietario_SelectedIndexChanged,
-            // combinado con el filtro por propietario, para no perder la
-            // referencia completa que se necesita en btnModificar_Click.
-            obj_Mascotas_Global_BLL.ListarMascotas(ref obj_Mascotas_Global_DAL);
-            if (obj_Mascotas_Global_DAL.sMsjError == string.Empty && obj_Mascotas_Global_DAL.dtDatos != null)
-            {
-                dtMascotasCompleto = obj_Mascotas_Global_DAL.dtDatos;
+                MessageBox.Show("Se presento un error al intentar cargar la lista de datos. Error: " + ex.ToString(),
+                    "Informacion del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
