@@ -37,6 +37,7 @@
             this.lblNavCitas = new System.Windows.Forms.Label();
             this.lblNavDashboard = new System.Windows.Forms.Label();
             this.pnlSidebarHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblSidebarTagline = new System.Windows.Forms.Label();
             this.lblSidebarTitulo = new System.Windows.Forms.Label();
             this.picLogoSidebar = new System.Windows.Forms.PictureBox();
@@ -281,6 +282,7 @@
             // pnlSidebarHeader
             // 
             this.pnlSidebarHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(52)))), ((int)(((byte)(44)))));
+            this.pnlSidebarHeader.Controls.Add(this.label1);
             this.pnlSidebarHeader.Controls.Add(this.lblSidebarTagline);
             this.pnlSidebarHeader.Controls.Add(this.lblSidebarTitulo);
             this.pnlSidebarHeader.Controls.Add(this.picLogoSidebar);
@@ -290,13 +292,26 @@
             this.pnlSidebarHeader.Size = new System.Drawing.Size(220, 70);
             this.pnlSidebarHeader.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
+            this.label1.Location = new System.Drawing.Point(168, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 37);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "ⓘ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // lblSidebarTagline
             // 
             this.lblSidebarTagline.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.lblSidebarTagline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(225)))), ((int)(((byte)(203)))));
             this.lblSidebarTagline.Location = new System.Drawing.Point(46, 34);
             this.lblSidebarTagline.Name = "lblSidebarTagline";
-            this.lblSidebarTagline.Size = new System.Drawing.Size(160, 16);
+            this.lblSidebarTagline.Size = new System.Drawing.Size(82, 16);
             this.lblSidebarTagline.TabIndex = 2;
             this.lblSidebarTagline.Text = "simple y trazable";
             // 
@@ -306,7 +321,7 @@
             this.lblSidebarTitulo.ForeColor = System.Drawing.Color.White;
             this.lblSidebarTitulo.Location = new System.Drawing.Point(44, 12);
             this.lblSidebarTitulo.Name = "lblSidebarTitulo";
-            this.lblSidebarTitulo.Size = new System.Drawing.Size(160, 22);
+            this.lblSidebarTitulo.Size = new System.Drawing.Size(84, 22);
             this.lblSidebarTitulo.TabIndex = 1;
             this.lblSidebarTitulo.Text = "VetNova";
             // 
@@ -625,6 +640,7 @@
             this.pnlCerrarSesion.ResumeLayout(false);
             this.pnlNav.ResumeLayout(false);
             this.pnlSidebarHeader.ResumeLayout(false);
+            this.pnlSidebarHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogoSidebar)).EndInit();
             this.pnlContentWrapper.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
@@ -690,5 +706,6 @@
         private System.Windows.Forms.Label lblTituloPantalla;
         private System.Windows.Forms.Panel pnlTopBarBorde;
         private System.Windows.Forms.DataVisualization.Charting.Chart citasXmes;
+        private System.Windows.Forms.Label label1;
     }
 }

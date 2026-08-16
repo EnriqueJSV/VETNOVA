@@ -71,6 +71,12 @@
     <Compile Include="Pantallas\Consultas\frmConsultas.Designer.cs">
       <DependentUpon>frmConsultas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pantallas\Generales\frmInformacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pantallas\Generales\frmInformacion.Designer.cs">
+      <DependentUpon>frmInformacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pantallas\Generales\frmInicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Consultas\frmConsultas.resx">
       <DependentUpon>frmConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pantallas\Generales\frmInformacion.resx">
+      <DependentUpon>frmInformacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pantallas\Generales\frmInicioSesion.resx">
       <DependentUpon>frmInicioSesion.cs</DependentUpon>
