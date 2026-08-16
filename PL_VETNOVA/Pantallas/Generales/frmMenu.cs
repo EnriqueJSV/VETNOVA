@@ -530,6 +530,18 @@ namespace PL_VETNOVA.Pantallas.Generales
             RefrescarPanelPrincipal();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Pantallas.Generales.frmInformacion obj_Formulario = new Pantallas.Generales.frmInformacion();
+
+            this.Hide();
+            obj_Formulario.ShowDialog(this);
+
+            // Al volver, refrescamos el panel principal por si se
+            // agregó/modificó/eliminó algo mientras estuvimos en esa pantalla.
+            RefrescarPanelPrincipal();
+        }
+
         // Reune el refresco del dashboard que se repetia despues de cada
         // navegacion, respetando que cards/roles no aplican a todos.
         private void RefrescarPanelPrincipal()
@@ -659,5 +671,7 @@ namespace PL_VETNOVA.Pantallas.Generales
         {
             cargarGraficoCitasXMes();
         }
+
+        
     }
 }
