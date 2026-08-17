@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.37301.10 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11822.322 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_VETNOVA", "PL_VETNOVA\PL_VETNOVA.csproj", "{259BFA8B-A20A-4790-96D7-1E88DDDB6BD6}"
 EndProject
@@ -164,6 +164,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SPs_Roles", "SPs_Roles", "{A19E0BA4-A506-44D1-902B-EE07FA759E2C}"
 	ProjectSection(SolutionItems) = preProject
 		BaseDatos\03_Procedimientos\SPs_Roles\SP_LISTAR_ROLES.sql = BaseDatos\03_Procedimientos\SPs_Roles\SP_LISTAR_ROLES.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestingDeProfesor", "TestingDeProfesor", "{02B25AC0-97FD-4D93-9D10-16EB122ACA22}"
+	ProjectSection(SolutionItems) = preProject
+		BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql = BaseDatos\01_BaseDeDatos\BD&Tablas_CreacionScript.sql
+		SistemaVacioProfesor.sql = SistemaVacioProfesor.sql
+		BaseDatos\03_Procedimientos\SPs_CreacionScript.sql = BaseDatos\03_Procedimientos\SPs_CreacionScript.sql
 	EndProjectSection
 EndProject
 Global

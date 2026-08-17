@@ -26,15 +26,13 @@ namespace PL_VETNOVA.Pantallas.Catalogos
         public cls_Tipos_Identificacion_BLL obj_TiposIdentificacion_Global_BLL = new cls_Tipos_Identificacion_BLL();
 
         // DataTables en memoria para poder filtrar con DataView.RowFilter
-        // (busqueda por texto y, en Razas, el cascadeo por especie) sin pegarle
-        // otra vez a la base de datos.
         private DataTable dtEspecies;
         private DataTable dtRazas;
         private DataTable dtEspecialidades;
         private DataTable dtTiposIdentificacion;
 
         // Vistas filtrables sobre cada DataTable, mismo patron que vistaCitas
-        // en frmCitas: se crean al cargar y se les aplica RowFilter en memoria.
+        // se crean al cargar y se les aplica RowFilter en memoria.
         private DataView vistaEspecies;
         private DataView vistaRazas;
         private DataView vistaEspecialidades;
@@ -68,7 +66,6 @@ namespace PL_VETNOVA.Pantallas.Catalogos
         private void frmCatalogos_Load(object sender, EventArgs e)
         {
             cargaDatosUsuarioGlobal();
-
             CargarEspecies();
             CargarEspecieRazaCombo();
             CargarRazas();

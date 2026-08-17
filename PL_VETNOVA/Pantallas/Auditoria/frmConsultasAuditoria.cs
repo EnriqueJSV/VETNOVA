@@ -17,9 +17,7 @@ namespace PL_VETNOVA.Pantallas.Auditoria
 
         #region Variables Globales o de Entidades
 
-        // Se le pasa desde el menu que abre esta ventana (solo Admin tiene
-        // acceso), igual que en frmCitas, para mostrar el usuario/rol y para
-        // futuras validaciones.
+        // Se le pasa desde el menu que abre esta ventana
         public cls_Usuarios_DAL obj_Usuario_Global_DAL;
         public cls_Usuarios_BLL obj_Usuario_Global_BLL = new cls_Usuarios_BLL();
 
@@ -32,7 +30,7 @@ namespace PL_VETNOVA.Pantallas.Auditoria
         {
             InitializeComponent();
 
-            // Mismo motivo que en frmCitas: al bindear el grid directo a un
+            // al bindear el grid directo a un
             // DataTable mas adelante, esto evita que WinForms autogenere
             // columnas de mas ademas de las 4 que ya definimos a mano.
             dgvAuditoria.AutoGenerateColumns = false;
