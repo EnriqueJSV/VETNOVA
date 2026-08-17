@@ -1,5 +1,5 @@
 /*
-  VETNOVA - SCRIPT 2 DE 4: PROCEDIMIENTOS ALMACENADOS
+  VETNOVA - SCRIPT 2 DE 3: PROCEDIMIENTOS ALMACENADOS
   ------------------------------------------------------------
   Instrucciones:
   1) Ejecutar PRIMERO el script "BD&Tablas_CreacionScript.sql"

@@ -1,5 +1,5 @@
 /*
-  VETNOVA - SCRIPT 1 DE 4: CREACION DE BASE DE DATOS Y TABLAS
+  VETNOVA - SCRIPT 1 DE 3: CREACION DE BASE DE DATOS Y TABLAS
   ------------------------------------------------------------
   Instrucciones:
   1) Abrir este archivo en SQL Server Management Studio (SSMS)
